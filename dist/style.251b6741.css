@@ -1,0 +1,27 @@
+html, body 
+{
+	margin:0px;
+	height: 100%;
+}
+
+#map 
+{ 
+    height: 100%; }
+    
+.form-inline
+{
+    position: fixed;
+    float: right;
+    top: 10px; 
+    right: 10px;
+}
+
+.non-interactive
+{
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-select: none;
+}
