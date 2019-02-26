@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="lib/ol.css" type="text/css"/>
+
+    <script src="lib/ol.js"></script>
+</head>
+<body>
+    <div id="map" class="map">
+
+    </div>
+    <form class="form-inline">
+            <label class="non-interactive">Geometry type &nbsp;</label>
+            <select id="type">
+              <option value="Point">Point</option>
+              <option value="LineString">LineString</option>
+              <option value="Polygon">Polygon</option>
+              <option value="Circle">Circle</option>
+              <option value="None">None</option>
+            </select>
+          </form> 
+    <script src="/scripts/layers.js" type="text/javascript"></script>
+</body>
+</html>
