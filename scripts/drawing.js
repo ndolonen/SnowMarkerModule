@@ -23,14 +23,11 @@ var typeSelect = document.getElementById('type');
 
 var draw; // global so we can remove it later
 function addInteraction() {
-  var value = typeSelect.value;
-  if (value !== 'None') {
-    draw = new ol.interaction.Draw({
-      source: source,
-      type: typeSelect.value
-    });
-    map.addInteraction(draw);
-  }
+  draw = new ol.interaction.Draw({
+    source: source,
+    type: typeSelect.value
+  });
+  map.addInteraction(draw);
 }
 
 
@@ -42,4 +39,7 @@ typeSelect.onchange = function() {
   addInteraction();
 };
 
-addInteraction();
+// var value = typeSelect.value;
+// if (value !== 'None' || value !== '' || value !== null) {
+  addInteraction();
+// }

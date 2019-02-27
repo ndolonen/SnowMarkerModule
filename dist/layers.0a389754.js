@@ -57037,22 +57037,9 @@ var raster = new _layer.Tile({
 var source = new _source.Vector();
 var vector = new _layer.Vector({
   source: source,
-  style: new _style.Style({
-    fill: new _style.Fill({
-      color: 'rgba(255, 255, 255, 0.2)'
-    }),
-    stroke: new _style.Stroke({
-      color: '#ffcc33',
-      width: 2
-    }),
-    image: new _style.Circle({
-      radius: 7,
-      fill: new _style.Fill({
-        color: '#ffcc33'
-      })
-    })
-  })
+  style: new _style.Style()
 });
+setColor();
 var map = new _Map.default({
   layers: [raster, vector],
   target: 'map',
@@ -57081,18 +57068,96 @@ function addInteractions() {
   });
   map.addInteraction(snap);
 }
+
+var toggleDraw = false;
 /**
  * Handle change event.
  */
 
-
 typeSelect.onchange = function () {
+  if (toggleDraw) {
+    refreshDraw();
+  }
+};
+
+document.getElementById("draw").onclick = function () {
+  toggleDraw = !toggleDraw;
+
+  if (toggleDraw) {
+    addInteractions();
+    document.getElementById("draw").innerText = "Stop drawing";
+  } else {
+    map.removeInteraction(draw);
+    map.removeInteraction(snap);
+    document.getElementById("draw").innerText = "Start drawing";
+  }
+};
+
+var colorSelect = document.getElementById('color');
+
+colorSelect.onchange = function () {
+  setColor();
+};
+
+function setColor() {
+  var colorVal = document.getElementById('color').value;
+  vector.setStyle(new _style.Style({
+    fill: new _style.Fill({
+      color: 'rgba(255, 255, 255, 0.2)'
+    }),
+    stroke: new _style.Stroke({
+      color: colorVal,
+      width: 2
+    }),
+    image: new _style.Circle({
+      radius: 7,
+      fill: new _style.Fill({
+        color: colorVal
+      })
+    })
+  }));
+}
+
+document.getElementById('addLayer').onclick = function () {
+  resetLayer();
+  refreshDraw();
+};
+
+function refreshDraw() {
   map.removeInteraction(draw);
   map.removeInteraction(snap);
   addInteractions();
-};
+}
 
-addInteractions();
+function resetLayer() {//map.removeLayer(vector);
+  //map.addLayer(vector);
+  //map.addLayer(newVector);
+  //map.removeInteraction(vector);
+  //vector = newVector();
+  //map.addInteraction(vector);
+}
+
+function newVector() {
+  var newVector = new _layer.Vector({
+    source: source,
+    style: new _style.Style({
+      fill: new _style.Fill({
+        color: 'rgba(255, 255, 255, 0.2)'
+      }),
+      stroke: new _style.Stroke({
+        color: '#ffcc33',
+        width: 2
+      }),
+      image: new _style.Circle({
+        radius: 7,
+        fill: new _style.Fill({
+          color: '#ffcc33'
+        })
+      })
+    })
+  });
+  return newVector;
+}
 },{"ol/Map.js":"node_modules/ol/Map.js","ol/View.js":"node_modules/ol/View.js","ol/interaction.js":"node_modules/ol/interaction.js","ol/layer.js":"node_modules/ol/layer.js","ol/source.js":"node_modules/ol/source.js","ol/style.js":"node_modules/ol/style.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -57120,7 +57185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41069" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41053" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
