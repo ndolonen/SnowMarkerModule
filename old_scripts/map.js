@@ -11,7 +11,9 @@ let map = new ol.Map
     ],
     view: new ol.View
     ({
-      center: ol.proj.fromLonLat( [37.41, 8.82] ),
-      zoom: 4
+      center: ol.proj.fromLonLat( [14.14278, 66.31278] ),
+      //centers the map on Mo i Rana
+      zoom: 10
     })
 });
+

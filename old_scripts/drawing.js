@@ -14,7 +14,7 @@ var map = new ol.Map({
   layers: [raster, vector],
   target: 'map',
   view: new ol.View({
-    center: ol.proj.fromLonLat([37.41, 8.82]),
+    center: ol.proj.fromLonLat([14.14278, 66.31278]),
     zoom: 4
   })
 });
