@@ -1,4 +1,5 @@
 //TODO: Write code!
+//import and create predefined calls for functions
 const Map = ol.Map;
 const View = ol.View;
 const Draw = ol.interaction.Draw;
@@ -14,9 +15,13 @@ const Fill = ol.style.Fill;
 const Stroke = ol.style.Stroke;
 const Style = ol.style.Style;
 
+//global variables
+let draw, snap;
+let typeSelect = document.getElementById('type');
+
 function setColor()
 {
-    var colorVal = document.getElementById('color').value;
+    let colorVal = document.getElementById('color').value;
     vector.setStyle(new Style
     ({
         fill: new Fill
