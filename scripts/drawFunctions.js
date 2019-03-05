@@ -2,7 +2,7 @@ function addDraw()
 {
     draw = new Draw({
         source: source,
-        type: $('#type').val(),
+        type: typeSelect(),
         freehand: true
     });
     map.addInteraction(draw);

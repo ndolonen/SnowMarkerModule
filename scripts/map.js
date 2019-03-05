@@ -12,13 +12,13 @@ var vector = new VectorLayer({
     source: source,
     style: new Style()
 });
-setColor()
+colorInit()
 
 var map = new Map({
     layers: [raster, vector],
     target: 'map',
     view: new View({
-        center: ol.proj.fromLonLat([10.757933, 59.911491]),
+        center: FromLonLat([10.757933, 59.911491]),
         zoom: 6
     })
 });

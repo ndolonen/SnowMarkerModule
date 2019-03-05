@@ -84,3 +84,18 @@ select
     background-color: rgba(0,0,0, 0.1);
     border-radius: 40px;
 }
+
+.colorOption
+{
+    height: 25px;
+    width: 25px;
+    display: inline-block;    
+    border-radius: 50%;
+    opacity: 0.7;
+
+}
+
+#selectRed
+{
+    background-color: red;
+}

@@ -14,14 +14,14 @@ const CircleStyle = ol.style.Circle;
 const Fill = ol.style.Fill;
 const Stroke = ol.style.Stroke;
 const Style = ol.style.Style;
+const FromLonLat = ol.proj.fromLonLat;
 
 //global variables
 let draw, snap, modify;
-let typeSelect = $('#type').val();
+function typeSelect() { return $('#type').val(); }
 
-function setColor()
-{
-    let colorVal = $('#color').val();
+function colorInit() 
+{ 
     vector.setStyle(new Style
     ({
         fill: new Fill
@@ -30,7 +30,7 @@ function setColor()
         }),
         stroke: new Stroke
         ({
-            color: colorVal,
+            color: '#000000',
             width: 2
         }),
         image: new CircleStyle
@@ -38,8 +38,9 @@ function setColor()
             radius: 7,
             fill: new Fill
             ({
-                color: colorVal
+                color: '#000000'
             })
         })
-    })
-)}
+    }))
+}
+
