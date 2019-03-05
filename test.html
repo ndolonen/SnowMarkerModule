@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<div class="drawbox">
+    <label class="non-interactive">Geometry type &nbsp;</label>
+    <div>
+    <select id="type">
+        <option value="LineString">Line</option>
+        <option value="Polygon">Marking</option>
+        <option value="Circle">Circle</option>
+    </select>
+    <select id="color">
+        <option value="Black">Black</option>
+        <option value="Red">Red</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+    </select>
+
+    </div>
+    <div>
+        <img src="images/draw_off.png" id="draw"/>
+        <button id="addLayer">New Area</button>
+        <button id="modifyLayer">Modify Area</button>
+        <button id="snapToggle">Disable Snap</button>
+    </div>
+    <div id="colorSelector">
+        <span class ="colorOption" id="selectRed"></span>
+    </div>
+</div>
+</html>
