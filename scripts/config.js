@@ -17,11 +17,11 @@ const Style = ol.style.Style;
 
 //global variables
 let draw, snap, modify;
-let typeSelect = document.getElementById('type');
+let typeSelect = $('#type').val();
 
 function setColor()
 {
-    let colorVal = $('#color').value;
+    let colorVal = $('#color').val();
     vector.setStyle(new Style
     ({
         fill: new Fill
@@ -43,5 +43,3 @@ function setColor()
         })
     })
 )}
-
-

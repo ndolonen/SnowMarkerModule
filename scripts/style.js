@@ -2,7 +2,11 @@
  * Script to manage predefined styles.
  */
 
-$('#color').onchange = () => 
+$('#color').change( () => 
 {
     setColor();
-}
+})
+
+
+
+

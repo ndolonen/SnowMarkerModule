@@ -2,9 +2,6 @@
  * Script to manage drawing functionality
  */
 var toggleDraw = false;
-/**
- * Handle change event.
- */
 
 $('#draw').click( () =>
 { 
@@ -22,10 +19,11 @@ $('#draw').click( () =>
     }
 })
 
-// typeSelect.onchange = () => {
-//     if(toggleDraw)
-//     {
-//         removeDraw();
-//         addDraw();
-//     }
-// };
+$('#type').change( () => 
+{
+    if(toggleDraw)
+    {
+        removeDraw();
+        addDraw();
+    }
+});
