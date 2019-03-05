@@ -2,8 +2,7 @@
  * Script to manage predefined styles.
  */
 
-var colorSelect = document.getElementById('color');
-colorSelect.onchange = () => 
+$('#color').onchange = () => 
 {
     setColor();
 }

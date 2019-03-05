@@ -1,53 +1,31 @@
 /**
  * Script to manage drawing functionality
  */
-
-function addInteractions() {
-    draw = new Draw({
-        source: source,
-        type: typeSelect.value,
-        freehand: true
-    });
-    map.addInteraction(draw);
-    snap = new Snap({source: source});
-    map.addInteraction(snap);
-
-}
-
 var toggleDraw = false;
 /**
  * Handle change event.
  */
-typeSelect.onchange = function() {
-    if(toggleDraw)
+
+$('#draw').click( () =>
+{ 
+    toggleDraw = !toggleDraw; 
+    
+    if ( toggleDraw )
     {
-        refreshDraw();
+        addDraw();
+        $('#draw').attr("src", "images/draw_on.png");
     }
-};
-
-document.getElementById("draw").onclick = () => 
-{
-    toggleDraw = !toggleDraw;
-    if (toggleDraw)
+    else
     {
-        addInteractions();
-        document.getElementById("draw").innerText = "Stop drawing"
-        document.getElementById("draw").src = "images/draw_on.png"
+        removeDraw();
+        $('#draw').attr("src", "images/draw_off.png");
     }
-    else 
-    {
-      map.removeInteraction(draw);
-      map.removeInteraction(snap);
-      document.getElementById("draw").innerText = "Start drawing"
-      document.getElementById("draw").src = "images/draw_off.png"
-    }
-}
+})
 
-
-function refreshDraw()
-{
-    map.removeInteraction(draw);
-    map.removeInteraction(snap);
-    addInteractions();
-}
-
+// typeSelect.onchange = () => {
+//     if(toggleDraw)
+//     {
+//         removeDraw();
+//         addDraw();
+//     }
+// };
