@@ -1,6 +1,6 @@
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
-$('#drawbox').after('<div id="test"></div>')
-$('<div></div>\n<div></div').appendTo('#test')
+$('#drawbox').after('<div id="test"></div><div id="test"></div>')
+// $('<div class="drawContainer" id="drawtools"></div>\n<div class="drawContainer" id="layerList"></div').appendTo('#test')
 //
 var root = document.getElementById('drawbox')
 
@@ -8,7 +8,7 @@ var drawbox =
 {
     view: function() 
     {
-        return m("div", {"id":"drawtools"}, 
+        return m("div", {"id":"drawtools"}, //same as "div.classname#idname"
         [
             m("label", {"class":"non-interactive"},
             [
