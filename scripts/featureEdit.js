@@ -1,34 +1,32 @@
-let toggleModify = false;
-let toggleSnap = false;
+
 
 $('#modifyLayer').click( () => 
 { 
-    toggleModify = !toggleModify;
     if ( toggleModify )
     {
-        removeModify();
-        $('#modifyLayer').text("Start Modify");
-
+        addModify()
+        $('#modifyLayer').text("Stop Modify")
     }
     else
-    {
-        addModify();
-        $('#modifyLayer').text("Stop Modify");
+    {        
+        removeModify()
+        $('#modifyLayer').text("Start Modify")
+
     }
-});
+    toggleModify = !toggleModify
+})
 
 $('#snapToggle').click( () => 
 {
-    toggleSnap = !toggleSnap;
     if ( toggleSnap )
-    {
-        removeSnap();
-        $('#snapToggle').text("Start Snap");
-
+    {        
+        addSnap()
+        $('#snapToggle').text("Stop Snap")
     }
     else
     {
-        addSnap();
-        $('#snapToggle').text("Stop Snap");
+        removeSnap()
+        $('#snapToggle').text("Start Snap")
     }
+    toggleSnap = !toggleSnap
 })

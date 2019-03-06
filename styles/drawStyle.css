@@ -5,9 +5,7 @@ html, body
 }
 
 #map 
-{ 
-    height: 100%; 
-}
+{ height: 100%; }
     
 .drawbox
 {
@@ -18,11 +16,11 @@ html, body
     border: 2px dashed rgba(0, 65, 245, 0.452);
     border-radius: 5px;
     background: rgba(236, 235, 255, 0.6);
+    width: 250px;
 }
-.drawbox>div
-{
-    margin: 5px;
-}
+
+.drawbox div
+{ margin: 5px; }
 
 .non-interactive
 {
@@ -60,14 +58,17 @@ button:hover, select:hover
 }
 
 button 
-{
+{ 
     width: 110px;
+    height: 30px;
+    margin: 2px;
+    font-size: 12px; 
 }
+
 select
 {
-    width: 130px;
+    width: 220px;
     background-image:transparent;
-    width: 140px;
     margin-bottom: 3px;
 }
     
@@ -89,13 +90,30 @@ select
 {
     height: 25px;
     width: 25px;
-    display: inline-block;    
+    display: inline-flex;    
     border-radius: 50%;
     opacity: 0.7;
-
+    border: 2px double rgba(0, 0, 0, 0.7);
+    margin: 1px;
 }
+
+#selectBlack
+{ background-color: #1f1f1f}
 
 #selectRed
-{
-    background-color: red;
-}
+{ background-color: #ff0000 }
+
+#selectOrange
+{ background-color: #ff9a28 }
+
+#selectYellow
+{ background-color: #ffd900 }
+
+#selectGreen
+{ background-color: #01b301 }
+
+#selectBlue
+{ background-color: #0000ff }
+
+#selectPurple
+{ background-color: #a300a3 }
