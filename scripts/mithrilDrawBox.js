@@ -39,9 +39,17 @@ var drawbox =
                 m("button", {"id":"addLayer"}, "New Area"),
                 m("button", {"id":"modifyLayer"}, "Modify Area"),
                 m("button", {"id":"snapToggle"}, "Disable Snap"),
-                m("button", {"id":"refreshDrawings"}, "Delete")
+                m("button", {"id":"deleteLayer"}, "Delete")
                 
             ]),
+            m("div", 
+            [
+                m("h1", "TESTBUTTONS"),
+                m("button#testNew", "New Feature"),
+                m("button#testDelete", "Delete Feature"),
+                m("button#testPrint", "Print info"),
+                m("button#testColor", "Color")
+            ])
        
         ])
         

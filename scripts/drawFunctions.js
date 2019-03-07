@@ -20,6 +20,13 @@ function addSnap()
     map.addInteraction(snap)
 }
 
+function addSelect()
+{
+    select = new Select({source: source})
+    map.addInteraction((select))
+}
+
+
 function removeDraw()
 { map.removeInteraction(draw) }
 
@@ -28,6 +35,9 @@ function removeModify()
 
 function removeSnap()
 { map.removeInteraction(snap) }
+
+function removeSelect()
+{ map.removeInteraction(select) }
 
 function refreshDrawings()
 { }
