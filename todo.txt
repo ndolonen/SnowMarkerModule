@@ -12,11 +12,15 @@ TODO:
 -   Print geometrics
 
 -   Decide what method to use for Icon & Drawing Show/Hide functionality
-    -   Nested Divs: jquery toggle between windows/divs
-    -   html replacement: Mithril + jquery
-    -   Modular: different windows for icons and drawing)
-    -   
+    -   Nested Divs: 
+            jQuery .toggle() between div*n 
+        div^n
+    -   HTML replacement: 
+            Rewrite Div content with Mithril & js/jQuery
 
+    -   Modular: 
+        different windows for icons and drawing
+    -   
 
 -   Mark searched areas.
     - Point Mark
