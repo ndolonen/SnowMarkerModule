@@ -1,20 +1,22 @@
 const Feature = ol.Feature
-const Polygon = ol.geom.Polygon
-const Point = ol.geom.Point
+const PolygonGeom = ol.geom.Polygon
+const PointGeom = ol.geom.Point
+const CircleGeom = ol.geom.Circle
 
 addSelect()
-var feature
-var features
+let feature, features, center, radius 
 
 $('#testPrint').click( () =>
 {
     console.log("Test Print Function Init")
-// this.style = new Style({stroke: new Stroke ({color: "#ffffff", width: 2 })})
-    feature = select.getFeatures();
+    // this.style = new Style({stroke: new Stroke ({color: "#ffffff", width: 2 })})
+    features = select.getFeatures();
     console.log(features)
     feature = select.getFeatures().getArray()[0];
     console.log(feature)
     //features.item(0).ol_uid
+    
+    
 })
 
 $('#testNew').click( () => 
@@ -53,71 +55,75 @@ feature.setGeometryName('labelPoint');
 var point = feature.getGeometry();
 */
 
-function deleteItem()
-{
-    feature = select.getFeatures().getArray()[0];
-    var selectSource = select.getLayer(feature).getSource();
-    selectSource.removeFeature(feature);
-    select.getFeatures().remove(feature);
-}
 
 $('#testDelete').click( () => 
 {
     console.log("Test Delete Function Init")
-    // feature = map.forEachFeatureAtPixel(e, pixel, function (feature) {
-
-    //         SelectedFeature = feature;
-    //         console.log(feature.featureID)
-    //     })
-    // features = select.getFeatures();
-    // var colorVal = "#ffffff"
-    // // vector.getSource().removeFeature(features.item(0))
-    // features.item(0).setStyle(new Style(
-    // {
-    //     fill: new Fill
-    //     ({
-    //         color: colorVal + hexOpacity
-    //     }),
-    //     stroke: new Stroke
-    //     ({
-    //         color: colorVal,
-    //         width: 2
-    //     }),
-    //     image: new CircleStyle
-    //     ({
-    //         radius: 7,
-    //         fill: new Fill
-    //         ({
-    //             color: colorVal
-    //         })
-    //     })
-    // }))
-
+    if( select.getFeatures().getArray()[0] != null)
+    {
+        feature = select.getFeatures().getArray()[0];
+        var selectSource = select.getLayer(feature).getSource();
+        selectSource.removeFeature(feature);
+        select.getFeatures().remove(feature);
+    }
 })
+
+let selectedColor, selectedStyle
 
 $('#testColor').click( () => 
 {
     console.log("Test Color Function Init")
+    console.log("Selected color: " + selectedColor)
+
+    feature = select.getFeatures().getArray()[0];
+    feature.style = selectedStyle;
 })
 
+$('.colorOption').click( (e) =>
+{
+    let color = e.target.id
 
-
-
-//click function delegated id addlayer for testing purposes
-//TODO:CLEANUP LATER
-//CONSOLE:
-//features.item(0)
-
-
-/*
-        map.on('click', function (evt) {
-
-            var feature = map.forEachFeatureAtPixel(evt.pixel,
-            function (feature, layer) {
-
-                SelectedFeature = feature;
-                popup.show(evt.coordinate, "<a style='cursor: pointer' onclick='DeleteFeature()'>Delete</a></br>" + feature.featureID + "");
-                console.log(feature.featureID);
-            });
-        });
-*/
+    switch(color)
+    {
+        case "selectRed":
+            //red function here
+            selectedColor = 'red'
+            selectedStyle = redStyle
+            break
+            
+        case "selectOrange":
+            //orange function here
+            selectedColor = 'orange'
+            selectedStyle = orangeStyle
+            break
+                
+        case "selectYellow":
+            //yellow function here
+            selectedColor = 'yellow'
+            selectedStyle = yellowStyle
+            break 
+                        
+        case "selectGreen":
+            //green function here
+            selectedColor = 'green'
+            selectedStyle = greenStyle
+            break
+            
+        case "selectBlue":
+            //blue function here
+            selectedColor = 'blue'
+            selectedStyle = blueStyle
+            break
+            
+        case "selectPurple":
+            //purple function here
+            selectedColor = 'purple'
+            selectedStyle = purpleStyle
+            break
+        
+        default:
+            //defaults to black
+            selectedColor = 'black';
+            selectedStyle = blackStyle
+    }
+})   

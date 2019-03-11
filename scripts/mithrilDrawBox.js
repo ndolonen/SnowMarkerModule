@@ -1,10 +1,13 @@
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
-$('#drawbox').after('<div id="test"></div><div id="test"></div>')
+// $('#map').after('<div id="drawContainer"></div>')
+// $('#drawbox').after('<div id="test"></div><div id="test"></div>')
 // $('<div class="drawContainer" id="drawtools"></div>\n<div class="drawContainer" id="layerList"></div').appendTo('#test')
 //
 var root = document.getElementById('drawbox')
+// var root = document.getElementById('drawContainer')
 
-var drawbox = 
+
+var drawtools = 
 {
     view: function() 
     {
@@ -36,7 +39,7 @@ var drawbox =
             ]),
             m("div",
             [
-                m("button", {"id":"addLayer"}, "New Area"),
+                m("button", {"id":"addLayer"}, "UNDEDICATED"),
                 m("button", {"id":"modifyLayer"}, "Modify Area"),
                 m("button", {"id":"snapToggle"}, "Disable Snap"),
                 m("button", {"id":"deleteLayer"}, "Delete")
@@ -48,7 +51,11 @@ var drawbox =
                 m("button#testNew", "New Feature"),
                 m("button#testDelete", "Delete Feature"),
                 m("button#testPrint", "Print info"),
-                m("button#testColor", "Color")
+                m("button#testColor", "Color"),
+                m("p", {"id":"showMetrics", "class":"non-interactive"},
+                [
+                        "Print Data here"
+                ])
             ])
        
         ])
@@ -57,14 +64,28 @@ var drawbox =
 
 }
 
-var test = {
-    view: function() 
-    {
-        return m("div", {"id":"test"}, 
-        [
-            m("button")
-        ]
-    )}
-}
+// var test = {
+//     view: function() 
+//     {
+//         return m("div", {"id":"test"}, 
+//         [
+//             m("button")
+//         ]
+//     )}
+// }
 
-m.mount(root, drawbox)
+// var toggled = false;
+// $("#buttonHide").click( () => 
+// {
+//   if(toggled)
+//   {
+//     m.mount(root, drawtools)
+//   }
+//   else
+//   {
+//     m.mount(root, test)
+//   }
+//   toggled = !toggled;
+// })
+
+m.mount(root, drawtools)

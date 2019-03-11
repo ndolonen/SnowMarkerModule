@@ -1,0 +1,27 @@
+TODO:
+//#importante
+-   få modularitet til å fungere, gjøre mulig å importere inn i aprs.no applikasjonen
+-   Create individual layer for drawing
+
+//#next importante
+-   Get styles to be set for each feature
+-   Get rid of old code.
+-   Create point by dragging color select
+-   Icon Drag & Drop
+
+-   Print geometrics
+
+-   Decide what method to use for Icon & Drawing Show/Hide functionality
+    -   Nested Divs: jquery toggle between windows/divs
+    -   html replacement: Mithril + jquery
+    -   Modular: different windows for icons and drawing)
+    -   
+
+
+-   Mark searched areas.
+    - Point Mark
+    - Change color
+    - 
+
+NOTES++:
+-   Color selection commented out for testing in style.js

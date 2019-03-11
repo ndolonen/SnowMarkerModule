@@ -6,8 +6,15 @@ html, body
 
 #map 
 { height: 100%; }
-    
-.drawbox
+
+/* #drawContainer
+{
+    position: fixed;
+    top: 10px; 
+    right: 10px;
+} */
+
+#drawbox
 {
     position: fixed;
     top: 10px; 
@@ -19,7 +26,7 @@ html, body
     width: 250px;
 }
 
-.drawbox div
+#drawbox div
 { margin: 5px; }
 
 .non-interactive
@@ -117,3 +124,10 @@ select
 
 #selectPurple
 { background-color: #a300a3 }
+
+#buttonHide/* Drawings */
+{ 
+    position: fixed;
+    top: 10px;
+    left: 40px;
+}

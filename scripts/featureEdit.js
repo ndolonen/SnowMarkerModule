@@ -1,5 +1,3 @@
-
-
 $('#modifyLayer').click( () => 
 { 
     if ( toggleModify )
@@ -29,4 +27,20 @@ $('#snapToggle').click( () =>
         $('#snapToggle').text("Start Snap")
     }
     toggleSnap = !toggleSnap
+})
+
+
+$('#deleteLayer').click( () => 
+{
+    console.log("Test Delete Function Init")
+
+    function deleteItem()
+    {
+        feature = select.getFeatures().getArray()[0];
+        var selectSource = select.getLayer(feature).getSource();
+        selectSource.removeFeature(feature);
+        select.getFeatures().remove(feature);
+    }  
+    
+    deleteItem()
 })
