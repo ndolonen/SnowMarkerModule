@@ -7,12 +7,6 @@ html, body
 #map 
 { height: 100%; }
 
-/* #drawContainer
-{
-    position: fixed;
-    top: 10px; 
-    right: 10px;
-} */
 
 #drawbox
 {
@@ -129,5 +123,5 @@ select
 { 
     position: fixed;
     top: 10px;
-    left: 40px;
+    right: 10px;
 }

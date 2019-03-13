@@ -29,55 +29,8 @@ function setColor(colorVal)
             })
         })
     })
-    //vector.setStyle(vector.)
 )}
 
-/*
-//NOTE COMMENTED OUT FOR DOING COLOR TESTING
-$('.colorOption').click( (e) =>
-{
-    let color = e.target.id
-
-    switch(color)
-    {
-        case "selectRed":
-        //red function here
-            setColor(hexRed)
-            break
-            
-        case "selectOrange":
-        //orange function here
-            setColor(hexOrange)
-            break
-            
-        case "selectYellow":
-        //yellow function here
-            setColor(hexYellow)
-            break 
-                       
-        case "selectGreen":
-        //green function here
-            setColor(hexGreen)
-            break
-            
-        case "selectBlue":
-        //blue function here
-            setColor(hexBlue)
-            break
-            
-        case "selectPurple":
-        //purple function here
-            setColor(hexPurple)
-            break
-        
-        default:
-            //defaults to black
-            setColor(hexBlack)
-    }
-})
-*/
-
-//colorstyles START
 const redStyle = new Style(
 {
     stroke: new Stroke(
@@ -203,26 +156,3 @@ const purpleStyle = new Style(
         })
     })
 })
-
-const blackStyle = new Style(
-{
-    stroke: new Stroke(
-    {
-        color: hexBlack,
-        width: '3'
-    }),
-    fill: new Fill(
-    {
-        color: hexBlack + hexOpacity
-    }),
-    image: new CircleStyle
-    ({
-        radius: 7,
-        fill: new Fill
-        ({
-            color: hexBlack
-        })
-    })
-})
-
-//colorstyles END

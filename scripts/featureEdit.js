@@ -1,3 +1,25 @@
+//Script for managing drawings.
+$("#buttonHide").click( () => 
+{ $("#drawbox").toggle() })
+
+$('#type').change( () => 
+{ refreshDraw() })
+
+$('#draw').click( () =>
+{ 
+    if ( toggleDraw )
+    {
+        addDraw()
+        $('#draw').attr("src", "images/draw_on.png")
+    }
+    else
+    {
+        removeDraw()
+        $('#draw').attr("src", "images/draw_off.png")
+    }
+    toggleDraw = !toggleDraw 
+})
+
 $('#modifyLayer').click( () => 
 { 
     if ( toggleModify )
@@ -32,15 +54,54 @@ $('#snapToggle').click( () =>
 
 $('#deleteLayer').click( () => 
 {
-    console.log("Test Delete Function Init")
-
-    function deleteItem()
+    if( drawselect.getFeatures().getArray()[0] != null)
     {
-        feature = select.getFeatures().getArray()[0];
-        var selectSource = select.getLayer(feature).getSource();
+        feature = drawselect.getFeatures().getArray()[0];
+        var selectSource = drawselect.getLayer(feature).getSource();
         selectSource.removeFeature(feature);
-        select.getFeatures().remove(feature);
+        drawselect.getFeatures().remove(feature);
     }  
-    
-    deleteItem()
 })
+
+$('.colorOption').click( (e) =>
+{
+    let color = e.target.id
+
+    switch(color)
+    {
+        case "selectRed":
+            selectedSource = redObject.source
+            break
+    
+        case "selectOrange":
+            selectedSource = orangeObject.source
+            break
+                
+        case "selectYellow":
+            selectedSource = yellowObject.source
+            break 
+                        
+        case "selectGreen":
+            selectedSource = greenObject.source
+            break
+            
+        case "selectBlue":
+            selectedSource = blueObject.source
+            break
+            
+        case "selectPurple":
+            selectedSource = purpleObject.source
+            break
+        
+        default:
+            selectedSource = drawSource
+    }
+
+    refreshDraw()
+
+    if(!toggleModify)
+    {
+        removeModify()
+        addModify()
+    }
+})   

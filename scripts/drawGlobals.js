@@ -1,17 +1,10 @@
-//(Plugin) Funksjon for å krysse ut i polygon form. const FillPattern = ol.style.FillPattern 
-
-
 //import and create predefined calls for functions
-const Map = ol.Map
-const View = ol.View
 const Draw = ol.interaction.Draw
 const Modify = ol.interaction.Modify
 const Snap = ol.interaction.Snap
-const Select= ol.interaction.Select
+const drawSelect= ol.interaction.Select
 const getActive = ol.interaction.getActive
-const TileLayer = ol.layer.Tile
 const VectorLayer = ol.layer.Vector
-const OSM = ol.source.OSM
 const VectorSource = ol.source.Vector
 const CircleStyle = ol.style.Circle
 const Fill = ol.style.Fill
@@ -20,10 +13,8 @@ const Style = ol.style.Style
 const FromLonLat = ol.proj.fromLonLat
 
 //global variables
-let draw, snap, modify, select
-let toggleDraw = false
-let toggleModify = false
-let toggleSnap = false
+let draw, snap, modify, drawselect
+let toggleDraw = true, toggleModify = true, toggleSnap = true
 
 //global color declarations
 const hexOpacity = "20"
@@ -35,8 +26,20 @@ const hexGreen = "#01b301"
 const hexBlue = "#0000ff"
 const hexPurple = "#a300a3"
 
-function typeSelect() { return $('#type').val() }
+//Found on Stackover flow:
+//source: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+//Made by broofa
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
+        return v.toString(16)
+    });
+}
 
+function typeSelect() 
+{ return $('#type').val() }
+
+//initial color settings
 function colorInit() 
 { 
     let style = new Style
@@ -48,7 +51,7 @@ function colorInit()
         stroke: new Stroke
         ({
             color: '#000000',
-            width: 2
+            width: 3
         }),
         image: new CircleStyle
         ({
@@ -61,3 +64,14 @@ function colorInit()
     })
     return style
 }
+
+//default source
+let drawSource = new VectorSource()
+let drawLayer = new VectorLayer({
+    source: drawSource,
+    style: colorInit()
+})
+map.addLayer(drawLayer)
+
+let selectedSource;
+selectedSource = drawSource

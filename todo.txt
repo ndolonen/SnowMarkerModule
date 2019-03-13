@@ -1,7 +1,29 @@
+NEW:
+TODO:
+-   Create point by dragging color select
+-   Icon Drag & Drop
+-   Print geometrics  
+
+-   Mark searched areas.
+    - Point Mark
+    - Change color?
+
+-   Decide what method to use for Icon & Drawing Show/Hide functionality
+    -   Nested Divs: 
+            jQuery .toggle() between div*n 
+
+    -   HTML replacement: 
+            Rewrite Div content with Mithril & js/jQuery
+
+    -   Modular: 
+            different windows for icons and drawing
+    -   
+
+OLD:
 TODO:
 //#importante
--   få modularitet til å fungere, gjøre mulig å importere inn i aprs.no applikasjonen
 -   Create individual layer for drawing
+-   Color each layer different. #done
 
 //#next importante
 -   Get styles to be set for each feature
@@ -9,23 +31,10 @@ TODO:
 -   Create point by dragging color select
 -   Icon Drag & Drop
 
--   Print geometrics
 
--   Decide what method to use for Icon & Drawing Show/Hide functionality
-    -   Nested Divs: 
-            jQuery .toggle() between div*n 
-        div^n
-    -   HTML replacement: 
-            Rewrite Div content with Mithril & js/jQuery
 
-    -   Modular: 
-        different windows for icons and drawing
-    -   
 
--   Mark searched areas.
-    - Point Mark
-    - Change color
-    - 
+
 
 NOTES++:
 -   Color selection commented out for testing in style.js

@@ -1,7 +1,7 @@
 function addDraw()
 {
     draw = new Draw({
-        source: source,
+        source: selectedSource,
         type: typeSelect(),
         freehand: true
     })
@@ -10,20 +10,20 @@ function addDraw()
 
 function addModify()
 {
-    modify = new Modify({source: source})
+    modify = new Modify({source: selectedSource})
     map.addInteraction(modify) 
 }
 
 function addSnap()
 {
-    snap = new Snap({source: source})
+    snap = new Snap({source: selectedSource})
     map.addInteraction(snap)
 }
 
 function addSelect()
 {
-    select = new Select({source: source})
-    map.addInteraction((select))
+    drawselect = new drawSelect({source: selectedSource})
+    map.addInteraction((drawselect))
 }
 
 
@@ -37,7 +37,13 @@ function removeSnap()
 { map.removeInteraction(snap) }
 
 function removeSelect()
-{ map.removeInteraction(select) }
+{ map.removeInteraction(drawselect) }
 
-function refreshDrawings()
-{ }
+function refreshDraw()
+{
+    if(!toggleDraw)
+    {
+        removeDraw()
+        addDraw()
+    }
+}
