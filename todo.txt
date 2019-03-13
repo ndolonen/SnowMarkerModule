@@ -1,9 +1,12 @@
 NEW:
 TODO:
+//# High Priority
 -   Create point by dragging color select
 -   Icon Drag & Drop
 -   Print geometrics  
 
+
+//# Medium Priority
 -   Mark searched areas.
     - Point Mark
     - Change color?
@@ -19,22 +22,4 @@ TODO:
             different windows for icons and drawing
     -   
 
-OLD:
-TODO:
-//#importante
--   Create individual layer for drawing
--   Color each layer different. #done
-
-//#next importante
--   Get styles to be set for each feature
--   Get rid of old code.
--   Create point by dragging color select
--   Icon Drag & Drop
-
-
-
-
-
-
-NOTES++:
--   Color selection commented out for testing in style.js
+//# low priority
