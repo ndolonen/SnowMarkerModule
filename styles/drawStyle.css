@@ -1,11 +1,10 @@
-html, body 
+#showMetrics
 {
-	margin: 0px;
-	height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border: 2px outset rgba(0, 65, 245, 0.452);
+    border-radius: 5px;
 }
-
-#map 
-{ height: 100%; }
 
 
 #drawbox
@@ -33,7 +32,8 @@ html, body
     -ms-touch-select: none;
 }
 
-button, select
+
+.drawButton, select, #butttonHide
 {
     background-image: linear-gradient( #eeeeee,#dcf7ff );
     font-family: Arial, Helvetica, sans-serif;
@@ -41,7 +41,6 @@ button, select
     font-weight: lighter;
     cursor: pointer;
     color: #00295e;
-    padding: 5px;
     opacity: 0.85;
     border: 1px solid #00000066;
     box-shadow: #00295e;
@@ -49,7 +48,7 @@ button, select
     border-radius: 3px;
 }
 
-button:hover, select:hover
+.drawButton:hover, .drawSelect:hover, #buttonHide:hover
 {
     background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
     /* background-color:#408c99; */
@@ -58,7 +57,8 @@ button:hover, select:hover
     
 }
 
-button 
+
+.drawButton 
 { 
     width: 110px;
     height: 30px;
@@ -66,7 +66,7 @@ button
     font-size: 12px; 
 }
 
-select
+.drawSelect
 {
     width: 220px;
     background-image:transparent;
@@ -80,7 +80,7 @@ select
     opacity: 0.75;
 }
 
-#draw:hover
+#draw:hover, #buttonHide:hover
 {
     opacity: 1.0;
     background-color: rgba(0,0,0, 0.1);
@@ -98,26 +98,73 @@ select
     margin: 1px;
 }
 
+.selectedColor
+{
+    box-shadow: 0 0 1px 3px rgba(40, 126, 255, 0.7);
+}
+
 #selectBlack
-{ background-color: #1f1f1f}
+{   background-color: #1f1f1f}
+
+#selectBlack:hover
+{
+    opacity: 1.0; 
+    background-color: rgba(0, 0, 0, 0.788);
+}
 
 #selectRed
-{ background-color: #ff0000 }
+{   background-color: #ff0000}
+
+#selectRed:hover
+{
+    opacity: 1.0; 
+    background-color: #ff0000;
+}
 
 #selectOrange
-{ background-color: #ff9a28 }
+{   background-color: #ff9a28 }
+
+#selectOrange:hover
+{
+    opacity: 1.0; 
+    background-color: #dd9000;
+}
 
 #selectYellow
-{ background-color: #ffd900 }
+{   background-color: #ffd900 }
+
+#selectYellow:hover
+{
+    opacity: 1.0; 
+    background-color: #e1fa57;
+}
 
 #selectGreen
-{ background-color: #01b301 }
+{   background-color: #01b301 }
+
+#selectGreen:hover
+{
+    opacity: 1.0; 
+    background-color: #06c200;
+}
 
 #selectBlue
-{ background-color: #0000ff }
+{   background-color: #0000ff }
+
+#selectBlue:hover
+{
+    opacity: 1.0; 
+    background-color: #002fff;
+}
 
 #selectPurple
-{ background-color: #a300a3 }
+{   background-color: #a300a3 }
+
+#selectPurple:hover
+{
+    opacity: 1.0; 
+    background-color: #9900ff;
+}
 
 #buttonHide/* Drawings */
 { 
@@ -125,3 +172,4 @@ select
     top: 10px;
     right: 10px;
 }
+

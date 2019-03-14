@@ -13,13 +13,13 @@ var drawtools =
             ]),
             m("div",
             [
-                m("select", {"id":"type"},
+                m("select", {"id":"type", "class" : "drawSelect"},
                 [
                     m("option", {"value":"LineString"}, "Line"),
                     m("option", {"value":"Polygon"}, "Marking"),
                     m("option", {"value":"Circle"}, "Circle")
                 ]),
-                m("div",
+                m("div", {"id":"ColorSelecter"},
                 [
                     m("span", {"class":"colorOption","id":"selectBlack"}),
                     m("span", {"class":"colorOption","id":"selectRed"}),
@@ -33,20 +33,12 @@ var drawtools =
             ]),
             m("div",
             [
-                m("button", {"id":"addLayer"}, "UNDEDICATED"),
-                m("button", {"id":"modifyLayer"}, "Modify Area"),
-                m("button", {"id":"snapToggle"}, "Disable Snap"),
-                m("button", {"id":"deleteLayer"}, "Delete")
+                m("button", {"id":"modifyLayer", "class" : "drawButton"}, "Enable Modify"),
+                m("button", {"id":"snapToggle", "class" : "drawButton"}, "Enable Snap"),
+                m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
+                m("button", {"id":"deleteLayer", "class" : "drawButton"}, "Delete"),
+                m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
             ]),
-            m("div", 
-            [
-                m("h1", "Test the Test"),
-                m("button#testPrint", "Print info"),
-                m("p", {"id":"showMetrics", "class":"non-interactive"},
-                [
-                        "Print Data here"
-                ])
-            ])
         ])   
     }
 }

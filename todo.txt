@@ -1,10 +1,7 @@
 NEW:
 TODO:
 //# High Priority
--   Create point by dragging color select
--   Icon Drag & Drop
--   Print geometrics  
-
+-   create a marker with Drag & Drop
 
 //# Medium Priority
 -   Mark searched areas.
@@ -22,4 +19,3 @@ TODO:
             different windows for icons and drawing
     -   
 
-//# low priority

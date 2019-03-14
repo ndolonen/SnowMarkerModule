@@ -11,9 +11,12 @@ const Fill = ol.style.Fill
 const Stroke = ol.style.Stroke
 const Style = ol.style.Style
 const FromLonLat = ol.proj.fromLonLat
+const Sphere = ol.sphere
+const PolygonGeom = ol.geom.Polygon
 
 //global variables
-let draw, snap, modify, drawselect
+let draw, snap, drawselect, feature
+let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
 let toggleDraw = true, toggleModify = true, toggleSnap = true
 
 //global color declarations

@@ -63,6 +63,8 @@ $('#deleteLayer').click( () =>
     }  
 })
 
+
+let lastColor;
 $('.colorOption').click( (e) =>
 {
     let color = e.target.id
@@ -97,6 +99,10 @@ $('.colorOption').click( (e) =>
             selectedSource = drawSource
     }
 
+    $("#"+color).addClass("selectedColor")
+    $('#'+lastColor).removeClass("selectedColor")
+    lastColor = color
+
     refreshDraw()
 
     if(!toggleModify)
@@ -104,4 +110,51 @@ $('.colorOption').click( (e) =>
         removeModify()
         addModify()
     }
-})   
+})  
+
+$('#printMetric').click( () =>
+{ 
+    $('#showMetrics').html( () => 
+    {
+        feature = drawselect.getFeatures().getArray()[0]
+        let output = "none selected"
+        
+        if ( feature == null )
+        { return output }
+    
+        if ( feature.getGeometry().getType() == "Polygon" ) 
+        {
+            const polygon = feature.getGeometry()
+            const area = Sphere.getArea(polygon)
+            
+            if ( area > 10000 ) 
+            { output = (Math.round(area / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>' } 
+            else 
+            { output = (Math.round(area * 100) / 100) + ' ' + 'm<sup>2</sup>' }
+            return output
+        }
+        else if ( feature.getGeometry().getType() == "Circle" ) 
+        {  
+            const circle = feature.getGeometry()
+            const polyCircle = PolygonGeom.fromCircle(circle)
+            const area = Sphere.getArea(polyCircle)
+            
+            if ( area > 10000 ) 
+            { output = (Math.round(area / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>'} 
+            else 
+            { output = (Math.round(area * 100) / 100) + ' ' + 'm<sup>2</sup>' }
+            return output
+        }
+        else if ( feature.getGeometry().getType() == "LineString" )
+        {
+            const line = feature.getGeometry()
+            const length = Sphere.getLength(line)
+            
+            if ( length > 100 ) 
+            { output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km' } 
+            else 
+            { output = (Math.round(length * 100) / 100) + ' ' + 'm' }
+            return output    
+        } 
+    }) 
+})
