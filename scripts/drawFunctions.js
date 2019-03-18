@@ -2,11 +2,25 @@
 //function to add drawing functionality to map
 function addDraw()
 {
-    draw = new Draw({
-        source: selectedSource,
-        type: typeSelect(),
-        freehand: true
-    })
+    //TODO: Make Toggle button
+    if ( freehandToggle == true )
+    {
+        draw = new Draw(
+        {
+            source: selectedSource,
+            type: typeSelect(),
+            freehand: true
+        })
+    }
+    else 
+    {
+        draw = new Draw(
+        {
+            source: selectedSource,
+            type: typeSelect(),
+            freehand: false
+        })
+    }
     map.addInteraction(draw)
 }
 

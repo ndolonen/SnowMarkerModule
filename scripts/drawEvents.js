@@ -16,6 +16,12 @@ $('#draw').click( () =>
     {
         removeDraw()
         $('#draw').attr("src", "images/draw_off.png")
+        if ( toggleSnap == true )
+        {   
+            toggleSnap = false;
+            map.removeInteraction(snap);
+            $('#snapToggle').text("Start snap")
+        }
     }
     toggleDraw = !toggleDraw 
 })
@@ -55,11 +61,12 @@ $('#snapToggle').click( () =>
 $('#deleteLayer').click( () => 
 {
     if( drawselect.getFeatures().getArray()[0] != null)
+    //$('#deleteLayer').attr("src", "images/trashDelete.png")
     {
-        feature = drawselect.getFeatures().getArray()[0];
-        var selectSource = drawselect.getLayer(feature).getSource();
-        selectSource.removeFeature(feature);
-        drawselect.getFeatures().remove(feature);
+        feature = drawselect.getFeatures().getArray()[0]
+        var selectSource = drawselect.getLayer(feature).getSource()
+        selectSource.removeFeature(feature)
+        drawselect.getFeatures().remove(feature)
     }  
 })
 

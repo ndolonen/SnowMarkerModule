@@ -73,14 +73,14 @@
     margin-bottom: 3px;
 }
     
-#draw
+.drawIcon
 {
     width: 50px;
     height: 50px;
     opacity: 0.75;
 }
 
-#draw:hover, #buttonHide:hover
+.drawIcon:hover, #buttonHide:hover
 {
     opacity: 1.0;
     background-color: rgba(0,0,0, 0.1);
@@ -98,73 +98,79 @@
     margin: 1px;
 }
 
+.colorOption:hover
+{
+    opacity:1;
+
+}
+
 .selectedColor
 {
     box-shadow: 0 0 1px 3px rgba(40, 126, 255, 0.7);
 }
 
-#selectBlack
-{   background-color: #1f1f1f}
+/* #selectBlack
+{   background-color: #1f1f1f} */
 
-#selectBlack:hover
+/* #selectBlack:hover
 {
     opacity: 1.0; 
     background-color: rgba(0, 0, 0, 0.788);
-}
+} */
 
-#selectRed
-{   background-color: #ff0000}
+/* #selectRed
+{   background-color: #ff0000} */
 
-#selectRed:hover
+/* #selectRed:hover
 {
     opacity: 1.0; 
     background-color: #ff0000;
-}
+} */
 
-#selectOrange
-{   background-color: #ff9a28 }
-
+/* #selectOrange
+{   background-color: #ff9a28 } */
+/* 
 #selectOrange:hover
 {
     opacity: 1.0; 
     background-color: #dd9000;
-}
+} */
 
-#selectYellow
-{   background-color: #ffd900 }
+/* #selectYellow
+{   background-color: #ffd900 } */
 
-#selectYellow:hover
+/* #selectYellow:hover
 {
     opacity: 1.0; 
     background-color: #e1fa57;
-}
+} */
 
-#selectGreen
-{   background-color: #01b301 }
+/* #selectGreen
+{   background-color: #01b301 } */
 
-#selectGreen:hover
+/* #selectGreen:hover
 {
     opacity: 1.0; 
     background-color: #06c200;
-}
+} */
 
-#selectBlue
-{   background-color: #0000ff }
+/* #selectBlue
+{   background-color: #0000ff } */
 
-#selectBlue:hover
+/* #selectBlue:hover
 {
     opacity: 1.0; 
     background-color: #002fff;
-}
+} */
 
-#selectPurple
-{   background-color: #a300a3 }
+/* #selectPurple
+{   background-color: #a300a3 } */
 
-#selectPurple:hover
+/* #selectPurple:hover
 {
     opacity: 1.0; 
     background-color: #9900ff;
-}
+} */
 
 #buttonHide/* Drawings */
 { 

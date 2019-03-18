@@ -17,17 +17,26 @@ const PolygonGeom = ol.geom.Polygon
 //global variables
 let draw, snap, drawselect, feature
 let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
-let toggleDraw = true, toggleModify = true, toggleSnap = true
+let toggleDraw = true, toggleModify = true, toggleSnap = true, freehandToggle = true
+
 
 //global color declarations
 const hexOpacity = "20"
-const hexBlack = "#1f1f1f"
-const hexRed = "#ff0000"
-const hexOrange = "#ff9a28"
-const hexYellow = "#ffff00"
-const hexGreen = "#01b301"
-const hexBlue = "#0000ff"
-const hexPurple = "#a300a3"
+const hexZero = "#1f1f1f" // black
+const hexRed = "#ff0000" // red
+const hexOrange = "#ff9a28" // orange
+const hexYellow = "#ffff00" // yellow
+const hexGreen = "#01b301" // green
+const hexBlue = "#0000ff" // blue
+const hexPurple = "#a300a3" // purple
+
+$('#selectZero').css('background-color', hexZero)
+$('#selectRed').css('background-color', hexRed)
+$('#selectOrange').css('background-color', hexOrange)
+$('#selectYellow').css('background-color', hexYellow)
+$('#selectGreen').css('background-color', hexGreen)
+$('#selectBlue').css('background-color', hexBlue)
+$('#selectPurple').css('background-color', hexPurple)
 
 //Found on Stackover flow:
 //source: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
@@ -49,11 +58,11 @@ function colorInit()
     ({
         fill: new Fill
         ({
-            color: hexBlack + hexOpacity
+            color: hexZero + hexOpacity
         }),
         stroke: new Stroke
         ({
-            color: '#000000',
+            color: hexZero,
             width: 3
         }),
         image: new CircleStyle
@@ -61,7 +70,7 @@ function colorInit()
             radius: 7,
             fill: new Fill
             ({
-                color: '#000000'
+                color: hexZero
             })
         })
     })

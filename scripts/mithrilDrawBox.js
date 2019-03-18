@@ -21,22 +21,24 @@ var drawtools =
                 ]),
                 m("div", {"id":"ColorSelecter"},
                 [
-                    m("span", {"class":"colorOption","id":"selectBlack"}),
+                    m("span", {"class":"colorOption","id":"selectZero"}),
                     m("span", {"class":"colorOption","id":"selectRed"}),
                     m("span", {"class":"colorOption","id":"selectOrange"}),
                     m("span", {"class":"colorOption","id":"selectYellow"}),
                     m("span", {"class":"colorOption","id":"selectGreen"}),
                     m("span", {"class":"colorOption","id":"selectBlue"}),
                     m("span", {"class":"colorOption","id":"selectPurple"})
+                    
                 ]),
-                m("img", {"src":"images/draw_off.png", "id":"draw"}),
+                m("img", {"src":"images/draw_off.png", "id":"draw", "class":"drawIcon"}),
+                m("img", {"src":"images/trashDelete.png", "id":"deleteLayer", "class":"drawIcon"}),
             ]),
             m("div",
             [
                 m("button", {"id":"modifyLayer", "class" : "drawButton"}, "Enable Modify"),
                 m("button", {"id":"snapToggle", "class" : "drawButton"}, "Enable Snap"),
                 m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
-                m("button", {"id":"deleteLayer", "class" : "drawButton"}, "Delete"),
+                // m("button", {"id":"deleteLayer", "class" : "drawButton"}, "Delete"),
                 m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
             ]),
         ])   
