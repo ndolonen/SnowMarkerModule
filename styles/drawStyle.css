@@ -22,6 +22,25 @@
 #drawbox div
 { margin: 5px; }
 
+
+#tooltip
+{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: 20px;
+    width: 20px;
+    opacity: 0.7;
+    border: solid 2px #ff450000;
+    border-radius: 40px;
+}
+
+#buttonHide/* Drawings */
+{ 
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
 .non-interactive
 {
     pointer-events: none;
@@ -33,7 +52,7 @@
 }
 
 
-.drawButton, select, #buttonHide
+.drawButton, .drawSelect, #buttonHide
 {
     background-image: linear-gradient( #eeeeee,#dcf7ff );
     font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +67,7 @@
     border-radius: 3px;
 }
 
-.drawButton:hover, .drawSelect:hover
+.drawButton:hover, .drawSelect:hover, #buttonHide:hover
 {
     background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
     /* background-color:#408c99; */
@@ -82,7 +101,8 @@
     border-radius: 40px;
 }
 
-.drawIcon:hover, #freehand:hover, #straight:hover
+
+.drawIcon:hover, #freehand:hover, #straight:hover, #tooltip:hover
 {
     opacity: 1.0;
     background-color: rgba(0,0,0, 0.1);
@@ -175,12 +195,7 @@
     background-color: #9900ff;
 } */
 
-#buttonHide/* Drawings */
-{ 
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
+
 
 .selectedFunction 
 {

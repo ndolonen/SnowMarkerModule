@@ -7,6 +7,7 @@ var drawtools =
     {
         return m("div", {"id":"drawtools"},
         [
+            m("img", {"src":"images/questionmark_30px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
             [   
                 m("label", {"class":"non-interactive"}, ["Draw type ", m.trust("&nbsp;")]),
@@ -21,9 +22,9 @@ var drawtools =
                 ]),
                 m("select", {"id":"type", "class" : "drawSelect"},
                 [
-                    m("option", {"value":"LineString"}, "Line"),
-                    m("option", {"value":"Polygon"}, "Marking"),
-                    m("option", {"value":"Circle"}, "Circle")
+                    m("option", {"value":"LineString", "id":"optLine"}, "Line"),
+                    m("option", {"value":"Polygon", "id":"optPolygon"}, "Marking"),
+                    m("option", {"value":"Circle", "id":"optCircle"}, "Circle")
                 ]),
                 m("label", {"class":"non-interactive"},
                 [

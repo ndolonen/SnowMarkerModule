@@ -17,7 +17,7 @@ const PolygonGeom = ol.geom.Polygon
 //global variables
 let draw, snap, drawselect, feature
 let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
-let toggleDraw = true, toggleModify = true, toggleSnap = true, toggleFreehand = true
+let toggleDraw = true, toggleModify = true, toggleSnap = true, toggleFreehand = true, toggleTooltip = false
 
 
 //global color declarations
