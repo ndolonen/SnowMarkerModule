@@ -1,6 +1,3 @@
-import m from "mithril"
-import $ from "jquery";
-
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
 var root = document.getElementById('drawbox')
 
