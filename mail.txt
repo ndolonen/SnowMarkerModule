@@ -1,0 +1,95 @@
+//Oss:
+Hei da ligger nåværende versjon av prosjektet vårt ute på http://snowcode.no
+Setter pris på tilbakemeldinger.
+
+//Åge
+Tøndevoldshagen, Åge
+	
+15. mar. 2019, 09:52 (for 4 døgn siden)
+	
+til meg
+
+Hei
+
+ 
+
+Jeg får opp denne skjermen:
+
+ 
+
+Jeg synes dere er på sporet av noe som blir veldig bra – tiltalende utseende, intuitivt oppsett, linje-areal og sirkel, farger og modifiseringsmuligheter.
+
+ 
+
+Det skjer ikke noe når jeg klikker på knappene, men det skal det sikkert heller ikke ennå
+
+ 
+
+Keep up the good work J
+
+//Njål: 
+Siden fungerer fint på Firefox og Chrome baserte nettlesere. En del av siden blir blokkert av ad blockere for øyeblikket, men ikke så mye som det bildet.
+Hvilken nettleser bruker du? Vi har ikke kommet så langt at vi sikrer bakoverkompabilitet på eldre nettlesere enda, men kan være greit å vite om det er noe vi må legge innsats i.
+som et sidenotat så funker alle knappene der også og vi har fungerende tegnefunksjon med forskjellige farger, med mulighet for å modifisere og slette det du setter oppå kartet. La ved et bilde hvordan det ser ut på vår side :)
+
+Jeg prøvde å legge inn en rask som kanskje gjør at applikasjonen kjører for deg.
+
+//Åge:
+Hei
+
+ 
+
+KNALLBRA!!
+
+ 
+
+Tok med linken utenfor regiondata og da åpnet det seg muligheterJ
+
+ 
+
+Genialt med den blyanten som du må innom for å starte tegning – genialt med at du må bevisst trykke på deleteknappen før tegning forsvinner – flott grad av skravering….
+
+ 
+
+Ligger muligheten for å legge til tekst på skravert areal der?
+
+ 
+
+Dere kan vurdere om det er nødvendig med to desimaler på arealberegning – den switcher automatisk over på m2 når arealet er tilstrekkelig lite.
+
+ 
+
+Jeg strevde litt med å modifisere arealet – se bildet. Det blir igjen punkter som blir til krøll, men det er mulig jeg ikke har tatt poenget – hva er trikset?
+
+//Njål:
+Vi har foreløpig ikke lagt inn noe mulighet for å legge iconer eller tekst på kartet, dette er noe vi ser på hvordan vi skal gjøre.
+Du har et godt poeng med at det er vanskelig å modifisere, foreløpig så er eneste veien rundt å holde Alt knappen og trykke på punktene og fjerne et par. Problemet med den typen tegning er at den lager for mange punkter til at den lett kan modifiseres.
+En løsning på dette kunne jo være at vi skrur av frihånd og bruker punkt til punkt eller gir muligheten for begge. Skal legge dette til i listen over ting vi kanskje bør se over i neste uke. 
+
+//Åge:
+Testet ut bruk av alt-knappen nå. Dersom jeg skjønner det riktig så legges det inn mange punkter fordi det er frihåndstegning – og det er jo forståelig.
+
+ 
+
+Jeg synes det å kunne tegne på frihånd i mange tilfeller har en styrke, mens det i andre tilfeller vil bruk av linjer fra punkt til punkt være hensiktsmessig.
+
+ 
+
+Nå fant jeg ut mer – blant annet bruk av delete som fjerner punkter, slik at det blir enklere å modifisere arealet – fungerer gull dette karer J
+
+ 
+
+Savnet en angre siste handling funksjon – type ctrl+Z – er det noe å tenke på?
+
+//Ny mail
+Hei Åge, 
+
+Takker så mye for tilbakemelding.
+Det var veldig konstruktivt å få tilbakemelding på arbeidet og vi har et par gode ideer som vi faktisk kan prøve å legge til her.
+Vi har allerede lagt til mulighet for å bytte mellom frihåndstegning og punkt til punkt tegning, men dette er ikke lagt ut på snowcode.no enda. 
+Foreløpig kan du bruke frihånd med å holde inne shift.
+Vi skal se ann på om vi kan legge inn mulighet for å angre endringer.
+
+Vi kan gi videre beskjed når vi legger ut neste versjon på snowcode.no :)  
+
+...

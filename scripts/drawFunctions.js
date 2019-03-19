@@ -3,7 +3,7 @@
 function addDraw()
 {
     //TODO: Make Toggle button
-    if ( freehandToggle == true )
+    if ( toggleFreehand == true )
     {
         draw = new Draw(
         {

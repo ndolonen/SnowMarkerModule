@@ -1,23 +1,32 @@
 //import and create predefined calls for functions
-const Draw = ol.interaction.Draw
-const Modify = ol.interaction.Modify
-const Snap = ol.interaction.Snap
-const drawSelect= ol.interaction.Select
-const getActive = ol.interaction.getActive
-const VectorLayer = ol.layer.Vector
-const VectorSource = ol.source.Vector
-const CircleStyle = ol.style.Circle
-const Fill = ol.style.Fill
-const Stroke = ol.style.Stroke
-const Style = ol.style.Style
-const FromLonLat = ol.proj.fromLonLat
-const Sphere = ol.sphere
-const PolygonGeom = ol.geom.Polygon
+// const Draw = ol.interaction.Draw 
+// const Modify = ol.interaction.Modify 
+// const Snap = ol.interaction.Snap 
+// const drawSelect= ol.interaction.Select 
+// const getActive = ol.interaction.getActive 
+// const VectorLayer = ol.layer.Vector
+// const VectorSource = ol.source.Vector
+// const CircleStyle = ol.style.Circle 
+// const Fill = ol.style.Fill 
+// const Stroke = ol.style.Stroke 
+// const Style = ol.style.Style 
+// const FromLonLat = ol.proj.fromLonLat
+// const Sphere = ol.sphere 
+// const PolygonGeom = ol.geom.Polygon 
+
+import {Draw as Draw, Modify as Modify, Snap as Snap, Select as Select, getActive as getActive} from "ol/interaction.js"
+import {Style as Style, Stroke as Stroke, Circle as CircleStyle, Fill as Fill} from "ol/style.js"
+import {Sphere as Sphere} from "ol/sphere.js"
+import {Polygon as PolygonGeom} from "ol/geom.js"
+import {Vector as VectorSource} from "ol/source.js"
+import {Vector as VectorLayer} from "ol/layer.js"
+import {fromLonLat as FromLonLat} from "ol/proj.js"
+
 
 //global variables
 let draw, snap, drawselect, feature
 let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
-let toggleDraw = true, toggleModify = true, toggleSnap = true, freehandToggle = true
+let toggleDraw = true, toggleModify = true, toggleSnap = true, toggleFreehand = true
 
 
 //global color declarations

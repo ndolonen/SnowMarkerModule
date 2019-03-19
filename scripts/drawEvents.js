@@ -10,18 +10,22 @@ $('#draw').click( () =>
     if ( toggleDraw )
     {
         addDraw()
-        $('#draw').attr("src", "images/draw_on.png")
+        // $('#draw').attr("src", "images/draw_on.png")
+        // $('#draw').css('border-color', '#ff4500ff')
+        $('#draw').addClass('selectedFunction')
     }
     else
     {
         removeDraw()
-        $('#draw').attr("src", "images/draw_off.png")
+        // $('#draw').attr("src", "images/draw_off.png")
         if ( toggleSnap == true )
         {   
             toggleSnap = false;
             map.removeInteraction(snap);
             $('#snapToggle').text("Start snap")
         }
+        // $('#draw').css('border-color', '#ff450000')
+        $('#draw').removeClass('selectedFunction')
     }
     toggleDraw = !toggleDraw 
 })
@@ -60,62 +64,66 @@ $('#snapToggle').click( () =>
 
 $('#deleteLayer').click( () => 
 {
-    if( drawselect.getFeatures().getArray()[0] != null)
-    //$('#deleteLayer').attr("src", "images/trashDelete.png")
+    if( drawselect.getFeatures().getArray()[0] != null )
     {
         feature = drawselect.getFeatures().getArray()[0]
-        var selectSource = drawselect.getLayer(feature).getSource()
-        selectSource.removeFeature(feature)
-        drawselect.getFeatures().remove(feature)
+        if( drawselect.getLayer(feature) != null )
+        {
+            let selectSource = drawselect.getLayer(feature).getSource()
+            selectSource.removeFeature(feature)
+            drawselect.getFeatures().remove(feature)
+        }
     }  
 })
 
 
-let lastColor;
+let lastColor = "selectZero";
 $('.colorOption').click( (e) =>
 {
     let color = e.target.id
-
-    switch(color)
+    if( color != lastColor)
     {
-        case "selectRed":
-            selectedSource = redObject.source
-            break
-    
-        case "selectOrange":
-            selectedSource = orangeObject.source
-            break
-                
-        case "selectYellow":
-            selectedSource = yellowObject.source
-            break 
-                        
-        case "selectGreen":
-            selectedSource = greenObject.source
-            break
-            
-        case "selectBlue":
-            selectedSource = blueObject.source
-            break
-            
-        case "selectPurple":
-            selectedSource = purpleObject.source
-            break
+        switch(color)
+        {
+            case "selectRed":
+                selectedSource = redObject.source
+                break
         
-        default:
-            selectedSource = drawSource
-    }
+            case "selectOrange":
+                selectedSource = orangeObject.source
+                break
+                    
+            case "selectYellow":
+                selectedSource = yellowObject.source
+                break 
+                            
+            case "selectGreen":
+                selectedSource = greenObject.source
+                break
+                
+            case "selectBlue":
+                selectedSource = blueObject.source
+                break
+                
+            case "selectPurple":
+                selectedSource = purpleObject.source
+                break
+            
+            default:
+                selectedSource = drawSource
+        }
 
-    $("#"+color).addClass("selectedColor")
-    $('#'+lastColor).removeClass("selectedColor")
-    lastColor = color
+        $("#"+color).addClass("selectedColor")
+        $('#'+lastColor).removeClass("selectedColor")
+        lastColor = color
 
-    refreshDraw()
+        refreshDraw()
 
-    if(!toggleModify)
-    {
-        removeModify()
-        addModify()
+        if(!toggleModify)
+        {
+            removeModify()
+            addModify()
+        }
     }
 })  
 
@@ -164,4 +172,30 @@ $('#printMetric').click( () =>
             return output    
         } 
     }) 
+})
+
+$('#freehand').click( () =>
+{
+    if( toggleFreehand == false )
+    {
+        toggleFreehand = true;
+        $('#freehand').addClass('selectedFunction')
+        $('#straight').removeClass('selectedFunction')
+        // $('#straight').css('border-color', '#ff450000')
+        // $('#freehand').css('border-color', '#ff4500ff')
+        refreshDraw()
+    }
+})
+
+$('#straight').click( () =>
+{
+    if( toggleFreehand == true )
+    {
+        toggleFreehand = false;
+        $('#straight').addClass('selectedFunction')
+        $('#freehand').removeClass('selectedFunction')
+        // $('#straight').css('border-color', '#ff4500ff')
+        // $('#freehand').css('border-color', '#ff450000')
+        refreshDraw()
+    }
 })

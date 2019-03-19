@@ -58,4 +58,28 @@ function addPoint() {
     map.addLayer(vector_layer);
 }
 
-//openlayers.org meassure example
+//Format ol features to KML and JSON
+function GetKMLFromFeatures(featured) 
+{
+    var format = new ol.format.KML();
+    var kml = format.writeFeatures(featured, {featureProjection: 'EPSG:32633'});
+    return kml;
+}
+
+function GetGeoJSONFromFeatures(featured) 
+{
+    var format = new ol.format.GeoJSON();
+    var geoJSON = format.writeFeatures(featured, {featureProjection: 'EPSG:32633'});
+    return geoJSON;
+}
+
+// return features from a layer
+function GetFeaturesFromLayer(layer)
+{
+    var source = layer.getSource();
+    var features = source.getFeatures();
+    return features;
+}
+/* Default projection and list of supported projections */
+//PROJECTION( "EPSG:900913" );
+//SUPPORTED_PROJ( ["EPSG:900913", "EPSG:32633"] );

@@ -33,7 +33,7 @@
 }
 
 
-.drawButton, select, #butttonHide
+.drawButton, select, #buttonHide
 {
     background-image: linear-gradient( #eeeeee,#dcf7ff );
     font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +48,7 @@
     border-radius: 3px;
 }
 
-.drawButton:hover, .drawSelect:hover, #buttonHide:hover
+.drawButton:hover, .drawSelect:hover
 {
     background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
     /* background-color:#408c99; */
@@ -75,15 +75,18 @@
     
 .drawIcon
 {
-    width: 50px;
-    height: 50px;
-    opacity: 0.75;
+    width: 35px;
+    height: 35px;
+    opacity: 0.7;
+    border: solid 2px #ff450000;
+    border-radius: 40px;
 }
 
-.drawIcon:hover, #buttonHide:hover
+.drawIcon:hover, #freehand:hover, #straight:hover
 {
     opacity: 1.0;
     background-color: rgba(0,0,0, 0.1);
+    border: solid 2px #ffffffff;
     border-radius: 40px;
 }
 
@@ -101,7 +104,7 @@
 .colorOption:hover
 {
     opacity:1;
-
+    border-color: #fff;
 }
 
 .selectedColor
@@ -179,3 +182,7 @@
     right: 10px;
 }
 
+.selectedFunction 
+{
+    border-color: #ff4500ff
+}

@@ -1,3 +1,6 @@
+import m from "mithril"
+import $ from "jquery";
+
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
 var root = document.getElementById('drawbox')
 
@@ -7,21 +10,31 @@ var drawtools =
     {
         return m("div", {"id":"drawtools"},
         [
-            m("label", {"class":"non-interactive"},
-            [
-                    "Geometry type ", m.trust("&nbsp;")
-            ]),
             m("div",
-            [
+            [   
+                m("label", {"class":"non-interactive"}, ["Draw type ", m.trust("&nbsp;")]),
+                m("div", 
+                [
+                    m("img", {"src":"images/straightline_50px.png", "id":"straight", "class":"drawIcon"}),
+                    m("img", {"src":"images/wigglyline_50px.png", "id":"freehand", "class":"drawIcon selectedFunction"}),
+                ]),
+                m("label", {"class":"non-interactive"},
+                [
+                        "Geometry type ", m.trust("&nbsp;")
+                ]),
                 m("select", {"id":"type", "class" : "drawSelect"},
                 [
                     m("option", {"value":"LineString"}, "Line"),
                     m("option", {"value":"Polygon"}, "Marking"),
                     m("option", {"value":"Circle"}, "Circle")
                 ]),
+                m("label", {"class":"non-interactive"},
+                [
+                        "Color Selector ", m.trust("&nbsp;")
+                ]),
                 m("div", {"id":"ColorSelecter"},
                 [
-                    m("span", {"class":"colorOption","id":"selectZero"}),
+                    m("span", {"class":"colorOption selectedColor","id":"selectZero"}),
                     m("span", {"class":"colorOption","id":"selectRed"}),
                     m("span", {"class":"colorOption","id":"selectOrange"}),
                     m("span", {"class":"colorOption","id":"selectYellow"}),
@@ -30,8 +43,15 @@ var drawtools =
                     m("span", {"class":"colorOption","id":"selectPurple"})
                     
                 ]),
-                m("img", {"src":"images/draw_off.png", "id":"draw", "class":"drawIcon"}),
-                m("img", {"src":"images/trashDelete.png", "id":"deleteLayer", "class":"drawIcon"}),
+                m("label", {"class":"non-interactive"},
+                [
+                        "Functions ", m.trust("&nbsp;")
+                ]),
+                m("div",
+                [
+                    m("img", {"src":"images/draw_off.png", "id":"draw", "class":"drawIcon"}),
+                    m("img", {"src":"images/trashcan_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
+                ]),
             ]),
             m("div",
             [

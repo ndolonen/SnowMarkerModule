@@ -1,8 +1,17 @@
 //map imports
-const TileLayer = ol.layer.Tile
-const OSM = ol.source.OSM
-const Map = ol.Map
-const View = ol.View
+import {Tile as TileLayer} from "ol/layer.js"
+import OSM from "ol/source.js"
+import Map from "ol/Map.js"
+import View from "ol/View.js"
+
+import {Vector as sVector} from "ol/source.js"
+import {Vector as lVector} from "ol/layer.js"
+import {Fill, Stroke, Circle, Style} from "ol/style"
+
+// const TileLayer = ol.layer.Tile
+// const OSM = ol.source.OSM
+// const Map = ol.Map
+// const View = ol.View
 
 /**
  * Script to create the map layer.
@@ -13,24 +22,24 @@ let raster = new TileLayer({
 })
 
 //TODO:check if vector is required?
-let mapSource = new ol.source.Vector()
-let vector = new ol.layer.Vector({
+let mapSource = new sVector()
+let vector = new lVector({
     source: mapSource,
-    style: new ol.style.Style
+    style: new Style
     ({
-        fill: new ol.style.Fill
+        fill: new Fill
         ({
             color: '#000000' + '66'
         }),
-        stroke: new ol.style.Stroke
+        stroke: new Stroke
         ({
             color: '#000000',
             width: 2
         }),
-        image: new ol.style.Circle
+        image: new Circle
         ({
             radius: 7,
-            fill: new ol.style.Fill
+            fill: new Fill
             ({
                 color: '#000000'
             })
