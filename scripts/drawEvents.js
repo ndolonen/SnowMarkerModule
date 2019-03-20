@@ -35,13 +35,12 @@ $('#modifyLayer').click( () =>
     if ( toggleModify )
     {
         addModify()
-        $('#modifyLayer').text("Stop Modify")
+        $('#modifyLayer').addClass('selectedFunction')
     }
     else
     {        
         removeModify()
-        $('#modifyLayer').text("Start Modify")
-
+        $('#modifyLayer').removeClass('selectedFunction')
     }
     toggleModify = !toggleModify
 })
@@ -52,11 +51,14 @@ $('#snapToggle').click( () =>
     {        
         addSnap()
         $('#snapToggle').text("Stop Snap")
+        //$('#snapToggle').addClass('selectedFunction')
+
     }
     else
     {
         removeSnap()
         $('#snapToggle').text("Start Snap")
+        //$('#snapToggle').removeClass('selectedFunction')
     }
     toggleSnap = !toggleSnap
 })
@@ -199,3 +201,9 @@ $('#straight').click( () =>
         refreshDraw()
     }
 })
+
+//toggles orange border on deleteLayer when clicking
+$('#deleteLayer').mousedown( () => 
+{$('#deleteLayer').addClass("selectedFunction")}).mouseup( () => 
+{$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
+{$('#deleteLayer').removeClass("selectedFunction")})

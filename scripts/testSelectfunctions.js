@@ -58,27 +58,65 @@ function addPoint() {
     map.addLayer(vector_layer);
 }
 
-//Format ol features to KML and JSON
-function GetKMLFromFeatures(featured) 
+function featureToJSON()
+{
+    if( drawselect.getFeatures().getArray()[0] != null )
+    {
+        feature = drawselect.getFeatures().getArray()[0]
+        const json = GetGeoJSONFromFeature(feature)
+        console.log(json)
+    }
+}
+
+
+function featureToGPX()
+{
+    if( drawselect.getFeatures().getArray()[0] != null )
+    {
+        feature = drawselect.getFeatures()
+        const gpx = GetGPXFromFeature(feature)
+        console.log(gpx)
+    }
+}
+
+
+function featureToKML()
+{
+    if( drawselect.getFeatures().getArray()[0] != null )
+    {
+        feature = drawselect.getFeatures()
+        const kml = GetKMLFromFeature(feature)
+        console.log(kml)
+    }
+}
+//Format ol features to KML, JSON and GPX
+function GetKMLFromFeature(feature) 
 {
     var format = new ol.format.KML();
-    var kml = format.writeFeatures(featured, {featureProjection: 'EPSG:32633'});
+    var kml = format.writeFeaturesNode(feature);
     return kml;
 }
 
-function GetGeoJSONFromFeatures(featured) 
+function GetGeoJSONFromFeature(feature) 
 {
     var format = new ol.format.GeoJSON();
-    var geoJSON = format.writeFeatures(featured, {featureProjection: 'EPSG:32633'});
+    var geoJSON = format.writeFeatureObject(feature); // format.writeFeatureObject
     return geoJSON;
+}
+
+function GetGPXFromFeature(feature) 
+{
+    var format = new ol.format.GPX();
+    var gpx = format.writeFeatures(feature);
+    return gpx;
 }
 
 // return features from a layer
 function GetFeaturesFromLayer(layer)
 {
     var source = layer.getSource();
-    var features = source.getFeatures();
-    return features;
+    var feature = source.getFeatures();
+    return feature;
 }
 /* Default projection and list of supported projections */
 //PROJECTION( "EPSG:900913" );

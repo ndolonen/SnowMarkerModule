@@ -1,10 +1,13 @@
 //Helper class for tooltips
-//Todo: Figure out why the helper button doesnt get the toggle ring around it
+
+$( function()  
+{ $( document ).tooltip() });
+
 $('#tooltip').click( () => 
 {
     if ( toggleTooltip )
     { 
-        $('#tooltip').removeClass("selectedFunction") 
+        $('#tooltip').removeClass('selectedFunction') 
         $('#straight').removeAttr("title")
         $('#freehand').removeAttr("title")
         $('#type').removeAttr("title")
@@ -26,7 +29,7 @@ $('#tooltip').click( () =>
     }
     else
     { 
-        $('#tooltip').addClass("selectedFunction") 
+        $('#tooltip').addClass('selectedFunction') 
         $('#straight').attr("title", "Enables drawing with a point to point type line")
         $('#freehand').attr("title", "Enables freehand drawing. Note: freehand is hard to modify on later")
         $('#type').attr("title", "Selects Geometry type")

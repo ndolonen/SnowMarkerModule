@@ -25,10 +25,11 @@
 
 #tooltip
 {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    height: 20px;
-    width: 20px;
+    /* margin: -5 -5 -5 -5; */
+    /* padding: -5 -5 -5 -5; */
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
     opacity: 0.7;
     border: solid 2px #ff450000;
     border-radius: 40px;
@@ -52,7 +53,7 @@
 }
 
 
-.drawButton, .drawSelect, #buttonHide
+.drawButton, .drawSelect, #buttonHide, .drawIcon
 {
     background-image: linear-gradient( #eeeeee,#dcf7ff );
     font-family: Arial, Helvetica, sans-serif;
@@ -70,7 +71,6 @@
 .drawButton:hover, .drawSelect:hover, #buttonHide:hover
 {
     background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
-    /* background-color:#408c99; */
     opacity: 1.0;
     background-color: transparent;
     
@@ -107,7 +107,7 @@
     opacity: 1.0;
     background-color: rgba(0,0,0, 0.1);
     border: solid 2px #ffffffff;
-    border-radius: 40px;
+    /* border-radius: 40px; */
 }
 
 .colorOption
@@ -129,75 +129,11 @@
 
 .selectedColor
 {
-    box-shadow: 0 0 1px 3px rgba(40, 126, 255, 0.7);
+    border: solid 3px #0084ff !important
+    /* box-shadow: 0 0 1px 3px rgba(0, 102, 255, 0.7); */
 }
 
-/* #selectBlack
-{   background-color: #1f1f1f} */
-
-/* #selectBlack:hover
+.selectedFunction
 {
-    opacity: 1.0; 
-    background-color: rgba(0, 0, 0, 0.788);
-} */
-
-/* #selectRed
-{   background-color: #ff0000} */
-
-/* #selectRed:hover
-{
-    opacity: 1.0; 
-    background-color: #ff0000;
-} */
-
-/* #selectOrange
-{   background-color: #ff9a28 } */
-/* 
-#selectOrange:hover
-{
-    opacity: 1.0; 
-    background-color: #dd9000;
-} */
-
-/* #selectYellow
-{   background-color: #ffd900 } */
-
-/* #selectYellow:hover
-{
-    opacity: 1.0; 
-    background-color: #e1fa57;
-} */
-
-/* #selectGreen
-{   background-color: #01b301 } */
-
-/* #selectGreen:hover
-{
-    opacity: 1.0; 
-    background-color: #06c200;
-} */
-
-/* #selectBlue
-{   background-color: #0000ff } */
-
-/* #selectBlue:hover
-{
-    opacity: 1.0; 
-    background-color: #002fff;
-} */
-
-/* #selectPurple
-{   background-color: #a300a3 } */
-
-/* #selectPurple:hover
-{
-    opacity: 1.0; 
-    background-color: #9900ff;
-} */
-
-
-
-.selectedFunction 
-{
-    border-color: #ff4500ff
+    border-color: #ff4500ff  !important
 }

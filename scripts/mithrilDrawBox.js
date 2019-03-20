@@ -7,7 +7,7 @@ var drawtools =
     {
         return m("div", {"id":"drawtools"},
         [
-            m("img", {"src":"images/questionmark_30px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
+            m("img", {"src":"images/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
             [   
                 m("label", {"class":"non-interactive"}, ["Draw type ", m.trust("&nbsp;")]),
@@ -48,15 +48,18 @@ var drawtools =
                 m("div",
                 [
                     m("img", {"src":"images/draw_off.png", "id":"draw", "class":"drawIcon"}),
-                    m("img", {"src":"images/trashcan_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
+                    m("img", {"src":"images/trash2_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
+                    m("img", {"src":"images/edit_50px.png","id":"modifyLayer", "class" : "drawIcon"}),
+                   // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
+                   // m("img", {"src":"images/download","id":"downloadKML", "class" : "drawIcon"}),
+                   // m("img", {"src":"images/download","id":"downloadJSON", "class" : "drawIcon"}),
                 ]),
             ]),
             m("div",
             [
-                m("button", {"id":"modifyLayer", "class" : "drawButton"}, "Enable Modify"),
+                // m("button", {"id":"modifyLayer", "class" : "drawButton"}, "Enable Modify"),
                 m("button", {"id":"snapToggle", "class" : "drawButton"}, "Enable Snap"),
                 m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
-                // m("button", {"id":"deleteLayer", "class" : "drawButton"}, "Delete"),
                 m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
             ]),
         ])   
