@@ -73,7 +73,7 @@ function featureToGPX()
 {
     if( drawselect.getFeatures().getArray()[0] != null )
     {
-        feature = drawselect.getFeatures()
+        feature = drawselect.getFeatures().getArray()[0]
         const gpx = GetGPXFromFeature(feature)
         console.log(gpx)
     }
@@ -99,8 +99,13 @@ function GetKMLFromFeature(feature)
 
 function GetGeoJSONFromFeature(feature) 
 {
+    if ( feature.getGeometry().getType() == "Circle" ) 
+    {  
+        const circle = feature.getGeometry()
+        feature.setGeometry(PolygonGeom.fromCircle(circle))
+    }
     var format = new ol.format.GeoJSON();
-    var geoJSON = format.writeFeatureObject(feature); // format.writeFeatureObject
+    var geoJSON = format.writeFeatureObject(feature); // format.writeFeature
     return geoJSON;
 }
 
@@ -121,3 +126,24 @@ function GetFeaturesFromLayer(layer)
 /* Default projection and list of supported projections */
 //PROJECTION( "EPSG:900913" );
 //SUPPORTED_PROJ( ["EPSG:900913", "EPSG:32633"] );
+
+/* drawselect.getFeatures().getArray()[0].setStyle(new Style(
+{
+    stroke: new Stroke(
+    {
+        color: hexRed,
+        width: '3'
+    }),
+    fill: new Fill(
+    {
+        color: hexRed + hexOpacity
+    }),
+    image: new CircleStyle
+    ({
+        radius: 7,
+        fill: new Fill
+        ({
+            color: hexRed
+        })
+    }),
+})) */

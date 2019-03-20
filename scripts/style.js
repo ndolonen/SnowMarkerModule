@@ -7,9 +7,9 @@ $('#color').change( () =>
     setColor()
 })
 
-function setColor(colorVal)
+function setFeatureColor(colorVal, feature)
 {
-    vector.setStyle(new Style
+    currentStyle = new Style
     ({
         fill: new Fill
         ({
@@ -18,7 +18,7 @@ function setColor(colorVal)
         stroke: new Stroke
         ({
             color: colorVal,
-            width: 2
+            width: 3
         }),
         image: new CircleStyle
         ({
@@ -29,7 +29,32 @@ function setColor(colorVal)
             })
         })
     })
-)}
+    feature.setStyle(selectableStyle(currentStyle))
+}
+
+function setStyleColor(colorVal)
+{
+    currentStyle = new Style
+    ({
+        fill: new Fill
+        ({
+            color: colorVal + hexOpacity
+        }),
+        stroke: new Stroke
+        ({
+            color: colorVal,
+            width: 3
+        }),
+        image: new CircleStyle
+        ({
+            radius: 7,
+            fill: new Fill
+            ({
+                color: colorVal
+            })
+        })
+    })
+}
 
 const redStyle = new Style(
 {
@@ -134,6 +159,7 @@ const blueStyle = new Style(
             color: hexBlue
         })
     })
+    
 })
 
 const purpleStyle = new Style(
@@ -156,3 +182,45 @@ const purpleStyle = new Style(
         })
     })
 })
+
+const blackStyle = new Style
+({
+    fill: new Fill
+    ({
+        color: hexBlack + hexOpacity
+    }),
+    stroke: new Stroke
+    ({
+        color: hexBlack,
+        width: 3
+    }),
+    image: new CircleStyle
+    ({
+        radius: 7,
+        fill: new Fill
+        ({
+            color: hexBlack
+        })
+    })
+})
+
+const selectStyle = new Style(
+    {
+        stroke: new Stroke(
+        {
+            color: hexSelect,
+            width: '3'
+        }),
+        fill: new Fill(
+        {
+            color: hexSelect + hexOpacity
+        }),
+        image: new CircleStyle
+        ({
+            radius: 7,
+            fill: new Fill(
+            {
+                color: hexSelect
+            })
+        })
+    })

@@ -22,6 +22,10 @@ function addDraw()
         })
     }
     map.addInteraction(draw)
+
+    draw.on('drawend', function (e) 
+    { e.feature.setStyle(selectableStyle(currentStyle))})
+
 }
 
 //function to add modify functionality to map
@@ -54,7 +58,10 @@ function addSnap()
 //function to add functionality to select a feature
 function addSelect()
 {
-    drawselect = new drawSelect({source: selectedSource})
+    drawselect = new drawSelect({
+        source: drawSource,
+        hitTolerance: 5, 
+        style: blueStyle})
     map.addInteraction((drawselect))
 }
 //initiate addSelect on startup
@@ -88,3 +95,16 @@ function refreshDraw()
         addDraw()
     }
 }
+
+// let testselect = new drawSelect({
+//     source: drawSource,
+//     hitTolerance: 5, 
+//     style: blueStyle})
+// map.addInteraction((testselect))
+function selectableStyle(style) 
+{
+    return function(feature) 
+    { return drawselect.getFeatures().getArray()[0] == null ? style : selectStyle; }
+    // { return drawselect.getFeatures().getArray().indexOf(feature) == -1 ? style : selectStyle; }
+};
+

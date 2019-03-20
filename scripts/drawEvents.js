@@ -66,68 +66,88 @@ $('#snapToggle').click( () =>
 
 $('#deleteLayer').click( () => 
 {
-    if( drawselect.getFeatures().getArray()[0] != null )
+    if(drawselect.getFeatures().getArray()[0] != null)
     {
-        feature = drawselect.getFeatures().getArray()[0]
-        if( drawselect.getLayer(feature) != null )
-        {
-            let selectSource = drawselect.getLayer(feature).getSource()
-            selectSource.removeFeature(feature)
-            drawselect.getFeatures().remove(feature)
-        }
-    }  
+        feature = drawselect.getFeatures()
+        let selectSource = drawselect.getLayer(feature.getArray()[0]).getSource()
+        feature.getArray().forEach(element => {
+            selectSource.removeFeature(element)
+        });
+        feature.clear()
+    }
+
 })
+    // for( let i = 0; i < drawselect.getFeatures().getArray().length; i++ )
+    // {
+    //     feature = drawselect.getFeatures().getArray()[i]
+    // eventuell if test :O
 
-
-let lastColor = "selectZero";
+let lastColor = "selectBlack";
 $('.colorOption').click( (e) =>
 {
     let color = e.target.id
-    if( color != lastColor)
+    let thisHex
+    switch(color)
     {
-        switch(color)
-        {
-            case "selectRed":
-                selectedSource = redObject.source
-                break
-        
-            case "selectOrange":
-                selectedSource = orangeObject.source
-                break
-                    
-            case "selectYellow":
-                selectedSource = yellowObject.source
-                break 
-                            
-            case "selectGreen":
-                selectedSource = greenObject.source
-                break
+        case "selectRed":
+            setStyleColor(hexRed)   
+            thisHex = hexRed
+        // setColor(hexRed, feature)
+            break
+    
+        case "selectOrange":
+            setStyleColor(hexOrange) 
+            thisHex = hexOrange  
+            // setColor(hexOrange, feature)
+            break
                 
-            case "selectBlue":
-                selectedSource = blueObject.source
-                break
-                
-            case "selectPurple":
-                selectedSource = purpleObject.source
-                break
+        case "selectYellow":
+            setStyleColor(hexYellow)
+            thisHex = hexYellow
+            break 
+                        
+        case "selectGreen":
+            setStyleColor(hexGreen)
+            thisHex = hexGreen
+            break
             
-            default:
-                selectedSource = drawSource
-        }
-
-        $("#"+color).addClass("selectedColor")
-        $('#'+lastColor).removeClass("selectedColor")
-        lastColor = color
-
-        refreshDraw()
-
-        if(!toggleModify)
-        {
-            removeModify()
-            addModify()
-        }
+        case "selectBlue":
+            setStyleColor(hexBlue)
+            thisHex = hexBlue
+            break
+            
+        case "selectPurple":
+            setStyleColor(hexPurple)
+            thisHex = hexPurple
+            break
+        
+        default:
+            setStyleColor(hexBlack)
+            thisHex = hexBlack
     }
-})  
+
+    $('#'+lastColor).removeClass("selectedColor")
+    $("#"+color).addClass("selectedColor")
+    lastColor = color
+
+    refreshDraw()
+
+    if(!toggleModify)
+    {
+        removeModify()
+        addModify()
+    }
+    
+    if(feature = drawselect.getFeatures().getArray()[0] != null)
+    {
+        for( let i = 0; i < drawselect.getFeatures().getArray().length; i++ )
+        {
+            feature = drawselect.getFeatures().getArray()[i]
+            setFeatureColor(thisHex, feature)
+        }
+        drawselect.getFeatures().clear()
+    }
+}) 
 
 $('#printMetric').click( () =>
 { 
@@ -207,3 +227,22 @@ $('#deleteLayer').mousedown( () =>
 {$('#deleteLayer').addClass("selectedFunction")}).mouseup( () => 
 {$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
 {$('#deleteLayer').removeClass("selectedFunction")})
+
+//attempt to fix selection bug on zoom/mapmove (ON ZOOM IT SELECTS ALL)
+let lastzoom = "6"
+function onMoveEnd(evt)
+{
+    let map = evt.map
+    let zoom = map.getView().getZoom()
+    // console.log(zoom)
+    // if(zoom != lastzoom) 
+    // {
+        if(drawselect.getFeatures().getArray()[0] != null)
+        { drawselect.getFeatures().clear() }
+        lastZoom = zoom;
+        removeSelect() 
+        addSelect()
+    // }
+}
+
+map.on('moveend', onMoveEnd)

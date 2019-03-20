@@ -22,8 +22,8 @@ var drawtools =
                 ]),
                 m("select", {"id":"type", "class" : "drawSelect"},
                 [
-                    m("option", {"value":"LineString", "id":"optLine"}, "Line"),
                     m("option", {"value":"Polygon", "id":"optPolygon"}, "Marking"),
+                    m("option", {"value":"LineString", "id":"optLine"}, "Line"),
                     m("option", {"value":"Circle", "id":"optCircle"}, "Circle")
                 ]),
                 m("label", {"class":"non-interactive"},
@@ -32,7 +32,7 @@ var drawtools =
                 ]),
                 m("div", {"id":"ColorSelecter"},
                 [
-                    m("span", {"class":"colorOption selectedColor","id":"selectZero"}),
+                    m("span", {"class":"colorOption selectedColor","id":"selectBlack"}),
                     m("span", {"class":"colorOption","id":"selectRed"}),
                     m("span", {"class":"colorOption","id":"selectOrange"}),
                     m("span", {"class":"colorOption","id":"selectYellow"}),

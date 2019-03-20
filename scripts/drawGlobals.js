@@ -18,19 +18,21 @@ const PolygonGeom = ol.geom.Polygon
 let draw, snap, drawselect, feature
 let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
 let toggleDraw = true, toggleModify = true, toggleSnap = true, toggleFreehand = true, toggleTooltip = false
+let currentStyle
 
 
 //global color declarations
 const hexOpacity = "20"
-const hexZero = "#1f1f1f" // black
-const hexRed = "#ff0000" // red
+const hexBlack = "#1f1f1f" // black
+const hexRed = "#e60000" // red
 const hexOrange = "#ff9a28" // orange
 const hexYellow = "#ffff00" // yellow
 const hexGreen = "#01b301" // green
-const hexBlue = "#0000ff" // blue
+const hexBlue = "#33ccff" // blue
 const hexPurple = "#a300a3" // purple
+const hexSelect = "#248f8f" //RANDOM
 
-$('#selectZero').css('background-color', hexZero)
+$('#selectBlack').css('background-color', hexBlack)
 $('#selectRed').css('background-color', hexRed)
 $('#selectOrange').css('background-color', hexOrange)
 $('#selectYellow').css('background-color', hexYellow)
@@ -58,11 +60,11 @@ function colorInit()
     ({
         fill: new Fill
         ({
-            color: hexZero + hexOpacity
+            color: hexBlack + hexOpacity
         }),
         stroke: new Stroke
         ({
-            color: hexZero,
+            color: hexBlack,
             width: 3
         }),
         image: new CircleStyle
@@ -70,18 +72,18 @@ function colorInit()
             radius: 7,
             fill: new Fill
             ({
-                color: hexZero
+                color: hexBlack
             })
         })
     })
     return style
 }
+currentStyle = colorInit()
 
 //default source
 let drawSource = new VectorSource()
 let drawLayer = new VectorLayer({
-    source: drawSource,
-    style: colorInit()
+    source: drawSource
 })
 map.addLayer(drawLayer)
 
