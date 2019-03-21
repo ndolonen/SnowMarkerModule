@@ -2,12 +2,11 @@
 //function to add drawing functionality to map
 function addDraw()
 {
-    //TODO: Make Toggle button
     if ( toggleFreehand == true )
     {
         draw = new Draw(
         {
-            source: selectedSource,
+            source: drawSource,
             type: typeSelect(),
             freehand: true
         })
@@ -16,95 +15,82 @@ function addDraw()
     {
         draw = new Draw(
         {
-            source: selectedSource,
+            source: drawSource,
             type: typeSelect(),
             freehand: false
         })
     }
     map.addInteraction(draw)
+    $('#drawToggle').addClass('selectedFunction')
 
-    draw.on('drawend', function (e) 
-    { e.feature.setStyle(selectableStyle(currentStyle))})
-
+    draw.on('drawend', function (e)
+    { e.feature.setStyle(currentStyle)})
 }
 
 //function to add modify functionality to map
 function addModify()
 {
+    
     //define modify interractions
-    blackModify = new Modify({source: drawSource})
-    redModify = new Modify({source: redObject.source})
-    orangeModify = new Modify({source: orangeObject.source})
-    yellowModify = new Modify({source: yellowObject.source})
-    greenModify = new Modify({source: greenObject.source})
-    blueModify = new Modify({source: blueObject.source})
-    purpleModify = new Modify({source: purpleObject.source}) 
-    //add interractions
-    map.addInteraction(blackModify) 
-    map.addInteraction(redModify)
-    map.addInteraction(orangeModify)
-    map.addInteraction(yellowModify) 
-    map.addInteraction(greenModify) 
-    map.addInteraction(blueModify) 
-    map.addInteraction(purpleModify)
+    modify = new Modify({source: drawSource})
+    map.addInteraction(modify)
+    $('#modifyToggle').addClass('selectedFunction')
+    removeSelect()
 }
 //function to snap on geometry types.
 function addSnap()
 {
-    snap = new Snap({source: selectedSource})
+    snap = new Snap({source: drawSource})
     map.addInteraction(snap)
+    $('#snapToggle').addClass('selectedFunction')
 }
 
 //function to add functionality to select a feature
-function addSelect()
+function initSelect()
 {
-    drawselect = new drawSelect({
+    drawSelect = new DrawSelect({
         source: drawSource,
         hitTolerance: 5, 
-        style: blueStyle})
-    map.addInteraction((drawselect))
+        style: selectStyle})
+    map.addInteraction((drawSelect))
 }
 //initiate addSelect on startup
-addSelect()
+initSelect()
+
+function addSelect()
+{
+    map.addInteraction(drawSelect)
+}
 
 function removeDraw()
-{ map.removeInteraction(draw) }
+{ 
+    map.removeInteraction(draw) 
+    $('#drawToggle').removeClass('selectedFunction')
+
+}
 
 function removeModify() 
 { 
-    map.removeInteraction(blackModify)
-    map.removeInteraction(redModify)
-    map.removeInteraction(orangeModify)
-    map.removeInteraction(yellowModify) 
-    map.removeInteraction(greenModify) 
-    map.removeInteraction(blueModify) 
-    map.removeInteraction(purpleModify)   
+    map.removeInteraction(modify)
+    $('#modifyToggle').removeClass('selectedFunction')
+    addSelect() 
 }
 
 function removeSnap()
-{ map.removeInteraction(snap) }
+{ 
+    map.removeInteraction(snap)
+    $('#snapToggle').removeClass('selectedFunction')
+
+}
 
 function removeSelect()
-{ map.removeInteraction(drawselect) }
+{ map.removeInteraction(drawSelect) }
 
 function refreshDraw()
 {
-    if(!toggleDraw)
+    if(toggleDraw)
     {
         removeDraw()
         addDraw()
     }
 }
-
-// let testselect = new drawSelect({
-//     source: drawSource,
-//     hitTolerance: 5, 
-//     style: blueStyle})
-// map.addInteraction((testselect))
-function selectableStyle(style) 
-{
-    return function(feature) 
-    { return drawselect.getFeatures().getArray()[0] == null ? style : selectStyle; }
-    // { return drawselect.getFeatures().getArray().indexOf(feature) == -1 ? style : selectStyle; }
-};
-

@@ -5,82 +5,87 @@ $("#buttonHide").click( () =>
 $('#type').change( () => 
 { refreshDraw() })
 
-$('#draw').click( () =>
+$('#drawToggle').click( () =>
 { 
-    if ( toggleDraw )
+    if ( !toggleDraw )
     {
         addDraw()
-        // $('#draw').attr("src", "images/draw_on.png")
-        // $('#draw').css('border-color', '#ff4500ff')
-        $('#draw').addClass('selectedFunction')
-    }
-    else
-    {
-        removeDraw()
-        // $('#draw').attr("src", "images/draw_off.png")
-        if ( toggleSnap == true )
+
+        if ( toggleSnap )
         {   
-            toggleSnap = false;
-            map.removeInteraction(snap);
-            $('#snapToggle').text("Start snap")
+            addSnap()
         }
-        // $('#draw').css('border-color', '#ff450000')
-        $('#draw').removeClass('selectedFunction')
-    }
-    toggleDraw = !toggleDraw 
-})
-
-$('#modifyLayer').click( () => 
-{ 
-    if ( toggleModify )
-    {
-        addModify()
-        $('#modifyLayer').addClass('selectedFunction')
-    }
-    else
-    {        
-        removeModify()
-        $('#modifyLayer').removeClass('selectedFunction')
-    }
-    toggleModify = !toggleModify
-})
-
-$('#snapToggle').click( () => 
-{
-    if ( toggleSnap )
-    {        
-        addSnap()
-        $('#snapToggle').text("Stop Snap")
-        //$('#snapToggle').addClass('selectedFunction')
-
+        if ( toggleModify )
+        {
+            removeModify()
+            toggleModify = false
+        }
     }
     else
     {
         removeSnap()
-        $('#snapToggle').text("Start Snap")
-        //$('#snapToggle').removeClass('selectedFunction')
+        removeDraw()
     }
-    toggleSnap = !toggleSnap
+
+    toggleDraw = !toggleDraw 
+})
+
+$('#modifyToggle').click( () => 
+{ 
+    if(!toggleDraw)
+    {
+        if ( !toggleModify )
+        {
+            addModify()
+        }
+        else
+        {        
+            removeModify()
+        }
+        toggleModify = !toggleModify
+    }
+})
+
+$('#snapToggle').click( () => 
+{
+    if(toggleDraw)
+    {
+        if (!toggleSnap )
+        {        
+            addSnap()
+        }
+        else
+        {
+            removeSnap()
+        }
+        toggleSnap = !toggleSnap
+    }
 })
 
 
 $('#deleteLayer').click( () => 
 {
-    if(drawselect.getFeatures().getArray()[0] != null)
+    try
     {
-        feature = drawselect.getFeatures()
-        let selectSource = drawselect.getLayer(feature.getArray()[0]).getSource()
-        feature.getArray().forEach(element => {
-            selectSource.removeFeature(element)
-        });
-        feature.clear()
+        if(drawSelect.getFeatures().getArray()[0] != null)
+        {
+            feature = drawSelect.getFeatures()
+            let selectSource = drawSelect.getLayer(feature.getArray()[0]).getSource()
+            feature.getArray().forEach(element => {
+                selectSource.removeFeature(element)
+            })
+            feature.clear()
+            drawArray = []
+        
+        }
+    }
+    catch(error)
+    {
+        console.log("Nonexisting Feature selected, please unselect and reselect features")
+        console.log(error)
     }
 
 })
-    // for( let i = 0; i < drawselect.getFeatures().getArray().length; i++ )
-    // {
-    //     feature = drawselect.getFeatures().getArray()[i]
-    // eventuell if test :O
 
 let lastColor = "selectBlack";
 $('.colorOption').click( (e) =>
@@ -92,13 +97,11 @@ $('.colorOption').click( (e) =>
         case "selectRed":
             setStyleColor(hexRed)   
             thisHex = hexRed
-        // setColor(hexRed, feature)
             break
     
         case "selectOrange":
             setStyleColor(hexOrange) 
             thisHex = hexOrange  
-            // setColor(hexOrange, feature)
             break
                 
         case "selectYellow":
@@ -129,23 +132,15 @@ $('.colorOption').click( (e) =>
     $('#'+lastColor).removeClass("selectedColor")
     $("#"+color).addClass("selectedColor")
     lastColor = color
-
-    refreshDraw()
-
-    if(!toggleModify)
-    {
-        removeModify()
-        addModify()
-    }
     
-    if(feature = drawselect.getFeatures().getArray()[0] != null)
+    if(drawSelect.getFeatures().getArray()[0] != null)
     {
-        for( let i = 0; i < drawselect.getFeatures().getArray().length; i++ )
+        drawSelect.getFeatures().getArray().forEach( (el) =>
         {
-            feature = drawselect.getFeatures().getArray()[i]
-            setFeatureColor(thisHex, feature)
-        }
-        drawselect.getFeatures().clear()
+            setFeatureColor(thisHex, el)
+        })
+        drawSelect.getFeatures().clear()
+        drawArray = []
     }
 }) 
 
@@ -153,7 +148,7 @@ $('#printMetric').click( () =>
 { 
     $('#showMetrics').html( () => 
     {
-        feature = drawselect.getFeatures().getArray()[0]
+        feature = drawSelect.getFeatures().getArray()[0]
         let output = "none selected"
         
         if ( feature == null )
@@ -203,8 +198,6 @@ $('#freehand').click( () =>
         toggleFreehand = true;
         $('#freehand').addClass('selectedFunction')
         $('#straight').removeClass('selectedFunction')
-        // $('#straight').css('border-color', '#ff450000')
-        // $('#freehand').css('border-color', '#ff4500ff')
         refreshDraw()
     }
 })
@@ -216,8 +209,6 @@ $('#straight').click( () =>
         toggleFreehand = false;
         $('#straight').addClass('selectedFunction')
         $('#freehand').removeClass('selectedFunction')
-        // $('#straight').css('border-color', '#ff4500ff')
-        // $('#freehand').css('border-color', '#ff450000')
         refreshDraw()
     }
 })
@@ -228,21 +219,36 @@ $('#deleteLayer').mousedown( () =>
 {$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
 {$('#deleteLayer').removeClass("selectedFunction")})
 
-//attempt to fix selection bug on zoom/mapmove (ON ZOOM IT SELECTS ALL)
-let lastzoom = "6"
-function onMoveEnd(evt)
+drawSelect.on('select', function(evt)
 {
-    let map = evt.map
-    let zoom = map.getView().getZoom()
-    // console.log(zoom)
-    // if(zoom != lastzoom) 
-    // {
-        if(drawselect.getFeatures().getArray()[0] != null)
-        { drawselect.getFeatures().clear() }
-        lastZoom = zoom;
-        removeSelect() 
-        addSelect()
-    // }
-}
+    let currentObject
+    evt.selected.forEach(function(f) 
+    {            
+        currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
 
-map.on('moveend', onMoveEnd)
+        if(!drawArray.indexOf(currentObject) != -1)
+        {
+            drawArray.push(currentObject)
+        }
+        f.setStyle(selectStyle)
+    });
+
+    evt.deselected.forEach(function(f) 
+    {
+        let tempObj = -1
+        let tempInd = 0
+        drawArray.forEach(function(el)
+        {
+            if( f.ol_uid == el.ol_uid )
+            {
+                tempObj = el
+                tempInd = drawArray.indexOf(el)
+            }
+        })
+        if(tempObj != -1)
+        {        
+            f.setStyle(tempObj.style); 
+            drawArray.splice(tempInd, 1) 
+        }
+    });
+});

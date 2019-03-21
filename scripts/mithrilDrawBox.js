@@ -47,9 +47,10 @@ var drawtools =
                 ]),
                 m("div",
                 [
-                    m("img", {"src":"images/draw_off.png", "id":"draw", "class":"drawIcon"}),
+                    m("img", {"src":"images/draw_off.png", "id":"drawToggle", "class":"drawIcon"}),
                     m("img", {"src":"images/trash2_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
-                    m("img", {"src":"images/edit_50px.png","id":"modifyLayer", "class" : "drawIcon"}),
+                    m("img", {"src":"images/edit_50px.png","id":"modifyToggle", "class":"drawIcon"}),
+                    m("img", {"src":"images/snap_50px.png","id":"snapToggle", "class":"drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadKML", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadJSON", "class" : "drawIcon"}),
@@ -57,8 +58,6 @@ var drawtools =
             ]),
             m("div",
             [
-                // m("button", {"id":"modifyLayer", "class" : "drawButton"}, "Enable Modify"),
-                m("button", {"id":"snapToggle", "class" : "drawButton"}, "Enable Snap"),
                 m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
                 m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
             ]),

@@ -2,7 +2,7 @@
 const Draw = ol.interaction.Draw 
 const Modify = ol.interaction.Modify 
 const Snap = ol.interaction.Snap 
-const drawSelect= ol.interaction.Select 
+const DrawSelect= ol.interaction.Select 
 const getActive = ol.interaction.getActive 
 const VectorLayer = ol.layer.Vector
 const VectorSource = ol.source.Vector
@@ -15,22 +15,23 @@ const Sphere = ol.sphere
 const PolygonGeom = ol.geom.Polygon 
 
 //global variables
-let draw, snap, drawselect, feature
-let blackModify, redModify, orangeModify, yellowModify, greenModify, blueModify, purpleModify
-let toggleDraw = true, toggleModify = true, toggleSnap = true, toggleFreehand = true, toggleTooltip = false
+let draw, snap, drawSelect, feature, modify
+let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, toggleTooltip = false
 let currentStyle
+let drawArray = []
+
 
 
 //global color declarations
 const hexOpacity = "20"
-const hexBlack = "#1f1f1f" // black
-const hexRed = "#e60000" // red
-const hexOrange = "#ff9a28" // orange
-const hexYellow = "#ffff00" // yellow
-const hexGreen = "#01b301" // green
-const hexBlue = "#33ccff" // blue
-const hexPurple = "#a300a3" // purple
-const hexSelect = "#248f8f" //RANDOM
+const hexBlack = "#1f1f1f" 
+const hexRed = "#e60000" 
+const hexOrange = "#ff9a28"
+const hexYellow = "#ffff00" 
+const hexGreen = "#01b301" 
+const hexBlue = "#33ccff"
+const hexPurple = "#a300a3"
+const hexSelect = "#248f8f"
 
 $('#selectBlack').css('background-color', hexBlack)
 $('#selectRed').css('background-color', hexRed)
@@ -39,16 +40,6 @@ $('#selectYellow').css('background-color', hexYellow)
 $('#selectGreen').css('background-color', hexGreen)
 $('#selectBlue').css('background-color', hexBlue)
 $('#selectPurple').css('background-color', hexPurple)
-
-//Found on Stackover flow:
-//source: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
-//Made by broofa
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
-        return v.toString(16)
-    });
-}
 
 function typeSelect() 
 { return $('#type').val() }
@@ -86,6 +77,3 @@ let drawLayer = new VectorLayer({
     source: drawSource
 })
 map.addLayer(drawLayer)
-
-let selectedSource;
-selectedSource = drawSource

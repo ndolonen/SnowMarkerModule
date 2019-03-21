@@ -38,7 +38,7 @@ $('.colorOption').on("mouseleave", (e) =>
 
 function addPoint() {
     /* draw = new Draw({
-      source: selectedSource,
+      source: drawSource,
       type: Point
     });
     map.addInteraction(draw); */
@@ -60,10 +60,43 @@ function addPoint() {
 
 function featureToJSON()
 {
-    if( drawselect.getFeatures().getArray()[0] != null )
+    if( drawSelect.getFeatures().getArray()[0] != null )
     {
-        feature = drawselect.getFeatures().getArray()[0]
+        feature = drawSelect.getFeatures().getArray()[0]
         const json = GetGeoJSONFromFeature(feature)
+        console.log(json)
+    }
+}
+let test
+function featuresToJSON()
+{
+    if ( drawSelect.getFeatures().getArray()[0] != null)
+    {
+        feature = drawSelect.getFeatures().getArray()
+        var format = new ol.format.GeoJSON();
+        // let json = format.writeFeature(feature)
+        // console.log(json)
+        let json = '{ "objects" : ['
+        let first = true
+        feature.forEach( (f) => 
+        {
+            if(first)
+            {
+                first = false
+            }
+            else
+            {
+                json += ',' 
+            }
+            json += '{"style" : "' + f.getStyle().getStroke().getColor() + '", "objKey":'
+            // console.log(f.getStyle().getStroke().getColor())
+            json += JSON.stringify(GetGeoJSONFromFeature(f))
+            json += '}'
+            
+        })
+        json += ']}'
+        console.log(json)
+        parsedJSON = JSON.parse(json)
         console.log(json)
     }
 }
@@ -71,9 +104,9 @@ function featureToJSON()
 
 function featureToGPX()
 {
-    if( drawselect.getFeatures().getArray()[0] != null )
+    if( drawSelect.getFeatures().getArray()[0] != null )
     {
-        feature = drawselect.getFeatures().getArray()[0]
+        feature = drawSelect.getFeatures().getArray()[0]
         const gpx = GetGPXFromFeature(feature)
         console.log(gpx)
     }
@@ -82,9 +115,9 @@ function featureToGPX()
 
 function featureToKML()
 {
-    if( drawselect.getFeatures().getArray()[0] != null )
+    if( drawSelect.getFeatures().getArray()[0] != null )
     {
-        feature = drawselect.getFeatures()
+        feature = drawSelect.getFeatures()
         const kml = GetKMLFromFeature(feature)
         console.log(kml)
     }
@@ -109,6 +142,8 @@ function GetGeoJSONFromFeature(feature)
     return geoJSON;
 }
 
+
+
 function GetGPXFromFeature(feature) 
 {
     var format = new ol.format.GPX();
@@ -126,24 +161,3 @@ function GetFeaturesFromLayer(layer)
 /* Default projection and list of supported projections */
 //PROJECTION( "EPSG:900913" );
 //SUPPORTED_PROJ( ["EPSG:900913", "EPSG:32633"] );
-
-/* drawselect.getFeatures().getArray()[0].setStyle(new Style(
-{
-    stroke: new Stroke(
-    {
-        color: hexRed,
-        width: '3'
-    }),
-    fill: new Fill(
-    {
-        color: hexRed + hexOpacity
-    }),
-    image: new CircleStyle
-    ({
-        radius: 7,
-        fill: new Fill
-        ({
-            color: hexRed
-        })
-    }),
-})) */
