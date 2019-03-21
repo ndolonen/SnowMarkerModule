@@ -88,8 +88,7 @@ function featuresToJSON()
             {
                 json += ',' 
             }
-            json += '{"style" : "' + f.getStyle().getStroke().getColor() + '", "objKey":'
-            // console.log(f.getStyle().getStroke().getColor())
+            json += '{"style" : "' + f.getStyle().getStroke().getColor() + '", "drawObj":'
             json += JSON.stringify(GetGeoJSONFromFeature(f))
             json += '}'
             
