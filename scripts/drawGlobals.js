@@ -20,15 +20,13 @@ let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand
 let currentStyle
 let drawArray = []
 
-
-
 //global color declarations
 const hexOpacity = "20"
 const hexBlack = "#1f1f1f" 
-const hexRed = "#e60000" 
+const hexRed = "#e60000"
 const hexOrange = "#ff9a28"
-const hexYellow = "#ffff00" 
-const hexGreen = "#01b301" 
+const hexYellow = "#ffff00"
+const hexGreen = "#01b301"
 const hexBlue = "#33ccff"
 const hexPurple = "#a300a3"
 const hexSelect = "#248f8f"

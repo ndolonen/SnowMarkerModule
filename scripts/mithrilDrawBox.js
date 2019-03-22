@@ -51,6 +51,7 @@ var drawtools =
                     m("img", {"src":"images/trash2_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
                     m("img", {"src":"images/edit_50px.png","id":"modifyToggle", "class":"drawIcon"}),
                     m("img", {"src":"images/snap_50px.png","id":"snapToggle", "class":"drawIcon"}),
+                    m("img", {"src":"images/km2_50px.png","id":"printMetric", "class":"drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadKML", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadJSON", "class" : "drawIcon"}),
@@ -58,8 +59,13 @@ var drawtools =
             ]),
             m("div",
             [
-                m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
+                // m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
                 m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
+            ]),
+            m("div",
+            [
+                m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
+                m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
             ]),
         ])   
     }

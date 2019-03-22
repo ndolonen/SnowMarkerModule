@@ -32,6 +32,31 @@ function setFeatureColor(colorVal, feature)
     feature.setStyle(currentStyle)
 }
 
+function getStyle(colorVal)
+{
+    jsonStyle = new Style
+    ({
+        fill: new Fill
+        ({
+            color: colorVal + hexOpacity
+        }),
+        stroke: new Stroke
+        ({
+            color: colorVal,
+            width: 3
+        }),
+        image: new CircleStyle
+        ({
+            radius: 7,
+            fill: new Fill
+            ({
+                color: colorVal
+            })
+        })
+    })
+    return jsonStyle
+}
+
 function setStyleColor(colorVal)
 {
     currentStyle = new Style
