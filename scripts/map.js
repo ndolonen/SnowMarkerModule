@@ -7,14 +7,15 @@ const View = ol.View
 /**
  * Script to create the map layer.
  */
-let raster = new TileLayer({
-    source: new OSM()
-})
+let raster = new TileLayer(
+{ source: new OSM() })
 
-let map = new Map({
+let map = new Map(
+{
     layers: [raster],
     target: 'map',
-    view: new View({
+    view: new View(
+    {
         center: ol.proj.fromLonLat([10.757933, 59.911491]),
         zoom: 6
     })
