@@ -7,14 +7,14 @@ var drawtools =
     {
         return m("div", {"id":"drawtools"},
         [
-            m("img", {"src":"images/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
+            m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
             [   
                 m("label", {"class":"non-interactive"}, ["Draw type ", m.trust("&nbsp;")]),
                 m("div", 
                 [
-                    m("img", {"src":"images/straightline_50px.png", "id":"straight", "class":"drawIcon"}),
-                    m("img", {"src":"images/wigglyline_50px.png", "id":"freehand", "class":"drawIcon selectedFunction"}),
+                    m("img", {"src":"images/drawIcons/straightline_50px.png", "id":"straight", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/wigglyline_50px.png", "id":"freehand", "class":"drawIcon selectedFunction"}),
                 ]),
                 m("label", {"class":"non-interactive"},
                 [
@@ -47,11 +47,11 @@ var drawtools =
                 ]),
                 m("div",
                 [
-                    m("img", {"src":"images/draw_off.png", "id":"drawToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/trash2_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
-                    m("img", {"src":"images/edit_50px.png","id":"modifyToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/snap_50px.png","id":"snapToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/km2_50px.png","id":"printMetric", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/draw_128px.png", "id":"drawToggle", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/trashCan_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/edit_50px.png","id":"modifyToggle", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/snap_50px.png","id":"snapToggle", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/km2_50px.png","id":"printMetric", "class":"drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadKML", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadJSON", "class" : "drawIcon"}),
