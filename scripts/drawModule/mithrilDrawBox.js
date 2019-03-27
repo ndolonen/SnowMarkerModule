@@ -1,7 +1,12 @@
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
-var root = document.getElementById('drawbox')
+$('<div id="drawTab"></div>').appendTo('#drawbox')
+$('<div id="iconTab"></div>').appendTo('#drawbox')
 
-var drawtools = 
+const root = document.getElementById('drawTab')
+
+
+
+const drawTools = 
 {
     view: function() 
     {
@@ -71,4 +76,15 @@ var drawtools =
     }
 }
 
-m.mount(root, drawtools)
+const iconTools = 
+{
+    view: function() 
+    {
+        return m("div", {"id":"icontools"},
+        [
+
+        ])
+    }
+}
+
+m.mount(root, drawTools)
