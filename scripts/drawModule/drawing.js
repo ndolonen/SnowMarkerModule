@@ -8,6 +8,7 @@ var toggleDraw = false;
 
 $('#draw').click( () =>
 { 
+    addNewChange()
     toggleDraw = !toggleDraw; 
     
     if ( toggleDraw )
