@@ -71,6 +71,8 @@ const drawTools =
             [
                 m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
                 m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
+                m("button", {"id":"undoChange", "class" : "drawButton"}, "Undo"),
+                m("button", {"id":"redoChange", "class" : "drawButton"}, "Redo"),
             ]),
         ])   
     }

@@ -1,34 +1,68 @@
-let undoArr = []
-let count = 0
+//import { stringify } from "querystring";
 
-function addNewChange()
+let undoArr = [drawSource.getFeatures()]
+let count = 0
+let maxCount = 20
+let maxArr = maxCount -1
+
+//TODO: Convert to geojson so that colors and modify are doable.
+function addNewChange( feature )
 {
-    if ( undoArr.length >= 5 )
+    if ( undoArr.length >= maxCount )
     {
         undoArr.shift()
     }
     //undoArr.push(f)
-    undoarr.push(drawSource.getFeatures())
-    count = undoArr.length
+    let features = drawSource.getFeatures()
+    if ( feature )
+    {
+        //console.log(features.concat(feature))
+        features = features.concat(feature)
+    }
+    //strFeatures = JSON.stringify(features)
+    undoArr.push(features)
+    count = undoArr.length -1
 }
 
 function undoChange()
 {
-    if ( undoArr[0] == -1 )
-    { return null } //avoid null ocurrence
+    if ( count > 0 )
+    { 
+        count--    
+        console.log(count)
+    }
+    else 
+    {
+        count = 0
+    }
     drawSource.clear()
-    f = undoArr[count]
-    drawSource.addFeatures(f)
-    count--
+    drawSource.addFeatures(undoArr[count])
     //return undoArr[count--] 
 }
 
 function redoChange()
 {
-    if ( undoArr[count+1] == -1 )
-    { return null } //avoid null ocurrence
-    drawSource.clear()
-    count++
-    drawSource.addFeatures(undoArr[count])
+    if ( count <= maxArr && count+1 < undoArr.length)
+    { 
+        count++
+        //console.log(count)
+    }
+    if( count < undoArr.length )
+    {
+        drawSource.clear()
+        drawSource.addFeatures(undoArr[count])
+    }
+
     //return undoArr[++count] 
 }
+
+$('#redoChange').click( () =>
+{ redoChange() })
+
+$('#undoChange').click( () =>
+{ undoChange() })
+
+// modify.on("modifyend", function (e) 
+// {
+//     addNewChange(e.feature)
+// })

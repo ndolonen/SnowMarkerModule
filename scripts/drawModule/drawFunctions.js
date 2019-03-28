@@ -24,7 +24,10 @@ function addDraw()
     $('#drawToggle').addClass('selectedFunction')
 
     draw.on('drawend', function (e)
-    { e.feature.setStyle(currentStyle)})
+    { 
+        e.feature.setStyle(currentStyle)
+        addNewChange(e.feature)
+    })
 }
 
 //function to add modify functionality to map

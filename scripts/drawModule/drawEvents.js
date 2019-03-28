@@ -76,7 +76,7 @@ $('#deleteLayer').click( () =>
             })
             feature.clear()
             drawArray = []
-        
+            addNewChange()
         }
     }
     catch(error)
@@ -226,10 +226,8 @@ drawSelect.on('select', function(evt)
     {            
         currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
 
-        if(!drawArray.indexOf(currentObject) != -1)
-        {
-            drawArray.push(currentObject)
-        }
+        if ( drawArray.indexOf(currentObject) == -1 )
+        { drawArray.push(currentObject) }
         f.setStyle(selectStyle)
     });
 
@@ -239,13 +237,13 @@ drawSelect.on('select', function(evt)
         let tempInd = 0
         drawArray.forEach(function(el)
         {
-            if( f.ol_uid == el.ol_uid )
+            if ( f.ol_uid == el.ol_uid )
             {
                 tempObj = el
                 tempInd = drawArray.indexOf(el)
             }
         })
-        if(tempObj != -1)
+        if ( tempObj != -1 )
         {        
             f.setStyle(tempObj.style); 
             drawArray.splice(tempInd, 1) 
