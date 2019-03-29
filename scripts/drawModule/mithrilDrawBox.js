@@ -11,7 +11,12 @@ const drawTools =
     view: function() 
     {
         return m("div", {"id":"drawtools"},
-        [
+        [   
+            m("div", {"id":"divide", "class":""}, 
+            [
+                m("button", {"id":"abtn", "class":""}, "screams internally"),
+                m("button", {"id":"bbtn", "class":""}, "loudly"),
+            ]),
             m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
             [   
@@ -69,8 +74,8 @@ const drawTools =
             ]),
             m("div",
             [
-                m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
-                m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
+                //m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
+                //m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
                 m("button", {"id":"undoChange", "class" : "drawButton"}, "Undo"),
                 m("button", {"id":"redoChange", "class" : "drawButton"}, "Redo"),
             ]),
