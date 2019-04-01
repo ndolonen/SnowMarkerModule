@@ -1,6 +1,12 @@
 //Script for managing drawings.
-$("#buttonHide").click( () => 
+$("#tb_draw").click( () => 
 { $("#drawbox").toggle() })
+
+// $("#abtn").click( () => 
+// {
+//     console.log("why?")
+//     //swapDraw()
+// })
 
 $('#type').change( () => 
 { refreshDraw() })

@@ -1,3 +1,5 @@
+var map = browser.map
+
 //import and create predefined calls for functions
 const Draw = ol.interaction.Draw 
 const Modify = ol.interaction.Modify 
@@ -31,13 +33,16 @@ const hexBlue = "#33ccff"
 const hexPurple = "#a300a3"
 const hexSelect = "#248f8f"
 
-$('#selectBlack').css('background-color', hexBlack)
-$('#selectRed').css('background-color', hexRed)
-$('#selectOrange').css('background-color', hexOrange)
-$('#selectYellow').css('background-color', hexYellow)
-$('#selectGreen').css('background-color', hexGreen)
-$('#selectBlue').css('background-color', hexBlue)
-$('#selectPurple').css('background-color', hexPurple)
+const cssColors = () => {
+    $('#selectBlack').css('background-color', hexBlack)
+    $('#selectRed').css('background-color', hexRed)
+    $('#selectOrange').css('background-color', hexOrange)
+    $('#selectYellow').css('background-color', hexYellow)
+    $('#selectGreen').css('background-color', hexGreen)
+    $('#selectBlue').css('background-color', hexBlue)
+    $('#selectPurple').css('background-color', hexPurple)
+}
+cssColors()
 
 function typeSelect() 
 { return $('#type').val() }

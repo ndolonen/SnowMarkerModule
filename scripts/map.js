@@ -9,14 +9,16 @@ const View = ol.View
  */
 let raster = new TileLayer(
 { source: new OSM() })
-
-let map = new Map(
+var browser = 
 {
-    layers: [raster],
-    target: 'map',
-    view: new View(
-    {
-        center: ol.proj.fromLonLat([10.757933, 59.911491]),
-        zoom: 6
-    })
-})
+     map: new Map(
+        {
+            layers: [raster],
+            target: 'map',
+            view: new View(
+            {
+                center: ol.proj.fromLonLat([10.757933, 59.911491]),
+                zoom: 6
+            })
+        })
+}

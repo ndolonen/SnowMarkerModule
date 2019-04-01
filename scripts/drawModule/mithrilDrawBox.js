@@ -2,9 +2,8 @@ $('#map').after('<div class="drawbox" id="drawbox"></div>')
 $('<div id="drawTab"></div>').appendTo('#drawbox')
 $('<div id="iconTab"></div>').appendTo('#drawbox')
 
-const root = document.getElementById('drawTab')
-
-
+const drawRoot = document.getElementById('drawTab')
+const iconRoot = document.getElementById('iconTab')
 
 const drawTools = 
 {
@@ -14,8 +13,9 @@ const drawTools =
         [   
             m("div", {"id":"divide", "class":""}, 
             [
-                m("button", {"id":"abtn", "class":""}, "screams internally"),
-                m("button", {"id":"bbtn", "class":""}, "loudly"),
+                m("button", {"class":"selectedFunction"}, "Draw"),
+                m("button", {"class":"toggleFunction"}, "Icons"),
+
             ]),
             m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
@@ -89,9 +89,34 @@ const iconTools =
     {
         return m("div", {"id":"icontools"},
         [
-
+            m("button", {"class":"toggleFunction"}, "Draw"),
+            m("button", {"class":"selectedFunction"}, "Icons"),
         ])
     }
 }
 
-m.mount(root, drawTools)
+m.mount(drawRoot, drawTools)
+m.mount(iconRoot, iconTools)
+$('#iconTab').hide() 
+
+let swapDrawWindowToggle = false
+$('.toggleFunction').click( () => 
+{
+    if (swapDrawWindowToggle)
+    {   
+        $('#iconTab').hide()
+        $('#drawTab').show()  
+        swapDrawWindowToggle = false 
+    } else
+    {
+        $('#drawTab').hide() 
+        $('#iconTab').show() 
+        swapDrawWindowToggle = true
+    }   
+})
+// $('#showDraw').click( () => 
+// {
+//     console.log("test")
+// })
+
+// $('')
