@@ -1,11 +1,21 @@
-@media only screen and (max-device-width: 480px) and (orientation: portrait)  {
-
-
-    #modifyToggle, #snapToggle, #tb_draw, #divide
+@media (max-device-width: 719px) and (orientation: portrait),
+(max-device-height: 719px) and (orientation: landscape)
+{
+    #modifyToggle, #snapToggle, #tb_draw, #divide, #tooltip, .non-interactive, .drawButton, .drawSelect
     {
         display: none !important;
     }
 
+    #drawbox
+    {
+        background: none;
+        border: none;
+    }
+}
+
+@media (max-device-width: 480px) and (orientation: portrait)
+{
+    
     .colorOption, .drawIcon
     {
         width: 25px;
@@ -21,7 +31,6 @@
         border: 2px outset rgba(0, 65, 245, 0.452);
         border-radius: 5px;
     }
-    
     
     #drawbox
     {
@@ -41,7 +50,7 @@
 
     .non-interactive
     {
-        display: none;
+        /* display: none; */
         pointer-events: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -67,20 +76,9 @@
         border-radius: 3px;
     }
 
-    .drawButton:hover, .drawSelect:hover, #buttonHide:hover
-    {
-        background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
-        opacity: 1.0;
-        background-color: transparent;
-        
-    }
-    
-    #tooltip
-    { display: none; }
-
     .drawButton 
     { 
-        display: none;
+        /* display: none; */
         width: 110px;
         height: 30px;
         margin: 2px;
@@ -105,23 +103,6 @@
         border-radius: 40px;
     }
     
-/*     .colorOption
-    {
-        height: 20px;
-        width: 20px;
-        display: flex;    
-        border-radius: 50%;
-        opacity: 0.7;
-        border: 2px double rgba(0, 0, 0, 0.7);
-        margin: 1px;
-    } */
-    
-/*     .colorOption:hover
-    {
-        opacity:1;
-        border-color: #fff;
-    } */
-    
     .selectedColor
     {
         border: solid 3px #0084ff !important
@@ -133,3 +114,8 @@
         border-color: #ff4500ff  !important
     }
 }
+
+@media (max-device-height: 480px) and (orientation: landscape)
+    {   
+        
+    }

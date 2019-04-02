@@ -48,7 +48,7 @@ function typeSelect()
 { return $('#type').val() }
 
 //initial color settings
-function colorInit() 
+let colorInit = function() 
 { 
     let style = new Style
     ({
@@ -70,9 +70,9 @@ function colorInit()
             })
         })
     })
-    return style
+    currentStyle = style
 }
-currentStyle = colorInit()
+colorInit()
 
 //default source
 let drawSource = new VectorSource()

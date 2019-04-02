@@ -2,31 +2,19 @@
 //function to add drawing functionality to map
 function addDraw()
 {
-    if ( toggleFreehand == true )
+    draw = new Draw(
     {
-        draw = new Draw(
-        {
-            source: drawSource,
-            type: typeSelect(),
-            freehand: true
-        })
-    }
-    else 
-    {
-        draw = new Draw(
-        {
-            source: drawSource,
-            type: typeSelect(),
-            freehand: false
-        })
-    }
+        source: drawSource,
+        type: typeSelect(),
+        freehand: toggleFreehand,
+    })
     map.addInteraction(draw)
     $('#drawToggle').addClass('selectedFunction')
 
     draw.on('drawend', function (e)
     { 
-        e.feature.setStyle(currentStyle)
-        addNewChange(e.feature)
+         e.feature.setStyle(currentStyle)
+         addNewChange(e.feature)
     })
 }
 

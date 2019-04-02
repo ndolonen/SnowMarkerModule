@@ -91,7 +91,12 @@ const iconTools =
         [
             m("button", {"class":"toggleFunction"}, "Draw"),
             m("button", {"class":"selectedFunction"}, "Icons"),
+            m("div", {"id":"iconContainer", "class":""}, 
+            [
+
+            ])
         ])
+        
     }
 }
 

@@ -1,4 +1,3 @@
-
 #drawTab, #IconTab
 {
     margin: 0px;
@@ -60,6 +59,12 @@
 #divide
 {
     display: inline-flex;
+}
+
+#iconContainer
+{
+    height: 50vh;
+    overflow-y: scroll;
 }
 
 .non-interactive

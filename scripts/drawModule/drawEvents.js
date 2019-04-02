@@ -26,9 +26,11 @@ $('#drawToggle').click( () =>
             removeModify()
             toggleModify = false
         }
+        removeSelect()
     }
     else
     {
+        addSelect()
         removeSnap()
         removeDraw()
     }
