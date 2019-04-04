@@ -106,37 +106,37 @@ function featuresToJSON()
         console.log(json)
         test = parsedJSON
     }
+    return test
 
         
 }
 
+// function featureToGPX()
+// {
+//     if( drawSelect.getFeatures().getArray()[0] != null )
+//     {
+//         feature = drawSelect.getFeatures().getArray()[0]
+//         const gpx = GetGPXFromFeature(feature)
+//         console.log(gpx)
+//     }
+// }
 
-function featureToGPX()
-{
-    if( drawSelect.getFeatures().getArray()[0] != null )
-    {
-        feature = drawSelect.getFeatures().getArray()[0]
-        const gpx = GetGPXFromFeature(feature)
-        console.log(gpx)
-    }
-}
 
-
-function featureToKML()
-{
-    if( drawSelect.getFeatures().getArray()[0] != null )
-    {
-        feature = drawSelect.getFeatures()
-        const kml = GetKMLFromFeature(feature)
-        console.log(kml)
-    }
-}
-//Format ol features to KML, JSON and GPX
-function GetKMLFromFeature(feature) 
-{
-    var kml = kmlFormat.writeFeaturesNode(feature);
-    return kml;
-}
+// function featureToKML(feature)
+// {
+//     if( drawSelect.getFeatures().getArray()[0] != null )
+//     {
+//         feature = drawSelect.getFeatures()
+//         const kml = GetKMLFromFeature(feature)
+//         console.log(kml)
+//     }
+// }
+// //Format ol features to KML, JSON and GPX
+// function GetKMLFromFeature(feature) 
+// {
+//     var kml = kmlFormat.writeFeaturesNode(feature);
+//     return kml;
+// }
 
 function GetGeoJSONFromFeature(feature) 
 {
@@ -149,11 +149,11 @@ function GetGeoJSONFromFeature(feature)
     return geoJSON;
 }
 
-function GetGPXFromFeature(feature) 
-{
-    var gpx = gpxFormat.writeFeatures(feature)
-    return gpx
-}
+// function GetGPXFromFeature(feature) 
+// {
+//     var gpx = gpxFormat.writeFeatures(feature)
+//     return gpx
+// }
 
 // return features from a layer
 function GetFeaturesFromLayer(layer)
@@ -212,3 +212,19 @@ function drawFeatureToMap(jsonObject)
     // testtest.style_ = testStyle
     // console.log(testtest)
 }
+
+//not working as intended
+function kmlFromFeature()
+{
+    if(drawSelect.getFeatures().getArray()[0] != null)
+    {
+        let kmlForm = kmlFormat.writeFeatures(drawSelect.getFeatures())
+        console.log(kmlForm)
+    }
+}
+
+//not working as intended
+$('#logKML').click( () =>
+{
+    kmlFromFeature()
+})

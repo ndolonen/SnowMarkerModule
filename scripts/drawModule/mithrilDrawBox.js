@@ -15,6 +15,7 @@ const drawTools =
             [
                 m("button", {"class":"selectedFunction"}, "Draw"),
                 m("button", {"class":"toggleFunction"}, "Icons"),
+                m("button", {"class":"toggleDownload"}, "Downloads")
 
             ]),
             m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
@@ -57,11 +58,11 @@ const drawTools =
                 ]),
                 m("div",
                 [
-                    m("img", {"src":"images/drawIcons/draw_128px.png", "id":"drawToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/drawIcons/trashCan_50px.png", "id":"deleteLayer", "class":"drawIcon"}),
-                    m("img", {"src":"images/drawIcons/edit_50px.png","id":"modifyToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/drawIcons/snap_50px.png","id":"snapToggle", "class":"drawIcon"}),
-                    m("img", {"src":"images/drawIcons/km2_50px.png","id":"printMetric", "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/draw_128px.png",      "id":"drawToggle",      "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/trashCan_50px.png",   "id":"deleteLayer",     "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/edit_50px.png",       "id":"modifyToggle",    "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/snap_50px.png",       "id":"snapToggle",      "class":"drawIcon"}),
+                    m("img", {"src":"images/drawIcons/km2_50px.png",        "id":"printMetric",     "class":"drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadKML", "class" : "drawIcon"}),
                    // m("img", {"src":"images/download","id":"downloadJSON", "class" : "drawIcon"}),
@@ -76,9 +77,17 @@ const drawTools =
             [
                 //m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
                 //m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
-                m("button", {"id":"undoChange", "class" : "drawButton"}, "Undo"),
-                m("button", {"id":"redoChange", "class" : "drawButton"}, "Redo"),
+                m("button", {"id":"undoChange", "class":"drawButton"}, "Undo"),
+                m("button", {"id":"redoChange", "class":"drawButton"}, "Redo"),
+                m("button", {"id":"logGPX",     "class":"drawButton"}, "log gpx"),
+                m("button", {"id":"logKML",     "class":"drawButton"}, "log kml")
             ]),
+            m("div", {"id":"","class":""},
+            [
+                m("button", {"id":"", "class":"drawButton"}, "Draw new Path"),
+                m("input",  {"id":"fileNameGpxDownload", "type":"text", "value":"path.gpx"}),
+                m("button", {"id":"downloadGPX", "class":"drawButton"}, "Download GPX")
+            ])
         ])   
     }
 }
@@ -119,6 +128,8 @@ $('.toggleFunction').click( () =>
         swapDrawWindowToggle = true
     }   
 })
+
+
 // $('#showDraw').click( () => 
 // {
 //     console.log("test")
