@@ -26,7 +26,7 @@ function addModify()
     modify = new Modify({source: drawSource})
     map.addInteraction(modify)
     $('#modifyToggle').addClass('selectedFunction')
-    removeSelect()
+    // removeSelect()
 }
 //function to snap on geometry types.
 function addSnap()
@@ -43,15 +43,12 @@ function initSelect()
         source: drawSource,
         hitTolerance: 5, 
         style: selectStyle})
-    map.addInteraction(drawSelect)
 }
 //initiate addSelect on startup
 initSelect()
 
 function addSelect()
-{
-    map.addInteraction(drawSelect)
-}
+{ map.addInteraction(drawSelect) }
 
 function removeDraw()
 { 
@@ -64,7 +61,7 @@ function removeModify()
 { 
     map.removeInteraction(modify)
     $('#modifyToggle').removeClass('selectedFunction')
-    addSelect() 
+    // addSelect() 
 }
 
 function removeSnap()

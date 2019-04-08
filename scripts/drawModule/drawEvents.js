@@ -26,11 +26,11 @@ $('#drawToggle').click( () =>
             removeModify()
             toggleModify = false
         }
-        removeSelect()
+        // removeSelect()
     }
     else
     {
-        addSelect()
+        // addSelect()
         removeSnap()
         removeDraw()
     }
@@ -227,52 +227,61 @@ $('#deleteLayer').mousedown( () =>
 {$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
 {$('#deleteLayer').removeClass("selectedFunction")})
 
-// var displayFeatureInfo = function(pixel) 
-// {
-//     map.forEachFeatureAtPixel(pixel, function(feature, layer) 
-//     {
-//         if ( feature.src == drawSource )
-//         {
-//             drawSelect.on('select', function(evt)
-//             {
-//                 let currentObject
-//                 evt.selected.forEach(function(f) 
-//                 {            
-//                     currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+let SelectedObjects = []
+let lastFeature, currentFeature
+function manualSelect(pixel) 
+{
+    let featureCheck = false
+    map.forEachFeatureAtPixel(pixel, function(f) 
+    {
+        console.log(f)
+        console.log(SelectedObjects)
+        if ( drawSource.getFeatures().includes(f) && !SelectedObjects.includes(f) )
+        {
+            console.log("test")
+            let currentObject       
+            currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
 
-//                     if ( drawArray.indexOf(currentObject) == -1 )
-//                     { drawArray.push(currentObject) }
-//                     f.setStyle(selectStyle)
-//                 });
+            // if ( drawArray.indexOf(currentObject) == -1 )
+            // { 
+            drawArray.push(currentObject) 
+            // }
+            f.setStyle(selectStyle)
+            console.log(selectStyle)
+            SelectedObjects.push(f)
+        }
+        if( !featureCheck )
+        { featureCheck = true }
+    })
+    if( !featureCheck )
+    {
+        let tempObj = -1
+        let tempInd = 0
+        SelectedObjects.forEach( function(f)
+        {
+            drawArray.forEach(function(el)
+            {
+                if ( f.ol_uid == el.ol_uid )
+                {
+                    tempObj = el
+                    tempInd = drawArray.indexOf(el)
+                }
+            })
+            if ( tempObj != -1 )
+            {        
+                f.setStyle(tempObj.style) 
+                drawArray.splice(tempInd, 1) 
+            }
+        })
+        SelectedObjects = []
+    }
+}
 
-//                 evt.deselected.forEach(function(f) 
-//                 {
-//                     let tempObj = -1
-//                     let tempInd = 0
-//                     drawArray.forEach(function(el)
-//                     {
-//                         if ( f.ol_uid == el.ol_uid )
-//                         {
-//                             tempObj = el
-//                             tempInd = drawArray.indexOf(el)
-//                         }
-//                     })
-//                     if ( tempObj != -1 )
-//                     {        
-//                         f.setStyle(tempObj.style); 
-//                         drawArray.splice(tempInd, 1) 
-//                     }
-//                 })
-//             })
-//         }
-//     })
-// };
-
-// map.on('click', (e) =>
-// {
-//     var pixel = e.pixel;
-//     displayFeatureInfo(pixel);
-// })
+map.on('click', (e) =>
+{
+    var pixel = e.pixel;
+    manualSelect(pixel);
+})
 
 
 // drawSelect.on('select', function(evt)
