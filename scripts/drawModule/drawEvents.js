@@ -229,30 +229,23 @@ $('#deleteLayer').mousedown( () =>
 
 let SelectedObjects = []
 let lastFeature, currentFeature
+let featureCheck = false
 function manualSelect(pixel) 
 {
-    let featureCheck = false
+    featureCheck = false
     map.forEachFeatureAtPixel(pixel, function(f) 
-    {
-        console.log(f)
-        console.log(SelectedObjects)
-        if ( drawSource.getFeatures().includes(f) && !SelectedObjects.includes(f) )
+    { 
+        fType = f.getGeometry().getType()
+        if( fType == 'Point' )
         {
-            console.log("test")
-            let currentObject       
-            currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
-
-            // if ( drawArray.indexOf(currentObject) == -1 )
-            // { 
-            drawArray.push(currentObject) 
-            // }
-            f.setStyle(selectStyle)
-            console.log(selectStyle)
-            SelectedObjects.push(f)
+            selectIcons(f)
         }
-        if( !featureCheck )
-        { featureCheck = true }
+        else if ( fType == 'Circle' || fType == 'Polygon' || fType == 'Linestring' )
+        {
+            selectMarkedArea(f)
+        }
     })
+
     if( !featureCheck )
     {
         let tempObj = -1
@@ -274,6 +267,35 @@ function manualSelect(pixel)
             }
         })
         SelectedObjects = []
+    }   
+}
+
+function selectMarkedArea(f)
+{
+    if ( drawSource.getFeatures().includes(f) && !SelectedObjects.includes(f) )
+    {
+        console.log("test")
+        let currentObject       
+        currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+
+        // if ( drawArray.indexOf(currentObject) == -1 )
+        // { 
+        drawArray.push(currentObject) 
+        // }
+        f.setStyle(selectStyle)
+        console.log(selectStyle)
+        SelectedObjects.push(f)
+    }
+    if( !featureCheck )
+    { featureCheck = true }
+}
+
+function selectIcons(f)
+{
+    if( !droppingIcon )
+    { 
+        console.log('Icons')
+        droppingIcon = false
     }
 }
 

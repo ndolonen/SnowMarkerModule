@@ -24,11 +24,11 @@ imageList.forEach(function(image)
     $('#iconContainer').append('<img src="'+ imageLoc + image + '.png" title="' + image + '" class="markerIcons" id="markerIcon-'+ image +'"/>')
 })
 
-let iconSource = new VectorSource()
-let iconLayer = new VectorLayer({
-  source: iconSource
-})
-map.addLayer(iconLayer)
+// let iconSource = new VectorSource()
+// let iconLayer = new VectorLayer({
+//   source: iconSource
+// })
+// map.addLayer(iconLayer)
 
 let iconStyle
 let thisID
@@ -52,16 +52,17 @@ $('.markerIcons').click( (e) =>
     }))
   })
   
+  let droppingIcon = false
   function iconDraw()
   {
     draw = new Draw(
     {
-        source: iconSource,
+        source: drawSource,
         type: 'Point',
         name: 'POINT NAME TEST'
     })
-
     map.addInteraction(draw)
+    droppingIcon = true
 
     draw.on('drawend', function (e)
     { 

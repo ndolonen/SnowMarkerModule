@@ -18,7 +18,7 @@ const PolygonGeom = ol.geom.Polygon
 
 //global variables
 let draw, snap, drawSelect, feature, modify
-let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, toggleTooltip = false
+let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, toggleTooltip = false, droppingIcon = false
 let currentStyle
 let drawArray = []
 
