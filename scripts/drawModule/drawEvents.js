@@ -227,34 +227,83 @@ $('#deleteLayer').mousedown( () =>
 {$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
 {$('#deleteLayer').removeClass("selectedFunction")})
 
-drawSelect.on('select', function(evt)
-{
-    let currentObject
-    evt.selected.forEach(function(f) 
-    {            
-        currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+// var displayFeatureInfo = function(pixel) 
+// {
+//     map.forEachFeatureAtPixel(pixel, function(feature, layer) 
+//     {
+//         if ( feature.src == drawSource )
+//         {
+//             drawSelect.on('select', function(evt)
+//             {
+//                 let currentObject
+//                 evt.selected.forEach(function(f) 
+//                 {            
+//                     currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
 
-        if ( drawArray.indexOf(currentObject) == -1 )
-        { drawArray.push(currentObject) }
-        f.setStyle(selectStyle)
-    });
+//                     if ( drawArray.indexOf(currentObject) == -1 )
+//                     { drawArray.push(currentObject) }
+//                     f.setStyle(selectStyle)
+//                 });
 
-    evt.deselected.forEach(function(f) 
-    {
-        let tempObj = -1
-        let tempInd = 0
-        drawArray.forEach(function(el)
-        {
-            if ( f.ol_uid == el.ol_uid )
-            {
-                tempObj = el
-                tempInd = drawArray.indexOf(el)
-            }
-        })
-        if ( tempObj != -1 )
-        {        
-            f.setStyle(tempObj.style); 
-            drawArray.splice(tempInd, 1) 
-        }
-    });
-});
+//                 evt.deselected.forEach(function(f) 
+//                 {
+//                     let tempObj = -1
+//                     let tempInd = 0
+//                     drawArray.forEach(function(el)
+//                     {
+//                         if ( f.ol_uid == el.ol_uid )
+//                         {
+//                             tempObj = el
+//                             tempInd = drawArray.indexOf(el)
+//                         }
+//                     })
+//                     if ( tempObj != -1 )
+//                     {        
+//                         f.setStyle(tempObj.style); 
+//                         drawArray.splice(tempInd, 1) 
+//                     }
+//                 })
+//             })
+//         }
+//     })
+// };
+
+// map.on('click', (e) =>
+// {
+//     var pixel = e.pixel;
+//     displayFeatureInfo(pixel);
+// })
+
+
+// drawSelect.on('select', function(evt)
+// {
+
+//     let currentObject
+//     evt.selected.forEach(function(f) 
+//     {            
+//         currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+
+//         if ( drawArray.indexOf(currentObject) == -1 )
+//         { drawArray.push(currentObject) }
+//         f.setStyle(selectStyle)
+//     });
+
+//     evt.deselected.forEach(function(f) 
+//     {
+//         let tempObj = -1
+//         let tempInd = 0
+//         drawArray.forEach(function(el)
+//         {
+//             if ( f.ol_uid == el.ol_uid )
+//             {
+//                 tempObj = el
+//                 tempInd = drawArray.indexOf(el)
+//             }
+//         })
+//         if ( tempObj != -1 )
+//         {        
+//             f.setStyle(tempObj.style); 
+//             drawArray.splice(tempInd, 1) 
+//         }
+//     })
+// })

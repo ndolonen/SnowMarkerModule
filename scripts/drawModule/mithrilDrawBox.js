@@ -82,7 +82,7 @@ const drawTools =
                 m("button", {"id":"logGPX",     "class":"drawButton"}, "log gpx"),
                 m("button", {"id":"logKML",     "class":"drawButton"}, "log kml")
             ]),
-            m("div", {"id":"","class":""},
+            m("div", {"id":"","class":"downloadFiles"},
             [
                 m("button", {"id":"", "class":"drawButton"}, "Draw new Path"),
                 m("input",  {"id":"fileNameGpxDownload", "type":"text", "value":"path.gpx"}),

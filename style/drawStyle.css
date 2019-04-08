@@ -162,3 +162,15 @@
 {
     border-color: #ff4500ff  !important
 }
+
+.selectedIcon
+{
+    /* border-radius: 40px; */
+    background-color: #ff4500ff;
+    border: 1px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+.markerIcons
+{
+    border: 2px solid #00000000;
+}

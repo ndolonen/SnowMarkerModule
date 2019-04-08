@@ -24,41 +24,53 @@ imageList.forEach(function(image)
     $('#iconContainer').append('<img src="'+ imageLoc + image + '.png" title="' + image + '" class="markerIcons" id="markerIcon-'+ image +'"/>')
 })
 
-let locationData
-map.on('pointermove', function(e) 
+let iconSource = new VectorSource()
+let iconLayer = new VectorLayer({
+  source: iconSource
+})
+map.addLayer(iconLayer)
+
+let iconStyle
+let thisID
+
+$('.markerIcons').click( (e) => 
 {
-    locationData = e.coordinate
+  map.removeInteraction(draw)
+  $('#'+thisID).removeClass('selectedIcon')
+  thisID = e.target.id
+  $('#'+thisID).addClass('selectedIcon')
+
+  var selectedId = e.target.id
+  iconStyle = new Style(
+  {
+    image: new Icon(/** @type {module:ol/style/Icon~Options} */ (
+    {
+      anchor: [0.5, 37],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
+      src: e.target.src
+    }))
+  })
+  
+  function iconDraw()
+  {
+    draw = new Draw(
+    {
+        source: iconSource,
+        type: 'Point',
+        name: 'POINT NAME TEST'
+    })
+
+    map.addInteraction(draw)
+
+    draw.on('drawend', function (e)
+    { 
+      e.feature.setStyle(iconStyle)
+      addNewChange(e.feature)
+      map.removeInteraction(draw)
+      $('#'+thisID).removeClass('selectedIcon')
+    })
+  }
+  iconDraw()
 })
 
-function addIcon(imgSrc)
-{
-    
-}
-
-let iconSource = ""
-$('.markerIcons').mousedown( (e) => 
-{
-    var iconFeature = new Feature({
-        geometry: new Point(locationData), 
-        name: ''
-      });
-      var iconStyle = new Style({
-        image: new Icon(/** @type {module:ol/style/Icon~Options} */ ({
-          anchor: [0.5, 37],
-          anchorXUnits: 'fraction',
-          anchorYUnits: 'pixels',
-          src: e.target.src
-        }))
-      });
-    
-      iconFeature.setStyle(iconStyle);
-      
-      drawSource.addFeature(iconFeature)
-      addNewChange()
-}).mousemove( (e) =>
-{
-    //Todo: Make a moving feature
-}).on('dragend', (e) =>
-{
-    //Todo: Drop the feature when the cursor ends
-})

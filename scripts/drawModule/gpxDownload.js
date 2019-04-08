@@ -1,6 +1,6 @@
 function download(filename, text) {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('href', 'data:text/gpx;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
   
     element.style.display = 'none';
@@ -15,7 +15,6 @@ function gpxFromFeature()
 {
     if(drawSelect.getFeatures().getArray()[0] != null)
     {
-        
         let gpxForm = gpxFormat.writeFeatures(drawSelect.getFeatures().getArray())
         //download(gpxForm, "gpxtest", "gpx")
         return gpxForm

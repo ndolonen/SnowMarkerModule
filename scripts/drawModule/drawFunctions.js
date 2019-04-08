@@ -43,7 +43,7 @@ function initSelect()
         source: drawSource,
         hitTolerance: 5, 
         style: selectStyle})
-    map.addInteraction((drawSelect))
+    map.addInteraction(drawSelect)
 }
 //initiate addSelect on startup
 initSelect()
