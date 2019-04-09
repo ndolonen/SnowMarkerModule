@@ -1,7 +1,7 @@
 import glob
 import errno
 
-path = './images/mapiconscollection-markers/*.png'
+path = './images/iconpack/*.png'
 files = glob.glob(path)
 
 nameList = ""

@@ -1,6 +1,7 @@
 //Script for managing drawings.
-$("#tb_draw").click( () => 
-{ $("#drawbox").toggle() })
+
+function tb_draw_click()
+{ $("#drawbox").toggle() }
 
 // $("#abtn").click( () => 
 // {
@@ -11,6 +12,7 @@ $("#tb_draw").click( () =>
 $('#type').change( () => 
 { refreshDraw() })
 
+// function drawToggle_click() 
 $('#drawToggle').click( () =>
 { 
     if ( !toggleDraw )
@@ -75,15 +77,13 @@ $('#deleteLayer').click( () =>
 {
     try
     {
-        if(drawSelect.getFeatures().getArray()[0] != null)
+        if( selectedFeatures[0] != null )
         {
-            feature = drawSelect.getFeatures()
-            let selectSource = drawSelect.getLayer(feature.getArray()[0]).getSource()
-            feature.getArray().forEach(element => {
-                selectSource.removeFeature(element)
+            selectedFeatures.forEach(e => {
+                drawSource.removeFeature(e)
             })
-            feature.clear()
             drawArray = []
+            selectedFeatures = []
             addNewChange()
         }
     }
@@ -92,7 +92,6 @@ $('#deleteLayer').click( () =>
         console.log("Nonexisting Feature selected, please unselect and reselect features")
         console.log(error)
     }
-
 })
 
 let lastColor = "selectBlack";
@@ -141,63 +140,75 @@ $('.colorOption').click( (e) =>
     $("#"+color).addClass("selectedColor")
     lastColor = color
     
-    if(drawSelect.getFeatures().getArray()[0] != null)
+    if( selectedFeatures[0] )
     {
-        drawSelect.getFeatures().getArray().forEach( (el) =>
+        selectedFeatures.forEach( (e) =>
         {
-            setFeatureColor(thisHex, el)
+            setFeatureColor(thisHex, e)
         })
-        drawSelect.getFeatures().clear()
+        selectedFeatures = []
         drawArray = []
     }
 }) 
 
 $('#printMetric').click( () =>
 { 
-    $('#showMetrics').html( () => 
+    //old code
+    let dontUse = false
+    if(dontUse == false)
     {
-        feature = drawSelect.getFeatures().getArray()[0]
-        let output = "none selected"
-        
-        if ( feature == null )
-        { return output }
-    
-        if ( feature.getGeometry().getType() == "Polygon" ) 
+        $('#showMetrics').html( () => 
         {
-            const polygon = feature.getGeometry()
-            const area = Sphere.getArea(polygon)
-            
-            if ( area > 10000 ) 
-            { output = (Math.round(area / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>' } 
-            else 
-            { output = (Math.round(area * 100) / 100) + ' ' + 'm<sup>2</sup>' }
-            return output
-        }
-        else if ( feature.getGeometry().getType() == "Circle" ) 
-        {  
-            const circle = feature.getGeometry()
-            const polyCircle = PolygonGeom.fromCircle(circle)
-            const area = Sphere.getArea(polyCircle)
-            
-            if ( area > 10000 ) 
-            { output = (Math.round(area / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>'} 
-            else 
-            { output = (Math.round(area * 100) / 100) + ' ' + 'm<sup>2</sup>' }
-            return output
-        }
-        else if ( feature.getGeometry().getType() == "LineString" )
-        {
-            const line = feature.getGeometry()
-            const length = Sphere.getLength(line)
-            
-            if ( length > 100 ) 
-            { output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km' } 
-            else 
-            { output = (Math.round(length * 100) / 100) + ' ' + 'm' }
-            return output    
-        } 
-    }) 
+            if( selectedFeatures[0] )
+            {return getAreal(selectedFeatures[0])}
+        }) 
+    }
 })
+
+function getAreal(f)
+{
+    let output = "none selected"
+    const geom = f.getGeometry()
+    const geomType = geom.getType()
+    if ( geomType == "Polygon" ) 
+    {
+        const area = Sphere.getArea(geom)
+        output = getMetrics("1", area)
+    }
+    else if ( geomType == "Circle" ) 
+    {  
+        const area = PolygonGeom.fromCircle(Sphere.getArea(geom))
+        output = getMetrics("1", area)
+    }
+    else if ( geomType == "LineString" )
+    {
+        const length = Sphere.getLength(geom)
+        output = getMetrics("2", length)
+    }
+
+    return output
+
+    function getMetrics( type, metric )
+    {
+        let output
+        if( type == "1" )
+        {
+            if ( metric > 10000 ) 
+            { output = (Math.round(metric / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>'} 
+            else 
+            { output = (Math.round(metric * 100) / 100) + ' ' + 'm<sup>2</sup>' }
+            return output
+        }
+        else if( type == "2" )
+        {
+            if ( metric > 100 ) 
+            { output = (Math.round(metric / 1000 * 100) / 100) + ' ' + 'km'} 
+            else 
+            { output = (Math.round(metric * 100) / 100) + ' ' + 'm'}
+            return output
+        }
+    }
+}
 
 $('#freehand').click( () =>
 {
@@ -227,7 +238,7 @@ $('#deleteLayer').mousedown( () =>
 {$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
 {$('#deleteLayer').removeClass("selectedFunction")})
 
-let SelectedObjects = []
+let selectedFeatures = []
 let lastFeature, currentFeature
 let featureCheck = false
 function manualSelect(pixel) 
@@ -250,7 +261,7 @@ function manualSelect(pixel)
     {
         let tempObj = -1
         let tempInd = 0
-        SelectedObjects.forEach( function(f)
+        selectedFeatures.forEach( function(f)
         {
             drawArray.forEach(function(el)
             {
@@ -266,25 +277,34 @@ function manualSelect(pixel)
                 drawArray.splice(tempInd, 1) 
             }
         })
-        SelectedObjects = []
+        selectedFeatures = []
     }   
 }
 
 function selectMarkedArea(f)
 {
-    if ( drawSource.getFeatures().includes(f) && !SelectedObjects.includes(f) )
+    if ( drawSource.getFeatures().includes(f) && !selectedFeatures.includes(f) )
     {
-        console.log("test")
         let currentObject       
         currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
 
-        // if ( drawArray.indexOf(currentObject) == -1 )
-        // { 
         drawArray.push(currentObject) 
-        // }
         f.setStyle(selectStyle)
-        console.log(selectStyle)
-        SelectedObjects.push(f)
+        selectedFeatures.push(f)
+    }
+    else if( selectedFeatures.includes(f) )
+    {
+        drawArray.forEach( (e) => 
+        {        
+            if ( f.ol_uid == e.ol_uid )
+            {
+                let eIndex = drawArray.indexOf(e)
+                f.setStyle(e.style) 
+                drawArray.splice(eIndex, 1)
+                let fIndex = selectedFeatures.indexOf(f)
+                selectedFeatures.splice(fIndex, 1)
+            }
+        })
     }
     if( !featureCheck )
     { featureCheck = true }
@@ -304,37 +324,3 @@ map.on('click', (e) =>
     var pixel = e.pixel;
     manualSelect(pixel);
 })
-
-
-// drawSelect.on('select', function(evt)
-// {
-
-//     let currentObject
-//     evt.selected.forEach(function(f) 
-//     {            
-//         currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
-
-//         if ( drawArray.indexOf(currentObject) == -1 )
-//         { drawArray.push(currentObject) }
-//         f.setStyle(selectStyle)
-//     });
-
-//     evt.deselected.forEach(function(f) 
-//     {
-//         let tempObj = -1
-//         let tempInd = 0
-//         drawArray.forEach(function(el)
-//         {
-//             if ( f.ol_uid == el.ol_uid )
-//             {
-//                 tempObj = el
-//                 tempInd = drawArray.indexOf(el)
-//             }
-//         })
-//         if ( tempObj != -1 )
-//         {        
-//             f.setStyle(tempObj.style); 
-//             drawArray.splice(tempInd, 1) 
-//         }
-//     })
-// })
