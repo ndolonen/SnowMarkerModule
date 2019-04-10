@@ -21,6 +21,8 @@ let draw, snap, drawSelect, feature, modify
 let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, toggleTooltip = false, droppingIcon = false
 let currentStyle
 let drawArray = []
+//TODO: good name?
+let drawType = "Polygon"
 
 //global color declarations
 const hexOpacity = "20"

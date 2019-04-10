@@ -3,7 +3,8 @@
 $( function()  
 { $( document ).tooltip() });
 
-$('#tooltip').click( () => 
+// $('#tooltip').click( () => 
+function tooltip_click()
 {
     if ( toggleTooltip )
     { 
@@ -50,4 +51,4 @@ $('#tooltip').click( () =>
         $('#showMetrics').attr("title", "Shows metrics data for selected area")
     }
     toggleTooltip = !toggleTooltip
-})
+}//)

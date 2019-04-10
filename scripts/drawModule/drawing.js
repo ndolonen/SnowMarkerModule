@@ -1,5 +1,6 @@
 /**
  * Script to manage drawing functionality
+ * Legacy code
  */
 var toggleDraw = false;
 /**

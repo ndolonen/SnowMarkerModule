@@ -33,7 +33,8 @@ imageList.forEach(function(image)
 let iconStyle
 let thisID
 
-$('.markerIcons').click( (e) => 
+// $('.markerIcons').click( (e) => 
+function markerIcons_click()
 {
   map.removeInteraction(draw)
   $('#'+thisID).removeClass('selectedIcon')
@@ -73,5 +74,5 @@ $('.markerIcons').click( (e) =>
     })
   }
   iconDraw()
-})
+}//)
 

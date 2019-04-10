@@ -4,7 +4,71 @@
     padding: 0px;
     width: 100%;
     height: 100%;
+    z-index: 0;
 }
+
+.dropdownSelect
+{
+    width: 200px;
+    margin: 2px;
+    /* padding: 2px; */
+    border: 1px solid #000000; 
+    cursor: pointer;
+    z-index: 100;
+    display:flexbox;
+}
+
+#selectingType
+{
+    opacity: 1;
+    position:absolute;
+    display:none;
+}
+
+.dropdownSelect p
+{
+    padding: 4px;
+    margin: auto;
+    color: #000000;
+    font-size: 16px;
+}
+
+#selectingType>p:hover
+{
+    border: 1px solid #ff4500;
+}
+
+.dropdownSelect>#currentType
+{
+    display: block;
+}
+
+.dropdownOption
+{
+    color: #000000;
+    /* background-color: #79ceff8c; */
+    text-decoration: none;
+}
+
+/* .dropdownSelect:active>p
+{
+    display:none;
+} */
+
+/* .dropdownSelect:click>div>p
+{
+    display: flex;
+} */
+
+/* .dropdownSelect:click>div>p
+{
+background-color: #ffffff;
+} */
+
+/* .dropdownOption p:hover 
+
+{background-color: #f1f1f1} */
+
 
 #iconTab
 {
@@ -78,7 +142,7 @@
 }
 
 
-.drawButton, .drawSelect, #buttonHide, .drawIcon
+.drawButton, .drawSelect, #buttonHide, .drawIcon, .dropdownSelect, #selectingType
 {
     background-image: linear-gradient( #eeeeee,#dcf7ff );
     font-family: Arial, Helvetica, sans-serif;
@@ -93,7 +157,7 @@
     border-radius: 3px;
 }
 
-.drawButton:hover, .drawSelect:hover, #buttonHide:hover
+.drawButton:hover, .drawSelect:hover, #buttonHide:hover, #selectingType>p:hover
 {
     background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
     opacity: 1.0;

@@ -9,11 +9,13 @@ function tb_draw_click()
 //     //swapDraw()
 // })
 
-$('#type').change( () => 
-{ refreshDraw() })
+function type_change()
+{ refreshDraw }
+// $('#type').change( () => 
+// { refreshDraw() })
 
-// function drawToggle_click() 
-$('#drawToggle').click( () =>
+// $('#drawToggle').click( () =>
+function drawToggle_click() 
 { 
     if ( !toggleDraw )
     {
@@ -28,19 +30,18 @@ $('#drawToggle').click( () =>
             removeModify()
             toggleModify = false
         }
-        // removeSelect()
     }
     else
     {
-        // addSelect()
         removeSnap()
         removeDraw()
     }
 
     toggleDraw = !toggleDraw 
-})
+}//)
 
-$('#modifyToggle').click( () => 
+// $('#modifyToggle').click( ()  => 
+function modifyToggle_click()
 { 
     if(!toggleDraw)
     {
@@ -54,9 +55,10 @@ $('#modifyToggle').click( () =>
         }
         toggleModify = !toggleModify
     }
-})
+}//)
 
-$('#snapToggle').click( () => 
+// $('#snapToggle').click( () => 
+function snapToggle_click()
 {
     if(toggleDraw)
     {
@@ -70,10 +72,10 @@ $('#snapToggle').click( () =>
         }
         toggleSnap = !toggleSnap
     }
-})
+}//)
 
-
-$('#deleteLayer').click( () => 
+// $('#deleteLayer').click( () => 
+function deleteLayer_click()
 {
     try
     {
@@ -92,17 +94,18 @@ $('#deleteLayer').click( () =>
         console.log("Nonexisting Feature selected, please unselect and reselect features")
         console.log(error)
     }
-})
+}//) deleteLayer_click() end
 
 let lastColor = "selectBlack";
-$('.colorOption').click( (e) =>
+// $('.colorOption').click( (e) =>
+function colorOption_click(e) 
 {
     let color = e.target.id
     let thisHex
     switch(color)
     {
         case "selectRed":
-            setStyleColor(hexRed)   
+            setStyleColor(hexRed)  
             thisHex = hexRed
             break
     
@@ -134,7 +137,7 @@ $('.colorOption').click( (e) =>
         default:
             setStyleColor(hexBlack)
             thisHex = hexBlack
-    }
+    }//end of switch
 
     $('#'+lastColor).removeClass("selectedColor")
     $("#"+color).addClass("selectedColor")
@@ -149,9 +152,10 @@ $('.colorOption').click( (e) =>
         selectedFeatures = []
         drawArray = []
     }
-}) 
+}//) //colorOption_click() end 
 
-$('#printMetric').click( () =>
+// $('#printMetric').click( () =>
+function printMetric_click()
 { 
     //old code
     let dontUse = false
@@ -163,7 +167,7 @@ $('#printMetric').click( () =>
             {return getAreal(selectedFeatures[0])}
         }) 
     }
-})
+}//)
 
 function getAreal(f)
 {
@@ -208,9 +212,10 @@ function getAreal(f)
             return output
         }
     }
-}
+}//end of area calculation.
 
-$('#freehand').click( () =>
+// $('#freehand').click( () =>
+function freehand_click()
 {
     if( toggleFreehand == false )
     {
@@ -219,9 +224,10 @@ $('#freehand').click( () =>
         $('#straight').removeClass('selectedFunction')
         refreshDraw()
     }
-})
+}//)
 
-$('#straight').click( () =>
+// $('#straight').click( () =>
+function straight_click()
 {
     if( toggleFreehand == true )
     {
@@ -230,7 +236,7 @@ $('#straight').click( () =>
         $('#freehand').removeClass('selectedFunction')
         refreshDraw()
     }
-})
+}//)
 
 //toggles orange border on deleteLayer when clicking
 $('#deleteLayer').mousedown( () => 

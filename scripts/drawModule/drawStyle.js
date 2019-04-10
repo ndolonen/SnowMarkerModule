@@ -2,10 +2,10 @@
  * Script to manage predefined styles.
  */
 
-$('#color').change( () => 
+/* $('#color').change( () => 
 {
     setColor()
-})
+}) */
 
 function setFeatureColor(colorVal, feature)
 {
@@ -101,3 +101,22 @@ const selectStyle = new Style(
             })
         })
     })
+
+function setCurrentType(e)
+{
+    let selectedID = e.target.id
+    $('#currentType').text($("#"+selectedID).text())
+    refreshDrawType()
+    // $('#type').show()
+    $('#selectingType').hide()
+    // $('#currentType').css('color:#ffffffff')
+
+}   
+
+function showDropdownOptions()
+{
+    $('#currentType').css('color:#ffffff00')
+
+    // $('#type').hide()
+    $('#selectingType').show()
+}

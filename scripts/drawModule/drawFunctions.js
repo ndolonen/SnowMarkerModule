@@ -5,7 +5,7 @@ function addDraw()
     draw = new Draw(
     {
         source: drawSource,
-        type: typeSelect(),
+        type: drawType,
         freehand: toggleFreehand,
     })
     map.addInteraction(draw)
@@ -16,6 +16,13 @@ function addDraw()
          e.feature.setStyle(currentStyle)
          addNewChange(e.feature)
     })
+}
+
+//TODO: good name?
+function refreshDrawType()
+{
+    drawType = $("#currentType").text()
+    refreshDraw()
 }
 
 //function to add modify functionality to map
@@ -37,18 +44,18 @@ function addSnap()
 }
 
 //function to add functionality to select a feature
-function initSelect()
-{
-    drawSelect = new DrawSelect({
-        source: drawSource,
-        hitTolerance: 5, 
-        style: selectStyle})
-}
+// function initSelect()
+// {
+//     drawSelect = new DrawSelect({
+//         source: drawSource,
+//         hitTolerance: 5, 
+//         style: selectStyle})
+// }
 //initiate addSelect on startup
-initSelect()
+//initSelect()
 
-function addSelect()
-{ map.addInteraction(drawSelect) }
+// function addSelect()
+// { map.addInteraction(drawSelect) }
 
 function removeDraw()
 { 

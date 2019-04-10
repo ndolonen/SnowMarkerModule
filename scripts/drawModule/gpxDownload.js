@@ -24,6 +24,7 @@ function gpxFromFeature()
 $('#logGPX').click( () =>
 { console.log(gpxFromFeature()) })
 
+//TODO: change to function and set onclick in Mithril
 $('#downloadGPX').click( () =>
 { 
     let gpx = gpxFromFeature()
