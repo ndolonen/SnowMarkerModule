@@ -15,5 +15,5 @@ for name in files:
         currentName ='"'+name.split('\\',1)[1]
         nameList += currentName.split('.png', 1)[0] + '"'
     except IOError as exc:
-        print(error)
+        print(exc)
 print(nameList)

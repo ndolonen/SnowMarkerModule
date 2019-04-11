@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <title>Snow Draw Module</title>
     <link rel="stylesheet" href="style/map.css"/>
-    <link rel="stylesheet" href="style/drawStyle.css"/>
+    <!-- <link rel="stylesheet" href="style/drawStyle.css"/> -->
+    <link rel="stylesheet" href="style/newdrawStyle.css"/>
     <link rel="stylesheet" href="style/mobileStyle.css"/>
     <link rel="stylesheet" href="/lib/ol.css" type="text/css"/>
     <link rel="stylesheet" href="lib/jquery-ui.min.css">
+    <link rel="stylesheet" href="style/popup.css"/>
 
 
     <script src="lib/ol.js"></script>
@@ -19,7 +21,7 @@
 </head>
 <body>
   <div id="map" class="map"></div>
-  <!-- <button id="tb_draw" onclick="tb_draw_click()">Hide Draw Box</button> -->
+  <button id="tb_draw" onclick="tb_draw_click()">Hide Draw Box</button>
 
   <script src="scripts/map.js">                         </script>  
   <script src="scripts/drawModule/drawGlobals.js">      </script>
@@ -34,6 +36,7 @@
   <script src="scripts/testUndoFunctions.js">           </script>
   <script src="scripts/iconTest.js">                    </script>
   <script src="scripts/drawModule/mithrilDrawBox.js">   </script>
+  <script src="scripts/addPopup.js"></script>
   <script src="scripts/drawModule/mountReload.js">      </script>
 </body>
 </html>

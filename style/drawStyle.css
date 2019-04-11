@@ -9,28 +9,26 @@
 
 .dropdownSelect
 {
-    width: 200px;
-    margin: 2px;
-    /* padding: 2px; */
+    width: 90%;
+    margin: 0px;
+    padding: 0px;
     border: 1px solid #000000; 
     cursor: pointer;
     z-index: 100;
-    display:flexbox;
+    display:flex;
+}
+
+#currentType
+{
+    width: 100%;
+    height: 100%;
 }
 
 #selectingType
 {
     opacity: 1;
-    position:absolute;
+    position: absolute;;
     display:none;
-}
-
-.dropdownSelect p
-{
-    padding: 4px;
-    margin: auto;
-    color: #000000;
-    font-size: 16px;
 }
 
 #selectingType>p:hover
@@ -38,7 +36,16 @@
     border: 1px solid #ff4500;
 }
 
-.dropdownSelect>#currentType
+.dropdownSelect p
+{
+    padding: 3px;
+    margin: 0px;
+    color: #000000;
+    font-size: 16px;
+}
+
+
+/* .dropdownSelect>#currentType
 {
     display: block;
 }
@@ -46,9 +53,8 @@
 .dropdownOption
 {
     color: #000000;
-    /* background-color: #79ceff8c; */
     text-decoration: none;
-}
+} */
 
 /* .dropdownSelect:active>p
 {
@@ -89,7 +95,7 @@ background-color: #ffffff;
 }
 
 
-#drawbox
+/* #drawbox
 {
     position: absolute;
     top: 10px; 
@@ -103,7 +109,7 @@ background-color: #ffffff;
 
 #drawbox div
 { margin: 5px; }
-
+ */
 
 #tooltip
 {
@@ -117,7 +123,7 @@ background-color: #ffffff;
     border-radius: 40px;
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 15%;
 }
 
 #divide
@@ -142,19 +148,19 @@ background-color: #ffffff;
 }
 
 
-.drawButton, .drawSelect, #buttonHide, .drawIcon, .dropdownSelect, #selectingType
+.drawButton, .drawSelect, #buttonHide, .drawIcon, .dropdownSelect
 {
-    background-image: linear-gradient( #eeeeee,#dcf7ff );
+    background-image: linear-gradient( #eeeeee,#f0f0f0 );
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: lighter;
     cursor: pointer;
     color: #00295e;
-    opacity: 0.85;
+    opacity: 0.95;
     border: 1px solid #00000066;
     box-shadow: #00295e;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.13);
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 .drawButton:hover, .drawSelect:hover, #buttonHide:hover, #selectingType>p:hover
@@ -176,7 +182,7 @@ background-color: #ffffff;
 
 .drawSelect
 {
-    width: 220px;
+    width: 200px;
     background-image:transparent;
     margin-bottom: 3px;
 }
@@ -186,7 +192,7 @@ background-color: #ffffff;
     width: 35px;
     height: 35px;
     opacity: 0.7;
-    border: solid 2px #ffffff70;
+    border: solid 2px #3a90ff70;
     border-radius: 40px;
 }
 
@@ -194,8 +200,8 @@ background-color: #ffffff;
 .drawIcon:hover, #freehand:hover, #straight:hover, #tooltip:hover
 {
     opacity: 1.0;
-    background-color: rgba(0,0,0, 0.1);
-    border: solid 2px #ffffffff;
+    background-color: #000000ff;
+    border: solid 2px #0666e4;
     /* border-radius: 40px; */
 }
 

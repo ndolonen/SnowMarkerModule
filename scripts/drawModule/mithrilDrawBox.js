@@ -1,9 +1,14 @@
-$('#map').after('<div class="drawbox" id="drawbox"></div>')
+$('<div class="POPUP widget ui-draggable"' 
++ 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; right: 20px; top: 60px; opacity: 1;">'
++ '<div id="POPUP"></div></div>').appendTo('#map')
+
+$('<h1 class="ui-draggable-handle">Drawing</h1>'
++ '<div class="drawbox" id="drawbox"></div>').appendTo('#POPUP')
 // $('<div id="drawTab"></div>').appendTo('#drawbox')
 // $('<div id="iconTab"></div>').appendTo('#drawbox')
 
 const drawRoot = document.getElementById('drawbox')
-// const iconRoot = document.getElementById('iconTab')
+//const iconRoot = document.getElementById('iconTab')
 
 const drawTools = 
 {

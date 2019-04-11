@@ -1,7 +1,7 @@
 //Script for managing drawings.
 
-function tb_draw_click()
-{ $("#drawbox").toggle() }
+// function tb_draw_click()
+// { $("#drawbox").toggle() }
 
 // $("#abtn").click( () => 
 // {
