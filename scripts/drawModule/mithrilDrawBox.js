@@ -1,5 +1,5 @@
-$('<div class="POPUP widget ui-draggable"' 
-+ 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; right: 20px; top: 60px; opacity: 1;">'
+$('<div class="POPUP widget ui-draggable ui-draggable-dragging"' 
++ 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
 + '<div id="POPUP"></div></div>').appendTo('#map')
 
 $('<h1 class="ui-draggable-handle">Drawing</h1>'

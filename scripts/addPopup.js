@@ -14,3 +14,8 @@ function tb_draw_click()
     } 
     boolDrawboxToggle = !boolDrawboxToggle  */
 }
+
+$( function() 
+{
+    $( ".ui-draggable").draggable();
+} );
