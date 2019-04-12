@@ -102,6 +102,7 @@ const selectStyle = new Style(
         })
     })
 
+let dropdownShown = false
 function setCurrentType(e)
 {
     let selectedID = e.target.id
@@ -110,7 +111,7 @@ function setCurrentType(e)
     // $('#type').show()
     $('#selectingType').hide()
     // $('#currentType').css('color:#ffffffff')
-
+    dropdownShown = false
 }   
 
 function showDropdownOptions()
@@ -119,4 +120,12 @@ function showDropdownOptions()
 
     // $('#type').hide()
     $('#selectingType').show()
+    dropdownShown = true
+}
+
+function closeDropdown()
+{
+    if(dropdownShown)
+    { $('#selectingType').hide() }
+    dropdownShown = false
 }

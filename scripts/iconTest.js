@@ -19,10 +19,7 @@ let imageList = ["aed-2", "aircraftsmall", "airport", "avalanche1", "blast", "bo
 "river-2", "rowboat", "school", "septic_tank", "shipwreck", "shooting", "shootingrange", "snowmobiling", "stop", "tires", "toilets", 
 "tollstation", "tools", "townhouse", "toxic", "train", "tramway", "trash", "trolley", "truck3", "tunnel", "underground", "walkingtour", 
 "watercraft", "waterfall-2", "wetlands", "wind-2", "windturbine", "workshop", "world", "you-are-here-2", "zoo", "zoom"]
-imageList.forEach(function(image) 
-{
-    $('#iconContainer').append('<img src="'+ imageLoc + image + '.png" title="' + image + '" class="markerIcons" id="markerIcon-'+ image +'"/>')
-})
+
 
 // let iconSource = new VectorSource()
 // let iconLayer = new VectorLayer({
@@ -33,15 +30,25 @@ imageList.forEach(function(image)
 let iconStyle
 let thisID
 
+function markerIcons_load()
+{
+  imageList.forEach(function(image) 
+  {
+      $('#iconContainer').append('<img src="'+ imageLoc + image + '.png" title="' + image 
+      + '" class="markerIcons" id="markerIcon-'+ image +'"'+ 'onclick="markerIcons_click(\'markerIcon-'+ image +'\')"/>')
+  })  
+}
+
 // $('.markerIcons').click( (e) => 
-function markerIcons_click()
+function markerIcons_click(e)
 {
   map.removeInteraction(draw)
   $('#'+thisID).removeClass('selectedIcon')
-  thisID = e.target.id
+  thisID = e//.target.id
   $('#'+thisID).addClass('selectedIcon')
+  let imgsrc = $('#'+thisID).attr("src")
 
-  var selectedId = e.target.id
+  var selectedId = e//.target.id
   iconStyle = new Style(
   {
     image: new Icon(/** @type {module:ol/style/Icon~Options} */ (
@@ -49,7 +56,7 @@ function markerIcons_click()
       anchor: [0.5, 37],
       anchorXUnits: 'fraction',
       anchorYUnits: 'pixels',
-      src: e.target.src
+      src: imgsrc
     }))
   })
   

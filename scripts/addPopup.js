@@ -19,3 +19,9 @@ $( function()
 {
     $( ".ui-draggable").draggable();
 } );
+
+
+// $('.ui-draggable').resizable({
+//     handles: 'n,w,s,e',minWidth: 200,
+//     maxWidth: 400
+// });

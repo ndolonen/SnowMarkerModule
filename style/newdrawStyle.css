@@ -1,6 +1,8 @@
-#drawbox
+#drawBox, #iconBox
 {
     padding: 8px;
+    max-width: 25vw;
+    max-height: 80vh;
 }
 
 .drawIcon
@@ -24,7 +26,7 @@
     border-radius: 40px;
     position: absolute;
     right: 5px;
-    top: 15%;
+    top: 25%;
 }
 
 .dropdownSelect
@@ -104,4 +106,62 @@
     background-color: #eeeeee;
     border: solid 2px #0666e4;
     cursor: pointer;
+}
+
+.drawTab
+{
+   position: relative;
+   display: flex;
+   /* margin: -4px !important; */
+   padding: 0px !important;
+   border: none;
+}
+
+.drawTab>p
+{
+   width: 50%;  
+   border-bottom: 2px solid #00000056; 
+   padding: 10px !important;
+   margin: 0px !important;
+}
+
+#iconTab
+{
+    border-left: 2px solid #00000056; 
+}
+
+.drawTab
+{ 
+  font-family: arial, helvetica, sans-serif; 
+  font-size: 1.0em; 
+  background: #cfd5cc;
+  padding: 0.6em  0.8em 0.3em 0.5em;
+  margin: -4px;
+}
+
+.drawTab>p:hover
+{
+    background: #ebf1e8;
+
+}
+
+.drawTab .selectedTab 
+{
+    font-weight: bold;
+    background: #dce2d9;
+}
+
+#iconBox
+{
+    overflow-y: scroll;
+    max-height: 350px;
+    max-width: 250px;
+
+}
+
+.selectedIcon
+{
+    /* border-radius: 40px; */
+    background-color: #ff4500ff;
+    border: 1px solid rgba(0, 0, 0, 0.5) !important;
 }

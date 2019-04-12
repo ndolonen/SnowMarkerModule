@@ -1,14 +1,37 @@
-$('<div class="POPUP widget ui-draggable ui-draggable-dragging"' 
+$('<div id="POPUP" class="POPUP widget ui-draggable ui-draggable-dragging"' 
 + 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
-+ '<div id="POPUP"></div></div>').appendTo('#map')
++'</div>').appendTo('#map')
 
-$('<h1 class="ui-draggable-handle">Drawing</h1>'
-+ '<div class="drawbox" id="drawbox"></div>').appendTo('#POPUP')
+
+// $('<div id="drawTab" class="drawTab"><p class="selectedTab">Draw</p><p id="iconTab">Icon</p></div>' 
+// + '<h1 class="ui-draggable-handle">Drawing</h1>'
+// + '<div class="drawbox" id="drawbox"></div>').appendTo('#POPUP')
 // $('<div id="drawTab"></div>').appendTo('#drawbox')
 // $('<div id="iconTab"></div>').appendTo('#drawbox')
 
-const drawRoot = document.getElementById('drawbox')
+const popupRoot = document.getElementById('POPUP')
 //const iconRoot = document.getElementById('iconTab')
+
+const drawPopup = 
+{
+    view: function() 
+    {
+        return m("div", {}, 
+        [
+            m("div", {"id":"", "class":"drawTab"}, 
+            [
+                m("p", {"id":"drawTab", "class":"selectedTab", onclick:showDrawbox}, "Draw"),
+                m("p", {"id":"iconTab", onclick:showIconbox}, "Icon")
+            ]),
+            m("h1", {"id":"drawPopupTitle", "class":"ui-draggable-handle"}, "Draw Tools"),
+            m("div", {"id":"drawBox", "class":""}),
+            m("div", {"id":"iconBox"}),
+        ])
+        // '<div id="drawTab" class="drawTab"><p class="selectedTab">Draw</p><p id="iconTab">Icon</p></div>' 
+        // + '<h1 class="ui-draggable-handle">Drawing</h1>'
+        // + '<div class="drawbox" id="drawbox"></div>'
+    }
+}
 
 const drawTools = 
 {
@@ -16,13 +39,6 @@ const drawTools =
     {
         return m("div", {"id":"drawtools"},
         [   
-            // m("div", {"id":"divide", "class":""}, 
-            // [
-            //     m("button", {"class":"selectedFunction"}, "Draw"),
-            //     m("button", {"class":"toggleFunction"}, "Icons"),
-            //     m("button", {"class":"toggleDownload"}, "Downloads")
-
-            // ]),
             m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions", onclick:tooltip_click}),
             m("div",
             [   
@@ -34,7 +50,7 @@ const drawTools =
                 ]),
                 m("label", {"class":"non-interactive"},
                 [
-                        "Geometry type ", m.trust("&nbsp;")
+                        "Geometry type ", m.trust("&nbsp;"),
                 ]),
                 m("div", {"id":"selectingType", "class":"dropdownSelect"}, [
                     m("p", {"id":"optPolygon", "class":"dropdownOption", onclick: setCurrentType}, "Polygon"),
@@ -43,7 +59,7 @@ const drawTools =
                 ]),
                 m("div", {"id":"type", "class":"dropdownSelect"}, 
                 [
-                    m("p", {"id":"currentType", onclick:showDropdownOptions}, "Polygon")
+                    m("p", {"id":"currentType", onclick:showDropdownOptions}, "Polygon"),
                 ]),
                 // m("select", {"id":"type", "class" : "drawSelect", onchange(){type_change}},
                 // [
@@ -53,7 +69,7 @@ const drawTools =
                 // ]),
                 m("label", {"class":"non-interactive"},
                 [
-                        "Color Selector ", m.trust("&nbsp;")
+                        "Color Selector ", m.trust("&nbsp;"),
                 ]),
                 m("div", {"id":"ColorSelecter"},
                 [
@@ -63,7 +79,7 @@ const drawTools =
                     m("span", {"class":"colorOption","id":"selectYellow", onclick:colorOption_click}),
                     m("span", {"class":"colorOption","id":"selectGreen", onclick:colorOption_click}),
                     m("span", {"class":"colorOption","id":"selectBlue", onclick:colorOption_click}),
-                    m("span", {"class":"colorOption","id":"selectPurple", onclick:colorOption_click})
+                    m("span", {"class":"colorOption","id":"selectPurple", onclick:colorOption_click}),
                     
                 ]),
                 m("label", {"class":"non-interactive"},
@@ -104,22 +120,17 @@ const drawTools =
     }
 }
 
-// const iconTools = 
-// {
-//     view: function() 
-//     {
-//         return m("div", {"id":"icontools"},
-//         [
-//             m("button", {"class":"toggleFunction"}, "Draw"),
-//             m("button", {"class":"selectedFunction"}, "Icons"),
-//             m("div", {"id":"iconContainer", "class":""}, 
-//             [
-
-//             ])
-//         ])
+const iconTools = 
+{
+    view: function() 
+    {
+        return m("div", {"id":"icontools"},
+        [
+            m("div", {"id":"iconContainer", "class":""})
+        ])
         
-//     }
-// }
+    }
+}
 
 
 // $('#showDraw').click( () => 
