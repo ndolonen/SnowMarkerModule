@@ -1,163 +1,156 @@
-//Script for managing drawings.
+ /*
+    Draw Module based on OpenLayers 5. 
+    drawEvents. 
 
-// function tb_draw_click()
-// { $("#drawbox").toggle() }
+    Copyright (C) 2019 Nicolay Skjelbred, Jan-Magnus Solheim and Njål Dolonen, 
+    ohanssen@acm.org
 
-// $("#abtn").click( () => 
-// {
-//     console.log("why?")
-//     //swapDraw()
-// })
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published 
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 
-function type_change()
-{ refreshDraw }
-// $('#type').change( () => 
-// { refreshDraw() })
+//Script for managing drawing.
 
-// $('#drawToggle').click( () =>
+//OnClick handler for drawToggle.
 function drawToggle_click() 
 { 
     if ( !toggleDraw )
     {
         addDraw()
-
+        //Enables snap if snap was previously toggled on.
         if ( toggleSnap )
-        {   
-            addSnap()
-        }
+        { addSnap() }
+        //Disable modify while draw is active.
         if ( toggleModify )
         {
             removeModify()
             toggleModify = false
         }
     }
+    //Removes snap and draw if draw is active.
     else
     {
         removeSnap()
         removeDraw()
     }
-
     toggleDraw = !toggleDraw 
-}//)
+}//End drawToggle_click()
 
-// $('#modifyToggle').click( ()  => 
+//OnClick handler for modifyToggle.
 function modifyToggle_click()
 { 
-    if(!toggleDraw)
+    if( !toggleDraw )
     {
         if ( !toggleModify )
-        {
-            addModify()
-        }
+        { addModify() }
         else
-        {        
-            removeModify()
-        }
+        { removeModify() }
         toggleModify = !toggleModify
     }
-}//)
+} //End modifyToggle_click()
 
-// $('#snapToggle').click( () => 
+//OnClick handler for snapToggle.
 function snapToggle_click()
 {
-    if(toggleDraw)
+    if( toggleDraw )
     {
-        if (!toggleSnap )
-        {        
-            addSnap()
-        }
+        if ( !toggleSnap )
+        { addSnap() }
         else
-        {
-            removeSnap()
-        }
+        { removeSnap() }
         toggleSnap = !toggleSnap
     }
-}//)
+} //End snapToggle_click()
 
-// $('#deleteLayer').click( () => 
+//OnClick handler for deleteLayer. 
 function deleteLayer_click()
 {
     try
     {
-        if( selectedFeatures[0] != null )
+        //Checks if at least one feature is selected.
+        if( selectedFeatures[0] )
         {
-            selectedFeatures.forEach(e => {
-                drawSource.removeFeature(e)
-            })
+            //Cycles through the array of selected features and removes them from the source.
+            selectedFeatures.forEach(e => 
+            { drawSource.removeFeature(e) })
             drawArray = []
-            selectedFeatures = []
-            addNewChange()
+            selectedFeatures = [] 
+            addNewChange() //Updates the undo function array.
         }
     }
     catch(error)
     {
-        console.log("Nonexisting Feature selected, please unselect and reselect features")
-        console.log(error)
+        console.log("Unexpected Error Caught:\n" + error)
     }
-}//) deleteLayer_click() end
+} //End deleteLayer_click()
 
-let lastColor = "selectBlack";
-// $('.colorOption').click( (e) =>
+let drawingColor = "selectBlack";
+//OnClick handler for changing drawing color.
 function colorOption_click(e) 
 {
-    let color = e.target.id
-    let thisHex
-    switch(color)
+    //Removes selectedColor class from last drawing color.
+    $('#'+drawingColor).removeClass("selectedColor")
+    //gets id from clicked color selector
+    drawingColor = e.target.id
+    //Adds selectedColor class to the current drawing color.
+    $("#"+drawingColor).addClass("selectedColor")
+    
+    //Switch to set the current selected color as Style.
+    switch( drawingColor )
     {
         case "selectRed":
             setStyleColor(hexRed)  
-            thisHex = hexRed
             break
     
         case "selectOrange":
             setStyleColor(hexOrange) 
-            thisHex = hexOrange  
             break
                 
         case "selectYellow":
             setStyleColor(hexYellow)
-            thisHex = hexYellow
             break 
                         
         case "selectGreen":
             setStyleColor(hexGreen)
-            thisHex = hexGreen
             break
             
         case "selectBlue":
             setStyleColor(hexBlue)
-            thisHex = hexBlue
             break
             
         case "selectPurple":
             setStyleColor(hexPurple)
-            thisHex = hexPurple
             break
         
         default:
             setStyleColor(hexBlack)
-            thisHex = hexBlack
-    }//end of switch
-
-    $('#'+lastColor).removeClass("selectedColor")
-    $("#"+color).addClass("selectedColor")
-    lastColor = color
+    }//End of switch
     
+    //Changes the color of all selected features.
     if( selectedFeatures[0] )
     {
         selectedFeatures.forEach( (e) =>
         {
-            setFeatureColor(thisHex, e)
+            e.setStyle(currentStyle)
         })
-        selectedFeatures = []
-        drawArray = []
+        selectedFeatures = [] 
+        drawArray = [] 
     }
-}//) //colorOption_click() end 
+} //End colorOption_click()
 
-// $('#printMetric').click( () =>
+//OnClick handler for printing out leangth/area of feature.
 function printMetric_click()
 { 
-    //old code
+    //TODO: WRITE A LISTENER FEATURES INSTEAD?
+    //TODO: ADD BACK AREAL PRINT VALUES TO PROGRAM.
     let dontUse = false
     if(dontUse == false)
     {
@@ -167,12 +160,15 @@ function printMetric_click()
             {return getAreal(selectedFeatures[0])}
         }) 
     }
-}//)
+} //End printMetric_click()
 
+//Function to get area calculation from a feature.
 function getAreal(f)
 {
     let output = "none selected"
+     //Gets the geometry of a feature.
     const geom = f.getGeometry()
+     //Gets the type of geometry.
     const geomType = geom.getType()
     if ( geomType == "Polygon" ) 
     {
@@ -181,6 +177,8 @@ function getAreal(f)
     }
     else if ( geomType == "Circle" ) 
     {  
+        //Converts the circle to a polygon so that we can calculate. 
+        //the area with the correct values, regardless of EPSG projection.
         const area = PolygonGeom.fromCircle(Sphere.getArea(geom))
         output = getMetrics("1", area)
     }
@@ -188,13 +186,14 @@ function getAreal(f)
     {
         const length = Sphere.getLength(geom)
         output = getMetrics("2", length)
-    }
+    }//End if
 
     return output
-
+    //Function for calculation and formats of metric and print out.
     function getMetrics( type, metric )
     {
         let output
+        //Calculates and formats Area of Polygon/Circle.
         if( type == "1" )
         {
             if ( metric > 10000 ) 
@@ -203,7 +202,8 @@ function getAreal(f)
             { output = (Math.round(metric * 100) / 100) + ' ' + 'm<sup>2</sup>' }
             return output
         }
-        else if( type == "2" )
+        //Calculates and formats length of Linestring.
+        else if( type == "2" ) 
         {
             if ( metric > 100 ) 
             { output = (Math.round(metric / 1000 * 100) / 100) + ' ' + 'km'} 
@@ -211,10 +211,10 @@ function getAreal(f)
             { output = (Math.round(metric * 100) / 100) + ' ' + 'm'}
             return output
         }
-    }
-}//end of area calculation.
+    } //End getMetrics()
+} //End getAreal()
 
-// $('#freehand').click( () =>
+//OnClick handler to set draw to Freehand style.
 function freehand_click()
 {
     if( toggleFreehand == false )
@@ -224,9 +224,9 @@ function freehand_click()
         $('#straight').removeClass('selectedFunction')
         refreshDraw()
     }
-}//)
+} // End freehand_click()
 
-// $('#straight').click( () =>
+//OnClick handler to set draw to Point-to-Point style.
 function straight_click()
 {
     if( toggleFreehand == true )
@@ -236,57 +236,63 @@ function straight_click()
         $('#freehand').removeClass('selectedFunction')
         refreshDraw()
     }
-}//)
-
-//toggles orange border on deleteLayer when clicking
-$('#deleteLayer').mousedown( () => 
-{$('#deleteLayer').addClass("selectedFunction")}).mouseup( () => 
-{$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
-{$('#deleteLayer').removeClass("selectedFunction")})
-
-let selectedFeatures = []
-let lastFeature, currentFeature
-let featureCheck = false
+}//End straight_click()
+ 
+//Boolean to check if clicked location contains a feature.
+let featureCheck = false //True = feature on pixel/location.
+//Function for manually selecting a feature.
+//Created cause of problems with ol.Select being global and causing unintended issues.
 function manualSelect(pixel) 
 {
+
     featureCheck = false
+    //Checks for features at pixel and toggles Select on them.
     map.forEachFeatureAtPixel(pixel, function(f) 
     { 
+        //Gets the type of the feature.
         fType = f.getGeometry().getType()
-        if( fType == 'Point' )
+        //If type = Point it's an icon.
+        if( fType == 'Point' && !toggleDraw )
         {
             selectIcons(f)
         }
+        //If type is a Polygon, Circle or LineString it's a drawn object/feature.
         else if ( fType == 'Circle' || fType == 'Polygon' || fType == 'Linestring' )
         {
             selectMarkedArea(f)
         }
-    })
+    }) //End map.forEachFeatureAtPixel()
 
+    //Deselects all features when clicking somewhere without a feature.
     if( !featureCheck )
     {
-        let tempObj = -1
+        let tempObj = false
         let tempInd = 0
+        //Loops throught all selected features and returns their original style.
         selectedFeatures.forEach( function(f)
         {
-            drawArray.forEach(function(el)
+            //Finds the original style/color of the feature f and saves it to tempObj.
+            drawArray.forEach( function(e)
             {
-                if ( f.ol_uid == el.ol_uid )
+                if ( f.ol_uid == e.ol_uid )
                 {
-                    tempObj = el
-                    tempInd = drawArray.indexOf(el)
+                    tempObj = e
+                    tempInd = drawArray.indexOf(e)
                 }
-            })
-            if ( tempObj != -1 )
-            {        
+            }) //End drawArray.forEach()
+            if ( tempObj )
+            {   
+                //Gives the feature back it's original style.     
                 f.setStyle(tempObj.style) 
-                drawArray.splice(tempInd, 1) 
+                drawArray.splice(tempInd, 1) //Removes the style object from drawArray.
             }
-        })
+        }) //End selectedFeatures.forEach()
         selectedFeatures = []
-    }   
-}
+    } //End if 
+} //End manualSelect()
 
+
+//Function for selecting marked areas. 
 function selectMarkedArea(f)
 {
     if ( drawSource.getFeatures().includes(f) && !selectedFeatures.includes(f) )
@@ -298,6 +304,7 @@ function selectMarkedArea(f)
         f.setStyle(selectStyle)
         selectedFeatures.push(f)
     }
+    //Deselects the clicked feature if it was already selected
     else if( selectedFeatures.includes(f) )
     {
         drawArray.forEach( (e) => 
@@ -314,15 +321,18 @@ function selectMarkedArea(f)
     }
     if( !featureCheck )
     { featureCheck = true }
-}
+}//End selectMarkedArea
 
 function selectIcons(f)
 {
     if( !droppingIcon )
     { 
         console.log('Icons')
-        droppingIcon = false
-    }
+        // DO SELECT STUFF FOR ICONS HERE
+        // TODO: Write out information about Icon
+    } 
+    else 
+    { droppingIcon = false }
 }
 
 map.on('click', (e) =>
@@ -330,3 +340,32 @@ map.on('click', (e) =>
     var pixel = e.pixel;
     manualSelect(pixel);
 })
+
+function setCurrentType_click(e)
+{
+    let selectedID = e.target.id
+    $('#currentType').text($("#"+selectedID).text())
+    refreshDrawType()
+    // $('#type').show()
+    $('#selectingType').hide()
+    // $('#currentType').css('color:#ffffffff')
+    dropdownShown = false
+}   
+
+function showDropdownOptions_click()
+{
+    $('#currentType').css('color:#ffffff00')
+
+    // $('#type').hide()
+    $('#selectingType').show()
+    dropdownShown = true
+}
+
+//function to hide dropdown
+//TODO: add handler to catch click event outside dropdown box.
+function closeDropdown()
+{
+    if(dropdownShown)
+    { $('#selectingType').hide() }
+    dropdownShown = false
+}

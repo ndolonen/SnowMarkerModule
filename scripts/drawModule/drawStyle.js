@@ -1,3 +1,22 @@
+ /*
+    Draw Module based on OpenLayers 5. 
+    drawStyle. 
+
+    Copyright (C) 2019 Nicolay Skjelbred, Jan-Magnus Solheim and Njål Dolonen, 
+    ohanssen@acm.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published 
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * Script to manage predefined styles.
  */
@@ -7,30 +26,32 @@
     setColor()
 }) */
 
-function setFeatureColor(colorVal, feature)
-{
-    currentStyle = new Style
-    ({
-        fill: new Fill
-        ({
-            color: colorVal + hexOpacity
-        }),
-        stroke: new Stroke
-        ({
-            color: colorVal,
-            width: 3
-        }),
-        image: new CircleStyle
-        ({
-            radius: 7,
-            fill: new Fill
-            ({
-                color: colorVal
-            })
-        })
-    })
-    feature.setStyle(currentStyle)
-}
+//probably legacy code, remove if nothing breaks unexpectedly
+// function setFeatureColor(colorVal, feature)
+// {
+//     currentStyle = new Style
+//     ({
+//         fill: new Fill
+//         ({
+//             color: colorVal + hexOpacity
+//         }),
+//         stroke: new Stroke
+//         ({
+//             color: colorVal,
+//             width: 3
+//         }),
+//         image: new CircleStyle
+//         ({
+//             radius: 7,
+//             fill: new Fill
+//             ({
+//                 color: colorVal
+//             })
+//         })
+//     })
+//     setStyleColor(colorVal)
+//     feature.setStyle(currentStyle)
+// }
 
 function getStyle(colorVal)
 {
@@ -102,30 +123,8 @@ const selectStyle = new Style(
         })
     })
 
-let dropdownShown = false
-function setCurrentType(e)
-{
-    let selectedID = e.target.id
-    $('#currentType').text($("#"+selectedID).text())
-    refreshDrawType()
-    // $('#type').show()
-    $('#selectingType').hide()
-    // $('#currentType').css('color:#ffffffff')
-    dropdownShown = false
-}   
-
-function showDropdownOptions()
-{
-    $('#currentType').css('color:#ffffff00')
-
-    // $('#type').hide()
-    $('#selectingType').show()
-    dropdownShown = true
-}
-
-function closeDropdown()
-{
-    if(dropdownShown)
-    { $('#selectingType').hide() }
-    dropdownShown = false
-}
+//Toggles orange border on deleteLayer when clicking and removes it on mouseleave.
+$('#deleteLayer').mousedown( () => 
+{$('#deleteLayer').addClass("selectedFunction")}).mouseup( () => 
+{$('#deleteLayer').removeClass("selectedFunction")}).mouseleave( () => 
+{$('#deleteLayer').removeClass("selectedFunction")})

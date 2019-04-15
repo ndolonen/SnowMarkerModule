@@ -1,0 +1,20 @@
+Gjenværende funksjoner:
+- Layers/Database
+- Gjøre noe med Icon Select ( Bruke øyvind sin popup info? )
+- Legge til rette for lagring og lasting av features
+- Fiks GPX Konvertering
+
+Kommentere på kode:
+[] DrawEvents.js
+[] drawFunctions.js
+[] drawGlobals.js
+[] drawing.js
+[] drawStyle.js
+[] drawTooltipHelper.js
+[] gpxDownload.js
+[] mithrilDrawBox.js
+[] mountReload.js
+[] addpopup.js
+[] drawIcons.js
+
+
