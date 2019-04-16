@@ -81,7 +81,7 @@ function deleteLayer_click()
             //Cycles through the array of selected features and removes them from the source.
             selectedFeatures.forEach(e => 
             { drawSource.removeFeature(e) })
-            drawArray = []
+            originalStyles = []
             selectedFeatures = [] 
             addNewChange() //Updates the undo function array.
         }
@@ -98,7 +98,7 @@ function colorOption_click(e)
 {
     //Removes selectedColor class from last drawing color.
     $('#'+drawingColor).removeClass("selectedColor")
-    //gets id from clicked color selector
+    //Gets id from clicked color selector.
     drawingColor = e.target.id
     //Adds selectedColor class to the current drawing color.
     $("#"+drawingColor).addClass("selectedColor")
@@ -142,7 +142,7 @@ function colorOption_click(e)
             e.setStyle(currentStyle)
         })
         selectedFeatures = [] 
-        drawArray = [] 
+        originalStyles = [] 
     }
 } //End colorOption_click()
 
@@ -202,7 +202,7 @@ function getAreal(f)
             { output = (Math.round(metric * 100) / 100) + ' ' + 'm<sup>2</sup>' }
             return output
         }
-        //Calculates and formats length of Linestring.
+        //Calculates and formats length of LineString.
         else if( type == "2" ) 
         {
             if ( metric > 100 ) 
@@ -257,7 +257,7 @@ function manualSelect(pixel)
             selectIcons(f)
         }
         //If type is a Polygon, Circle or LineString it's a drawn object/feature.
-        else if ( fType == 'Circle' || fType == 'Polygon' || fType == 'Linestring' )
+        else if ( fType == 'Circle' || fType == 'Polygon' || fType == 'LineString' )
         {
             selectMarkedArea(f)
         }
@@ -272,19 +272,19 @@ function manualSelect(pixel)
         selectedFeatures.forEach( function(f)
         {
             //Finds the original style/color of the feature f and saves it to tempObj.
-            drawArray.forEach( function(e)
+            originalStyles.forEach( function(e)
             {
                 if ( f.ol_uid == e.ol_uid )
                 {
                     tempObj = e
-                    tempInd = drawArray.indexOf(e)
+                    tempInd = originalStyles.indexOf(e)
                 }
-            }) //End drawArray.forEach()
+            }) //End originalStyles.forEach()
             if ( tempObj )
             {   
                 //Gives the feature back it's original style.     
                 f.setStyle(tempObj.style) 
-                drawArray.splice(tempInd, 1) //Removes the style object from drawArray.
+                originalStyles.splice(tempInd, 1) //Removes the style object from originalStyles.
             }
         }) //End selectedFeatures.forEach()
         selectedFeatures = []
@@ -297,75 +297,86 @@ function selectMarkedArea(f)
 {
     if ( drawSource.getFeatures().includes(f) && !selectedFeatures.includes(f) )
     {
-        let currentObject       
-        currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+        //Saves the original style of the feature to an object, with ol_uid as identifier.
+        let currentObject = {"ol_uid" : f.ol_uid, "style" : f.getStyle()}
+        originalStyles.push(currentObject) 
 
-        drawArray.push(currentObject) 
+        //Sets the Style of the selected object to selectStyle.
         f.setStyle(selectStyle)
         selectedFeatures.push(f)
     }
-    //Deselects the clicked feature if it was already selected
+    //Deselects the clicked feature if it was already selected.
     else if( selectedFeatures.includes(f) )
     {
-        drawArray.forEach( (e) => 
+        originalStyles.forEach( (e) => 
         {        
             if ( f.ol_uid == e.ol_uid )
             {
-                let eIndex = drawArray.indexOf(e)
+                //Sets the original style back to the feature.
+                let eIndex = originalStyles.indexOf(e)
                 f.setStyle(e.style) 
-                drawArray.splice(eIndex, 1)
+                //Removes the object from originalStyles and selectedFeatures as its no longer selected.
+                originalStyles.splice(eIndex, 1)
                 let fIndex = selectedFeatures.indexOf(f)
                 selectedFeatures.splice(fIndex, 1)
             }
         })
     }
+    //Sets the featureCheck to true to prevent the deselect all.
     if( !featureCheck )
     { featureCheck = true }
-}//End selectMarkedArea
+} //End selectMarkedArea()
 
+//Function for selecting icons in icon tab. 
 function selectIcons(f)
 {
     if( !droppingIcon )
     { 
-        console.log('Icons')
         // DO SELECT STUFF FOR ICONS HERE
         // TODO: Write out information about Icon
+        console.log("Icon")
     } 
     else 
     { droppingIcon = false }
-}
+} //End selectIcons()
 
+//OnClick handler for selecting features.
+//TODO: Check if conflicting with other onclick handlers
 map.on('click', (e) =>
-{
-    var pixel = e.pixel;
-    manualSelect(pixel);
-})
+{ manualSelect(e.pixel) })
 
+//OnClick handler for selecting geometry type.
 function setCurrentType_click(e)
 {
     let selectedID = e.target.id
     $('#currentType').text($("#"+selectedID).text())
-    refreshDrawType()
-    // $('#type').show()
+    //Checks geometry type and refreshes draw.
+    if ( selectedID == "optPolygon" )
+    { drawType = "Polygon" }
+    else if ( selectedID == "optLine" )
+    { drawType = "LineString" }
+    else if ( selectedID == "optCircle")
+    { drawType = "Circle" }
+    else //error happened selecting type.
+    { console.log("Unexpected error while selecting geometry type") }
+    refreshDraw()
+    //Hides dropdown after selecting type.
     $('#selectingType').hide()
-    // $('#currentType').css('color:#ffffffff')
     dropdownShown = false
-}   
+} //End setCurrentType_click()   
 
+//OnClick handler for showing the geometry type options.
 function showDropdownOptions_click()
 {
-    $('#currentType').css('color:#ffffff00')
-
-    // $('#type').hide()
     $('#selectingType').show()
     dropdownShown = true
-}
+} //End showDropdownOptions_click()
 
-//function to hide dropdown
+//OnClick handler for hiding drop down when selected Geometry type.
 //TODO: add handler to catch click event outside dropdown box.
 function closeDropdown()
 {
     if(dropdownShown)
     { $('#selectingType').hide() }
     dropdownShown = false
-}
+} //End closeDropdown()

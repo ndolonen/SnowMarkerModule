@@ -5,16 +5,13 @@ Gjenværende funksjoner:
 - Fiks GPX Konvertering
 
 Kommentere på kode:
-[] DrawEvents.js
-[] drawFunctions.js
-[] drawGlobals.js
-[] drawing.js
-[] drawStyle.js
-[] drawTooltipHelper.js
+[x] DrawEvents.js
+[x] drawFunctions.js
+[x] drawGlobals.js
+[x] drawIcons.js
+[x] drawStyle.js
+[x] drawTooltipHelper.js
 [] gpxDownload.js
-[] mithrilDrawBox.js
-[] mountReload.js
+[x] mithrilDrawBox.js
+[x?] mountReload.js
 [] addpopup.js
-[] drawIcons.js
-
-

@@ -13,7 +13,7 @@ function featuresToJSON()
             else
             { json += ',' }
             let originalStyle = ""
-            drawArray.forEach(function(e)
+            originalStyles.forEach(function(e)
             {
                 if( f.ol_uid == e.ol_uid )
                 {

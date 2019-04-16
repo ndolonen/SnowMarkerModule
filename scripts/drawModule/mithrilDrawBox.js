@@ -17,20 +17,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-$('<div id="POPUP" class="POPUP widget ui-draggable ui-draggable-dragging"' 
-+ 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
-+'</div>').appendTo('#map')
-
-
-// $('<div id="drawTab" class="drawTab"><p class="selectedTab">Draw</p><p id="iconTab">Icon</p></div>' 
-// + '<h1 class="ui-draggable-handle">Drawing</h1>'
-// + '<div class="drawbox" id="drawbox"></div>').appendTo('#POPUP')
-// $('<div id="drawTab"></div>').appendTo('#drawbox')
-// $('<div id="iconTab"></div>').appendTo('#drawbox')
-
-const popupRoot = document.getElementById('POPUP')
-
-
+//Defines the main div of drawModule.
 const drawPopup = 
 {
     view: function() 
@@ -44,12 +31,12 @@ const drawPopup =
                 {
                     "id":"drawTab", 
                     "class":"selectedTab", 
-                    onclick:showDrawbox
+                    onclick:showDrawbox_click
                 }, "Draw"),
                 m("p", 
                 {
                     "id":"iconTab", 
-                    onclick:showIconbox
+                    onclick:showIconbox_click
                 }, "Icon")
             ]),
             m("h1", 
@@ -57,17 +44,16 @@ const drawPopup =
                 "id":"drawPopupTitle", 
                 "class":"ui-draggable-handle"
             }, "Draw Tools"),
+            //Container divs to mount drawTools and iconTools.
             m("div",
             {"id":"drawBox"}),
             m("div", 
             {"id":"iconBox"}),
         ])
-        // '<div id="drawTab" class="drawTab"><p class="selectedTab">Draw</p><p id="iconTab">Icon</p></div>' 
-        // + '<h1 class="ui-draggable-handle">Drawing</h1>'
-        // + '<div class="drawbox" id="drawbox"></div>'
     }
 }
 
+//Defines user interface for draw funtionality.
 const drawTools = 
 {
     view: function() 
@@ -87,6 +73,7 @@ const drawTools =
                 m("label", 
                 {"class":"non-interactive"}, 
                 ["Draw type ", m.trust("&nbsp;")]),
+                //Draw Types
                 m("div", 
                 [
                     m("img", 
@@ -102,6 +89,8 @@ const drawTools =
                         onclick: freehand_click
                     }),
                 ]),
+            
+                //Geometry Selection
                 m("label", 
                 {"class":"non-interactive"},
                 ["Geometry type ", m.trust("&nbsp;"),]),
@@ -141,17 +130,13 @@ const drawTools =
                         onclick:showDropdownOptions_click}, 
                         "Polygon"),
                 ]),
-                // m("select", {"id":"type", "class" : "drawSelect", onchange(){type_change}},
-                // [
-                //     m("option", {"value":"Polygon", "id":"optPolygon", onclick:type_change}, "Marking"),
-                //     m("option", {"value":"LineString", "id":"optLine", onclick:type_change}, "Line"),
-                //     m("option", {"value":"Circle", "id":"optCircle", onclick:type_change}, "Circle")
-                // ]),
+                
+                //Color Selection
                 m("label", 
                 {"class":"non-interactive"},
                 [
                         "Color Selector ", m.trust("&nbsp;"),
-                ]),
+                ]),        
                 m("div", 
                 {"id":"ColorSelecter"},
                 [
@@ -199,6 +184,8 @@ const drawTools =
                     }),
                     
                 ]),
+
+                //Draw Functions
                 m("label", 
                 {"class":"non-interactive"},
                 ["Functions ", m.trust("&nbsp;")]),
@@ -232,6 +219,7 @@ const drawTools =
                    // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                 ]),
             ]),
+            //TODO:REMOVE?
             // m("div",
             // [
             //     // m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
@@ -255,36 +243,3 @@ const drawTools =
         ])   
     }
 }
-
-// const iconTools = 
-// {
-//     view: function() 
-//     {
-//         return m("div", 
-//         {"id":"icontools"},
-//         [
-//             m("div", 
-//             {"id":"iconContainer"}, 
-//             [
-//                 m("img", 
-//                 {
-//                     "src":"images/iconpack/blast.png", 
-//                     "class":"drawIcons",
-//                     "id":"markerIcon-blast", 
-//                     "title":"IMAGE", 
-//                     onclick: (e) => 
-//                     {markerIcons_click(e)}
-//                 })
-//             ])
-
-//         ])
-        
-//     }
-// }
-
-// $('#showDraw').click( () => 
-// {
-//     console.log("test")
-// })
-
-// $('')

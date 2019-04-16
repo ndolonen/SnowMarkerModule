@@ -19,7 +19,7 @@
 
 var map = browser.map
 
-//import and create predefined calls for functions
+//Import and create predefined calls for functions.
 const Draw = ol.interaction.Draw 
 const Modify = ol.interaction.Modify 
 const Snap = ol.interaction.Snap 
@@ -31,20 +31,29 @@ const CircleStyle = ol.style.Circle
 const Fill = ol.style.Fill 
 const Stroke = ol.style.Stroke 
 const Style = ol.style.Style 
+const Icon = ol.style.Icon
 const FromLonLat = ol.proj.fromLonLat
 const Sphere = ol.sphere 
 const PolygonGeom = ol.geom.Polygon 
+const Point = ol.geom.Point
 
-//global variables
+//Global variables
 let draw, snap, drawSelect, feature, modify
 let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, 
     toggleTooltip = false, droppingIcon = false, dropdownShown = false
+//Decides if icons has to be toggled on/off or is disabled after drop.
+let continuousIconDropping = false
+//Contains the currently selected style.
 let currentStyle
-let drawArray = [], selectedFeatures = []
+//originalStyles Contains the original ol_uid of a feature and the style.
+//selectedFeatures Contains the currently selected Features.
+let originalStyles = [], selectedFeatures = []
+//Default draw type: "Polygon", Options: "LineString", "Polygon", "Circle".
 let drawType = "Polygon"
 
-//global color declarations
+//Global opacity declaration.
 const hexOpacity = "20"
+//Global color declarations.
 const hexBlack = "#1f1f1f" 
 const hexRed = "#e60000"
 const hexOrange = "#ff9a28"
@@ -52,8 +61,12 @@ const hexYellow = "#ffff00"
 const hexGreen = "#01b301"
 const hexBlue = "#33ccff"
 const hexPurple = "#a300a3"
-const hexSelect = "#248f8f"
+const hexSelect = "#248f8f" //TODO: Create better style for Select
+const hexSelectStroke = "#0569ff"
+const hexSelectFill = "#9ebbff"
 
+//Sets the color of the colorselectors. 
+//Represents the colors of the hex variables used to draw.
 const cssColors = () => {
     $('#selectBlack').css('background-color', hexBlack)
     $('#selectRed').css('background-color', hexRed)
@@ -62,42 +75,10 @@ const cssColors = () => {
     $('#selectGreen').css('background-color', hexGreen)
     $('#selectBlue').css('background-color', hexBlue)
     $('#selectPurple').css('background-color', hexPurple)
-}
-cssColors()
+} //End cssColors
 
-function typeSelect() 
-{ return $('#type').val() }
-
-//initial color settings
-let colorInit = function() 
-{ 
-    let style = new Style
-    ({
-        fill: new Fill
-        ({
-            color: hexBlack + hexOpacity
-        }),
-        stroke: new Stroke
-        ({
-            color: hexBlack,
-            width: 3
-        }),
-        image: new CircleStyle
-        ({
-            radius: 7,
-            fill: new Fill
-            ({
-                color: hexBlack
-            })
-        })
-    })
-    currentStyle = style
-}
-colorInit()
-
-//default source
+//Default source for drawing.
 let drawSource = new VectorSource()
-let drawLayer = new VectorLayer({
-    source: drawSource
-})
+let drawLayer = new VectorLayer(
+{ source: drawSource })
 map.addLayer(drawLayer)

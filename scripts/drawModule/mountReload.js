@@ -17,63 +17,74 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-// $('#iconTab').hide() 
+//Root mount. 
+const popupRoot = document.getElementById('POPUP')
 
-// let swapDrawWindowToggle = false
-// $('.toggleFunction').click( () => 
-// {
-//     if (swapDrawWindowToggle)
-//     {   
-//         $('#iconTab').hide()
-//         $('#drawTab').show()  
-//         swapDrawWindowToggle = false 
-//     } else
-//     {
-//         $('#drawTab').hide() 
-//         $('#iconTab').show() 
-//         swapDrawWindowToggle = true
-//     }   
-// })
-
-m.mount(popupRoot, drawPopup)
-let drawRoot = document.getElementById("drawBox")
-let iconRoot = document.getElementById("iconBox")
-m.mount(drawRoot, drawTools)
-m.mount(iconRoot, iconTools)
-// markerIcons_load()
-$('#iconBox').hide()
-
-// m.mount(iconRoot, iconTools)
-cssColors()
-function resetDraw()
+//Necesarry resources to be loaded when creating the drawbox.
+function loadDrawOnMount()
 {
+    m.mount(popupRoot, drawPopup)
+    let drawRoot = document.getElementById("drawBox")
+    let iconRoot = document.getElementById("iconBox")
     m.mount(drawRoot, drawTools)
+    m.mount(iconRoot, iconTools)
+    $('#iconBox').hide()
+    
     cssColors()
+    deleteHighlightHandler() 
 }
+//TODO: Remove on implementation and use OnClick handler instead
+loadDrawOnMount()
 
-let selectedToolbox = false //false = draw, true = tools
-function showDrawbox()
+let selectedToolbox = false //false = draw, true = icon
+//OnClick handler for showing Drawtab.
+function showDrawbox_click()
 {
     if( selectedToolbox )
-    {    
-        $("#drawPopupTitle").text("Draw Tools")
-        $('#drawBox').show()
-        $('#iconBox').hide()
-        $('#iconTab').removeClass("selectedTab")
-        $('#drawTab').addClass("selectedTab")
-        selectedToolbox = false
-    }
+    { swappingTab() }
 }
 
-function showIconbox()
+//OnClick handler for showing Icontab.
+function showIconbox_click()
 {
     if( !selectedToolbox )
-    { 
+    { swappingTab() }
+}
+
+//Function to swap between drawbox and iconbox.
+function swappingTab()
+{   
+    $('#drawBox').toggle()
+    $('#iconBox').toggle()
+    
+    //drawTab
+    if( selectedToolbox )
+    {
+        $("#drawPopupTitle").text("Draw Tools")
+        $('#iconTab').removeClass("selectedTab")
+        $('#drawTab').addClass("selectedTab")
+    }
+    //iconTab
+    else
+    {
         $("#drawPopupTitle").text("Icon Tools")
-        $('#drawBox').hide()
-        $('#iconBox').show()
         $('#drawTab').removeClass("selectedTab")
         $('#iconTab').addClass("selectedTab")
-        selectedToolbox = true
     }
+    
+    //Removes highlight on buttons.
+    $('#drawToggle').removeClass('selectedFunction')
+    $('#snapToggle').removeClass('selectedFunction')
+    $('#modifyToggle').removeClass('selectedFunction')
+    $('#'+thisID).removeClass('selectedIcon')
+    
+    //Disables funtions to avoid bugs.
+    toggleDraw = false
+    toggleModify = false
+    toggleSnap = false
+    thisID=null
+    map.removeInteraction(draw)
+    map.removeInteraction(snap)
+    map.removeInteraction(modify)
+    selectedToolbox = !selectedToolbox
 }

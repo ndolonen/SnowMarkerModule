@@ -16,7 +16,7 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-//function to add drawing functionality to map
+//Function to add drawing functionality to map.
 function addDraw()
 {
     draw = new Draw(
@@ -28,76 +28,53 @@ function addDraw()
     map.addInteraction(draw)
     $('#drawToggle').addClass('selectedFunction')
 
+    //Adds style to drawn feature and adds it to the undo Array.
     draw.on('drawend', function (e)
     { 
          e.feature.setStyle(currentStyle)
          addNewChange(e.feature)
     })
-}
+} //End addDraw()
 
-//TODO: good name?
-function refreshDrawType()
-{
-    drawType = $("#currentType").text()
-    refreshDraw()
-}
-
-//function to add modify functionality to map
+//Function to add modify functionality to map.
 function addModify()
 {
-    
-    //define modify interractions
+    //Defines modify interractions.
     modify = new Modify({source: drawSource})
     map.addInteraction(modify)
     $('#modifyToggle').addClass('selectedFunction')
-    // removeSelect()
-}
-//function to snap on geometry types.
+} //End addModify()
+
+//Function to snap on geometry types.
 function addSnap()
 {
     snap = new Snap({source: drawSource})
     map.addInteraction(snap)
     $('#snapToggle').addClass('selectedFunction')
-}
+} //End addSnap()
 
-//function to add functionality to select a feature
-// function initSelect()
-// {
-//     drawSelect = new DrawSelect({
-//         source: drawSource,
-//         hitTolerance: 5, 
-//         style: selectStyle})
-// }
-//initiate addSelect on startup
-//initSelect()
-
-// function addSelect()
-// { map.addInteraction(drawSelect) }
-
+//Function to disable draw functionality.
 function removeDraw()
 { 
     map.removeInteraction(draw) 
     $('#drawToggle').removeClass('selectedFunction')
+} //End removeDraw()
 
-}
-
+//Function to disable Modify functionality from the map.
 function removeModify() 
 { 
     map.removeInteraction(modify)
     $('#modifyToggle').removeClass('selectedFunction')
-    // addSelect() 
-}
+} //End removeModify()
 
+//Function to disable geometry snapping on draw.
 function removeSnap()
 { 
     map.removeInteraction(snap)
     $('#snapToggle').removeClass('selectedFunction')
+} //End removeSnap()
 
-}
-
-function removeSelect()
-{ map.removeInteraction(drawSelect) }
-
+//Function to refresh draw functionality, used to refresh parameters(colors/type/freehand).
 function refreshDraw()
 {
     if(toggleDraw)
@@ -105,4 +82,4 @@ function refreshDraw()
         removeDraw()
         addDraw()
     }
-}
+} //End refreshDraw()

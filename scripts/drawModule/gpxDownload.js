@@ -17,18 +17,21 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-//maked downlaad prompt for the user
-function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/gpx;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+//Makes download prompt for the user.
+function download(filename, text) 
+{
+    //var newlonLat = new OpenLayers.LonLat(lon, lat).transform(map.getProjectionObject() , new OpenLayers.Projection("EPSG:4326"))
+    //http://epsg.io/map#srs=3857&x=5635549.221409&y=5948635.289266&z=2&layer=streets
+    var element = document.createElement('a')
+    element.setAttribute('href', 'data:text/gpx;charset=utf-8,' + encodeURIComponent(text))
+    element.setAttribute('download', filename)
   
-    element.style.display = 'none';
-    document.body.appendChild(element);
+    element.style.display = 'none'
+    document.body.appendChild(element)
   
-    element.click();
+    element.click()
   
-    document.body.removeChild(element);
+    document.body.removeChild(element)
 }
 
 
@@ -47,9 +50,9 @@ function gpxFromFeature()
 }
 
 //TODO: Implement button for download
-function downloadGpx_Click()
+function downloadGpx_click()
 { 
     let gpx = gpxFromFeature()
-    let filename = "gpxDownload.gpx" //change  to own input if its gonna be changable
+    let filename = "gpxDownload.gpx" //change to own input if its gonna be changable
     download(filename, gpx)
 }
