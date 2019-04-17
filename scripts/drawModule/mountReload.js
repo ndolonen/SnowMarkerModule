@@ -18,23 +18,64 @@
 */
 
 //Root mount. 
-const popupRoot = document.getElementById('POPUP')
 
+drawModule_on = false;
+$('#tb_draw').click( () => 
+{
+    if( !drawModule_on )
+    {
+        loadDrawOnMount()
+    }
+    else
+    {
+        unmountDraw()
+    }
+    drawModule_on = !drawModule_on
+})
+
+let drawRoot = ""
+let iconRoot = ""
+let drawModuleRoot = ""
 //Necesarry resources to be loaded when creating the drawbox.
 function loadDrawOnMount()
 {
-    m.mount(popupRoot, drawPopup)
-    let drawRoot = document.getElementById("drawBox")
-    let iconRoot = document.getElementById("iconBox")
+    $('<div id="markerModule" class="POPUP widget ui-draggable ui-draggable-dragging"' 
+    + 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
+    +'</div>').appendTo('#map')
+
+    drawModuleRoot = document.getElementById('markerModule')
+
+    m.mount(drawModuleRoot, drawPopup)
+    drawRoot = document.getElementById("drawBox")
+    iconRoot = document.getElementById("iconBox")
     m.mount(drawRoot, drawTools)
     m.mount(iconRoot, iconTools)
     $('#iconBox').hide()
-    
     cssColors()
     deleteHighlightHandler() 
+
+    $( function() 
+    {
+        $( ".ui-draggable").draggable()
+    })
 }
+
+function unmountDraw()
+{
+    disableAllDrawFunctions()
+    selectedToolbox = false
+    m.mount(drawRoot, null)
+    m.mount(iconRoot, null)
+    drawRoot = ""
+    iconRoot = ""
+    m.mount(drawModuleRoot, null)
+    drawModuleRoot = ""
+    // $('#map').remove('#markerModule')
+    $('#markerModule').remove()
+}
+
 //TODO: Remove on implementation and use OnClick handler instead
-loadDrawOnMount()
+// loadDrawOnMount()
 
 let selectedToolbox = false //false = draw, true = icon
 //OnClick handler for showing Drawtab.
@@ -79,12 +120,17 @@ function swappingTab()
     $('#'+thisID).removeClass('selectedIcon')
     
     //Disables funtions to avoid bugs.
+    disableAllDrawFunctions()
+    selectedToolbox = !selectedToolbox
+}
+
+function disableAllDrawFunctions()
+{
     toggleDraw = false
     toggleModify = false
     toggleSnap = false
     thisID=null
     map.removeInteraction(draw)
     map.removeInteraction(snap)
-    map.removeInteraction(modify)
-    selectedToolbox = !selectedToolbox
+    map.removeInteraction(modify) 
 }

@@ -147,20 +147,21 @@ function colorOption_click(e)
 } //End colorOption_click()
 
 //OnClick handler for printing out leangth/area of feature.
-function printMetric_click()
+//OnClick handler for printing out leangth/area of feature.
+function toggleMetric_click()
 { 
-    //TODO: WRITE A LISTENER FEATURES INSTEAD?
-    //TODO: ADD BACK AREAL PRINT VALUES TO PROGRAM.
-    let dontUse = false
-    if(dontUse == false)
+    if(toggleAreal)
     {
-        $('#showMetrics').html( () => 
-        {
-            if( selectedFeatures[0] )
-            {return getAreal(selectedFeatures[0])}
-        }) 
+        $('#printMetric').removeClass('selectedFunction')
+        removeAllMeasureTooltip()
     }
-} //End printMetric_click()
+    else
+    {
+        $('#printMetric').addClass('selectedFunction')
+        addMeasureOverlay()
+    }
+    toggleAreal = !toggleAreal
+} //End toggleMetric_click()
 
 //Function to get area calculation from a feature.
 function getAreal(f)
@@ -287,6 +288,9 @@ function manualSelect(pixel)
                 originalStyles.splice(tempInd, 1) //Removes the style object from originalStyles.
             }
         }) //End selectedFeatures.forEach()
+                //removes all metrics from map
+        if( toggleAreal )
+        { removeAllMeasureTooltip() }
         selectedFeatures = []
     } //End if 
 } //End manualSelect()
@@ -304,6 +308,11 @@ function selectMarkedArea(f)
         //Sets the Style of the selected object to selectStyle.
         f.setStyle(selectStyle)
         selectedFeatures.push(f)
+        //adds area for the selected feature to the map
+        if ( toggleAreal )
+        {
+            addMeasureOverlay(f)
+        }
     }
     //Deselects the clicked feature if it was already selected.
     else if( selectedFeatures.includes(f) )
@@ -319,6 +328,11 @@ function selectMarkedArea(f)
                 originalStyles.splice(eIndex, 1)
                 let fIndex = selectedFeatures.indexOf(f)
                 selectedFeatures.splice(fIndex, 1)
+                //removes the area overlay from the feature from the map
+                if ( toggleAreal )
+                {
+                    removeSingleMeasureTooltip(f)
+                }
             }
         })
     }

@@ -40,7 +40,7 @@ const Point = ol.geom.Point
 //Global variables
 let draw, snap, drawSelect, feature, modify
 let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, 
-    toggleTooltip = false, droppingIcon = false, dropdownShown = false
+    toggleTooltip = false, droppingIcon = false, toggleAreal = false, dropdownShown = false
 //Decides if icons has to be toggled on/off or is disabled after drop.
 let continuousIconDropping = false
 //Contains the currently selected style.

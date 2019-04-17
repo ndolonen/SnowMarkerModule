@@ -215,8 +215,12 @@ const drawTools =
                         "id":"snapToggle", "class":"drawIcon", 
                         onclick: snapToggle_click
                     }),
-                    // m("img", {"src":"images/drawIcons/km2_50px.png", "id":"printMetric", "class":"drawIcon", onclick: printMetric_click})
-                   // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
+                    m("img", 
+                    {
+                        "src":"images/drawIcons/km2_50px.png", 
+                        "id":"printMetric", "class":"drawIcon", 
+                        onclick: toggleMetric_click
+                    }),                   // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                 ]),
             ]),
             //TODO:REMOVE?
