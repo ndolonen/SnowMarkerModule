@@ -42,7 +42,14 @@ var browser =
         })
 }
 
+<<<<<<< HEAD
 //Generates a container div to mount in, and appends the container to the map div in index.
 $('<div id="markerModule" class="POPUP widget ui-draggable ui-draggable-dragging"' 
 + 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
 +'</div>').appendTo('#map')
+=======
+// //Generates a container div to mount in, and appends the container to the map div in index.
+// $('<div id="POPUP" class="POPUP widget ui-draggable ui-draggable-dragging"' 
+// + 'style="position: absolute; display: block; padding: 2px; cursor: default; overflow-y: visible; left: 20px; top: 60px; opacity: 1;">'
+// +'</div>').appendTo('#map')
+>>>>>>> 4afd9646e796747cf9fb9d475d2f3ca11f9cb6a0
