@@ -10,6 +10,7 @@ const iconTools =
                m("div",
                {"id":"iconContainer"}, 
                [
+                    //Icon Number:1 Name:aed-2.png
                     m("img",
                     {
                          "src":"images/iconpack/aed-2.png",
@@ -19,6 +20,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:2 Name:aircraftsmall.png
                     m("img",
                     {
                          "src":"images/iconpack/aircraftsmall.png",
@@ -28,6 +30,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:3 Name:airport.png
                     m("img",
                     {
                          "src":"images/iconpack/airport.png",
@@ -37,6 +40,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:4 Name:avalanche1.png
                     m("img",
                     {
                          "src":"images/iconpack/avalanche1.png",
@@ -46,6 +50,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:5 Name:blast.png
                     m("img",
                     {
                          "src":"images/iconpack/blast.png",
@@ -55,6 +60,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:6 Name:boat.png
                     m("img",
                     {
                          "src":"images/iconpack/boat.png",
@@ -64,6 +70,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:7 Name:bomb.png
                     m("img",
                     {
                          "src":"images/iconpack/bomb.png",
@@ -73,6 +80,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:8 Name:bunker-2-2.png
                     m("img",
                     {
                          "src":"images/iconpack/bunker-2-2.png",
@@ -82,6 +90,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:9 Name:bus.png
                     m("img",
                     {
                          "src":"images/iconpack/bus.png",
@@ -91,6 +100,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:10 Name:busstop.png
                     m("img",
                     {
                          "src":"images/iconpack/busstop.png",
@@ -100,6 +110,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:11 Name:campfire-2.png
                     m("img",
                     {
                          "src":"images/iconpack/campfire-2.png",
@@ -109,6 +120,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:12 Name:car.png
                     m("img",
                     {
                          "src":"images/iconpack/car.png",
@@ -118,6 +130,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:13 Name:caraccident.png
                     m("img",
                     {
                          "src":"images/iconpack/caraccident.png",
@@ -127,6 +140,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:14 Name:caution.png
                     m("img",
                     {
                          "src":"images/iconpack/caution.png",
@@ -136,6 +150,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:15 Name:coffee.png
                     m("img",
                     {
                          "src":"images/iconpack/coffee.png",
@@ -145,6 +160,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:16 Name:comment-map-icon.png
                     m("img",
                     {
                          "src":"images/iconpack/comment-map-icon.png",
@@ -154,6 +170,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:17 Name:conversation-map-icon.png
                     m("img",
                     {
                          "src":"images/iconpack/conversation-map-icon.png",
@@ -163,6 +180,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:18 Name:crimescene.png
                     m("img",
                     {
                          "src":"images/iconpack/crimescene.png",
@@ -172,6 +190,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:19 Name:disability.png
                     m("img",
                     {
                          "src":"images/iconpack/disability.png",
@@ -181,6 +200,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:20 Name:doublebendright.png
                     m("img",
                     {
                          "src":"images/iconpack/doublebendright.png",
@@ -190,6 +210,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:21 Name:earthquake-3.png
                     m("img",
                     {
                          "src":"images/iconpack/earthquake-3.png",
@@ -199,6 +220,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:22 Name:fallingrocks.png
                     m("img",
                     {
                          "src":"images/iconpack/fallingrocks.png",
@@ -208,6 +230,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:23 Name:ferry.png
                     m("img",
                     {
                          "src":"images/iconpack/ferry.png",
@@ -217,6 +240,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:24 Name:fillingstation.png
                     m("img",
                     {
                          "src":"images/iconpack/fillingstation.png",
@@ -226,6 +250,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:25 Name:fire-hydrant-2.png
                     m("img",
                     {
                          "src":"images/iconpack/fire-hydrant-2.png",
@@ -235,6 +260,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:26 Name:fire.png
                     m("img",
                     {
                          "src":"images/iconpack/fire.png",
@@ -244,6 +270,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:27 Name:fireexstinguisher.png
                     m("img",
                     {
                          "src":"images/iconpack/fireexstinguisher.png",
@@ -253,6 +280,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:28 Name:firemen.png
                     m("img",
                     {
                          "src":"images/iconpack/firemen.png",
@@ -262,6 +290,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:29 Name:firstaid.png
                     m("img",
                     {
                          "src":"images/iconpack/firstaid.png",
@@ -271,6 +300,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:30 Name:flood.png
                     m("img",
                     {
                          "src":"images/iconpack/flood.png",
@@ -280,6 +310,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:31 Name:footprint.png
                     m("img",
                     {
                          "src":"images/iconpack/footprint.png",
@@ -289,6 +320,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:32 Name:fourbyfour.png
                     m("img",
                     {
                          "src":"images/iconpack/fourbyfour.png",
@@ -298,6 +330,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:33 Name:harbor.png
                     m("img",
                     {
                          "src":"images/iconpack/harbor.png",
@@ -307,6 +340,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:34 Name:helicopter.png
                     m("img",
                     {
                          "src":"images/iconpack/helicopter.png",
@@ -316,6 +350,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:35 Name:highway.png
                     m("img",
                     {
                          "src":"images/iconpack/highway.png",
@@ -325,6 +360,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:36 Name:hiking.png
                     m("img",
                     {
                          "src":"images/iconpack/hiking.png",
@@ -334,6 +370,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:37 Name:home-2.png
                     m("img",
                     {
                          "src":"images/iconpack/home-2.png",
@@ -343,6 +380,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:38 Name:hospital-building.png
                     m("img",
                     {
                          "src":"images/iconpack/hospital-building.png",
@@ -352,6 +390,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:39 Name:house.png
                     m("img",
                     {
                          "src":"images/iconpack/house.png",
@@ -361,6 +400,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:40 Name:hunting.png
                     m("img",
                     {
                          "src":"images/iconpack/hunting.png",
@@ -370,6 +410,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:41 Name:icy_road.png
                     m("img",
                     {
                          "src":"images/iconpack/icy_road.png",
@@ -379,6 +420,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:42 Name:information.png
                     m("img",
                     {
                          "src":"images/iconpack/information.png",
@@ -388,6 +430,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:43 Name:jeep.png
                     m("img",
                     {
                          "src":"images/iconpack/jeep.png",
@@ -397,6 +440,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:44 Name:lake.png
                     m("img",
                     {
                          "src":"images/iconpack/lake.png",
@@ -406,6 +450,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:45 Name:lighthouse-2.png
                     m("img",
                     {
                          "src":"images/iconpack/lighthouse-2.png",
@@ -415,6 +460,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:46 Name:linedown.png
                     m("img",
                     {
                          "src":"images/iconpack/linedown.png",
@@ -424,6 +470,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:47 Name:lodging_0star.png
                     m("img",
                     {
                          "src":"images/iconpack/lodging_0star.png",
@@ -433,6 +480,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:48 Name:mainroad.png
                     m("img",
                     {
                          "src":"images/iconpack/mainroad.png",
@@ -442,6 +490,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:49 Name:male-2.png
                     m("img",
                     {
                          "src":"images/iconpack/male-2.png",
@@ -451,6 +500,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:50 Name:military.png
                     m("img",
                     {
                          "src":"images/iconpack/military.png",
@@ -460,6 +510,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:51 Name:mine.png
                     m("img",
                     {
                          "src":"images/iconpack/mine.png",
@@ -469,6 +520,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:52 Name:motorcycle.png
                     m("img",
                     {
                          "src":"images/iconpack/motorcycle.png",
@@ -478,6 +530,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:53 Name:mountains.png
                     m("img",
                     {
                          "src":"images/iconpack/mountains.png",
@@ -487,6 +540,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:54 Name:oilrig2.png
                     m("img",
                     {
                          "src":"images/iconpack/oilrig2.png",
@@ -496,6 +550,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:55 Name:parkinggarage.png
                     m("img",
                     {
                          "src":"images/iconpack/parkinggarage.png",
@@ -505,6 +560,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:56 Name:pin-export.png
                     m("img",
                     {
                          "src":"images/iconpack/pin-export.png",
@@ -514,6 +570,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:57 Name:planecrash.png
                     m("img",
                     {
                          "src":"images/iconpack/planecrash.png",
@@ -523,6 +580,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:58 Name:police.png
                     m("img",
                     {
                          "src":"images/iconpack/police.png",
@@ -532,6 +590,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:59 Name:prison.png
                     m("img",
                     {
                          "src":"images/iconpack/prison.png",
@@ -541,6 +600,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:60 Name:radiation.png
                     m("img",
                     {
                          "src":"images/iconpack/radiation.png",
@@ -550,6 +610,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:61 Name:radio-station-2.png
                     m("img",
                     {
                          "src":"images/iconpack/radio-station-2.png",
@@ -559,6 +620,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:62 Name:repair.png
                     m("img",
                     {
                          "src":"images/iconpack/repair.png",
@@ -568,6 +630,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:63 Name:rescue-2.png
                     m("img",
                     {
                          "src":"images/iconpack/rescue-2.png",
@@ -577,6 +640,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:64 Name:river-2.png
                     m("img",
                     {
                          "src":"images/iconpack/river-2.png",
@@ -586,6 +650,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:65 Name:rowboat.png
                     m("img",
                     {
                          "src":"images/iconpack/rowboat.png",
@@ -595,6 +660,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:66 Name:school.png
                     m("img",
                     {
                          "src":"images/iconpack/school.png",
@@ -604,6 +670,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:67 Name:septic_tank.png
                     m("img",
                     {
                          "src":"images/iconpack/septic_tank.png",
@@ -613,6 +680,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:68 Name:shipwreck.png
                     m("img",
                     {
                          "src":"images/iconpack/shipwreck.png",
@@ -622,6 +690,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:69 Name:shooting.png
                     m("img",
                     {
                          "src":"images/iconpack/shooting.png",
@@ -631,6 +700,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:70 Name:shootingrange.png
                     m("img",
                     {
                          "src":"images/iconpack/shootingrange.png",
@@ -640,6 +710,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:71 Name:snowmobiling.png
                     m("img",
                     {
                          "src":"images/iconpack/snowmobiling.png",
@@ -649,6 +720,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:72 Name:stop.png
                     m("img",
                     {
                          "src":"images/iconpack/stop.png",
@@ -658,6 +730,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:73 Name:tires.png
                     m("img",
                     {
                          "src":"images/iconpack/tires.png",
@@ -667,6 +740,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:74 Name:toilets.png
                     m("img",
                     {
                          "src":"images/iconpack/toilets.png",
@@ -676,6 +750,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:75 Name:tollstation.png
                     m("img",
                     {
                          "src":"images/iconpack/tollstation.png",
@@ -685,6 +760,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:76 Name:tools.png
                     m("img",
                     {
                          "src":"images/iconpack/tools.png",
@@ -694,6 +770,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:77 Name:townhouse.png
                     m("img",
                     {
                          "src":"images/iconpack/townhouse.png",
@@ -703,6 +780,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:78 Name:toxic.png
                     m("img",
                     {
                          "src":"images/iconpack/toxic.png",
@@ -712,6 +790,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:79 Name:train.png
                     m("img",
                     {
                          "src":"images/iconpack/train.png",
@@ -721,6 +800,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:80 Name:tramway.png
                     m("img",
                     {
                          "src":"images/iconpack/tramway.png",
@@ -730,6 +810,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:81 Name:trash.png
                     m("img",
                     {
                          "src":"images/iconpack/trash.png",
@@ -739,6 +820,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:82 Name:trolley.png
                     m("img",
                     {
                          "src":"images/iconpack/trolley.png",
@@ -748,6 +830,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number: 83, Name:truck3.png
                     m("img",
                     {
                          "src":"images/iconpack/truck3.png",
@@ -757,6 +840,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:84 Name:tunnel.png
                     m("img",
                     {
                          "src":"images/iconpack/tunnel.png",
@@ -766,6 +850,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:85 Name:underground.png
                     m("img",
                     {
                          "src":"images/iconpack/underground.png",
@@ -775,6 +860,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:86 Name:walkingtour.png
                     m("img",
                     {
                          "src":"images/iconpack/walkingtour.png",
@@ -784,6 +870,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:87 Name:watercraft.png
                     m("img",
                     {
                          "src":"images/iconpack/watercraft.png",
@@ -793,6 +880,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:88 Name:waterfall-2.png
                     m("img",
                     {
                          "src":"images/iconpack/waterfall-2.png",
@@ -802,6 +890,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:89 Name:wetlands.png
                     m("img",
                     {
                          "src":"images/iconpack/wetlands.png",
@@ -811,6 +900,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:90 Name:wind-2.png
                     m("img",
                     {
                          "src":"images/iconpack/wind-2.png",
@@ -820,6 +910,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:91 Name:windturbine.png
                     m("img",
                     {
                          "src":"images/iconpack/windturbine.png",
@@ -829,6 +920,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:92 Name:workshop.png
                     m("img",
                     {
                          "src":"images/iconpack/workshop.png",
@@ -838,6 +930,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:93 Name:world.png
                     m("img",
                     {
                          "src":"images/iconpack/world.png",
@@ -847,6 +940,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:94 Name:you-are-here-2.png
                     m("img",
                     {
                          "src":"images/iconpack/you-are-here-2.png",
@@ -856,6 +950,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:95 Name:zoo.png
                     m("img",
                     {
                          "src":"images/iconpack/zoo.png",
@@ -865,6 +960,7 @@ const iconTools =
                          onclick: (e) =>
                          {markerIcons_click(e)}
                     }),
+                    //Icon Number:96 Name:zoom.png
                     m("img",
                     {
                          "src":"images/iconpack/zoom.png",

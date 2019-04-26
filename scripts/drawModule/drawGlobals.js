@@ -17,7 +17,6 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-var map = browser.map
 
 //Import and create predefined calls for functions.
 const Draw = ol.interaction.Draw 
@@ -54,7 +53,21 @@ let drawType = "Polygon"
 //Global opacity declaration.
 const hexOpacity = "20"
 //Global color declarations.
-const hexBlack = "#1f1f1f" 
+
+function testHex(color)
+{
+    if( !color )
+    { return false }
+    //regex of hex with 3 or 6 letters
+    else if ( color.search(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i) == 0 )
+    { return true }
+    else
+    { return false }
+}
+
+var hexBlack = "#1f1f1f"
+if( testHex(color1) )
+{ hexBlack = color1 }
 const hexRed = "#e60000"
 const hexOrange = "#ff9a28"
 const hexYellow = "#ffff00"
@@ -82,3 +95,4 @@ let drawSource = new VectorSource()
 let drawLayer = new VectorLayer(
 { source: drawSource })
 map.addLayer(drawLayer)
+

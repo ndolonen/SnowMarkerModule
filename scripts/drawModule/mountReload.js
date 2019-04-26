@@ -18,7 +18,7 @@
 */
 
 //Root mount. 
-const popupRoot = document.getElementById('POPUP')
+const popupRoot = document.getElementById('markerModule')
 
 //Necesarry resources to be loaded when creating the drawbox.
 function loadDrawOnMount()
