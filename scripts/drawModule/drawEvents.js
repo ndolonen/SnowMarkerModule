@@ -79,8 +79,11 @@ function deleteLayer_click()
         if( selectedFeatures[0] )
         {
             //Cycles through the array of selected features and removes them from the source.
-            selectedFeatures.forEach(e => 
-            { drawSource.removeFeature(e) })
+            selectedFeatures.forEach((e) => 
+            { 
+                drawSource.removeFeature(e) 
+                removeSingleMeasureTooltip(e) 
+            })
             originalStyles = []
             selectedFeatures = [] 
             addNewChange() //Updates the undo function array.
@@ -146,7 +149,7 @@ function colorOption_click(e)
     }
 } //End colorOption_click()
 
-//OnClick handler for printing out leangth/area of feature.
+let tooltipElement
 //OnClick handler for printing out leangth/area of feature.
 function toggleMetric_click()
 { 
@@ -180,7 +183,7 @@ function getAreal(f)
     {  
         //Converts the circle to a polygon so that we can calculate. 
         //the area with the correct values, regardless of EPSG projection.
-        const area = PolygonGeom.fromCircle(Sphere.getArea(geom))
+        const area = Sphere.getArea(PolygonGeom.fromCircle(geom))
         output = getMetrics("1", area)
     }
     else if ( geomType == "LineString" )
@@ -288,7 +291,7 @@ function manualSelect(pixel)
                 originalStyles.splice(tempInd, 1) //Removes the style object from originalStyles.
             }
         }) //End selectedFeatures.forEach()
-                //removes all metrics from map
+        //removes all metrics from map
         if( toggleAreal )
         { removeAllMeasureTooltip() }
         selectedFeatures = []
@@ -336,6 +339,8 @@ function selectMarkedArea(f)
             }
         })
     }
+
+
     //Sets the featureCheck to true to prevent the deselect all.
     if( !featureCheck )
     { featureCheck = true }

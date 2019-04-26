@@ -18,18 +18,20 @@
 */
 
 drawModule_on = false;
-$('#tb_draw').click( () => 
+function tb_draw_click()
 {
     if( !drawModule_on )
     {
+        $("#tb_draw").text("Hide Draw Window")
         loadDrawOnMount()
     }
     else
     {
+        $("#tb_draw").text("Show Draw Window")
         unmountDraw()
     }
     drawModule_on = !drawModule_on
-})
+}
 
 let drawRoot = ""
 let iconRoot = ""

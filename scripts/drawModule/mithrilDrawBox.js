@@ -220,14 +220,15 @@ const drawTools =
                         "src":"images/drawIcons/km2_50px.png", 
                         "id":"printMetric", "class":"drawIcon", 
                         onclick: toggleMetric_click
-                    }),                   // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
+                    }),
+                   // m("img", {"src":"images/download","id":"downloadGPX", "class" : "drawIcon"}),
                 ]),
             ]),
             //TODO:REMOVE?
             // m("div",
             // [
-            //     // m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),
-            //     m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")
+            //     // m("button", {"id":"printMetric", "class" : "drawButton"}, "Print Area"),m
+            //     m("p", {"id":"showMetrics", "class":"non-interactive"}, "Areal")m
             // ]),
             // m("div",
             // [

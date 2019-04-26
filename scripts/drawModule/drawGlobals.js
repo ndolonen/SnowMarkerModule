@@ -50,10 +50,8 @@ let originalStyles = [], selectedFeatures = []
 //Default draw type: "Polygon", Options: "LineString", "Polygon", "Circle".
 let drawType = "Polygon"
 
-//Global opacity declaration.
-const hexOpacity = "20"
-//Global color declarations.
 
+//test to figure out of config options given by user is a valid hex value
 function testHex(color)
 {
     if( !color )
@@ -65,16 +63,30 @@ function testHex(color)
     { return false }
 }
 
+//Global opacity declaration.
+const hexOpacity = "20"
+//Global color declarations.
 var hexBlack = "#1f1f1f"
 if( testHex(color1) )
 { hexBlack = color1 }
-const hexRed = "#e60000"
-const hexOrange = "#ff9a28"
-const hexYellow = "#ffff00"
-const hexGreen = "#01b301"
-const hexBlue = "#33ccff"
-const hexPurple = "#a300a3"
-const hexSelect = "#248f8f" //TODO: Create better style for Select
+var hexRed = "#e60000"
+if( testHex(color2) )
+{ hexRed = color2 }
+var hexOrange = "#ff9a28"
+if( testHex(color3) )
+{ hexOrange = color3 }
+var hexYellow = "#ffff00"
+if( testHex(color4) )
+{ hexYellow = color4 }
+var hexGreen = "#01b301"
+if( testHex(color5) )
+{ hexGreen = color5 }
+var hexBlue = "#33ccff"
+if( testHex(color6) )
+{ hexBlue = color6 }
+var hexPurple = "#a300a3"
+if( testHex(color7) )
+{ hexPurple = color7 }
 const hexSelectStroke = "#0569ff"
 const hexSelectFill = "#9ebbff"
 
