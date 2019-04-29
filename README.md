@@ -5,7 +5,8 @@ It's made by Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
 The project was to make a marking module that could be used in Search And Rescue operations to better mark areas on the map for information.
 Installation progress is currently only in norwegian. Translation will come.
 
-** Installation: **
+**Installation:
+
 Ved installasjon er det viktig å sørge for at knappen som aktiverer tegn funksjonen blir lagt til. I vår applikasjon ser den slik ut og er en enkel knapp lagt til i html filen.
 
 ![Activate Draw_BUTTON](https://user-images.githubusercontent.com/26407740/56897187-1fa02500-6a8e-11e9-8280-0b8ec391f137.PNG)
