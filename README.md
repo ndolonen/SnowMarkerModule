@@ -5,7 +5,7 @@ It's made by Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
 The project was to make a marking module that could be used in Search And Rescue operations to better mark areas on the map for information.
 Installation progress is currently only in norwegian. Translation will come.
 
-Installation:
+Installation:<br/>
 Ved installasjon er det viktig å sørge for at knappen som aktiverer tegn funksjonen blir lagt til. I vår applikasjon ser den slik ut og er en enkel knapp lagt til i html filen.
 
 ![Activate Draw_BUTTON](https://user-images.githubusercontent.com/26407740/56897187-1fa02500-6a8e-11e9-8280-0b8ec391f137.PNG)
@@ -32,17 +32,17 @@ Fargene kan endres ved å gi nye hexadesimale koder til fargene. Disse kan gener
 
 Linjene som konfigurerer fargene ser slik ut:
 
-//default color: black, default hex: #1f1f1f
+//default color: black, default hex: #1f1f1f<br/>
 var color1 = "#1f1f1f"<br/>
-//default color: red, default hex: #e60000
+//default color: red, default hex: #e60000<br/>
 var color2 = "#e60000"<br/>
-//default color: orange, default hex: #ff9a28
-var color3 = "#ff9a28"
-//default color: yellow, default hex: #ffff00
-var color4 = "#ffff00"
-//default color: green, default hex: #01b301
-var color5 = "#01b301"
-//default color: blue, default hex: #33ccff
-var color6 = "#33ccff"
-//default color: purple, default hex: #a300a3
-var color7 = "#a300a3"
+//default color: orange, default hex: #ff9a28<br/>
+var color3 = "#ff9a28"<br/>
+//default color: yellow, default hex: #ffff00<br/>
+var color4 = "#ffff00"<br/>
+//default color: green, default hex: #01b301<br/>
+var color5 = "#01b301"<br/>
+//default color: blue, default hex: #33ccff<br/>
+var color6 = "#33ccff"<br/>
+//default color: purple, default hex: #a300a3<br/>
+var color7 = "#a300a3"<br/>
