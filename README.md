@@ -1,5 +1,5 @@
 # Snow Marking Module
-This application is a bachelor project made to work with https://github.com/PolaricServer/webapp2
+This application is a bachelor project made to work with https://github.com/PolaricServer/webapp2<br/>
 It's made by Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim. 
 
 The project was to make a marking module that could be used in Search And Rescue operations to better mark areas on the map for information.
@@ -14,14 +14,13 @@ Ved implementasjon til Polaric Server så lagde vi en egen knapp som vi la til p
 
 ![Activate Draw](https://user-images.githubusercontent.com/26407740/56897235-46f6f200-6a8e-11e9-914e-dcd2caef6a72.png)
 
-Det er to krav til denne knappen. Det første er at navnet som gis til den er tb_draw det andre er at den har en onclick event som kaller på tb_draw_click(). (se under) 
+Det er to krav til denne knappen. Det første er at navnet som gis til den er tb_draw det andre er at den har en onclick event som kaller på tb_draw_click(). (se under) <br/>
 onclick="tb_draw_click()"
 
 Det neste steget er å implementere SnowMarkerModule. 
 
 Vi har her laget en egen konfigurasjonsfil kalt drawConfig.js som lar deg endre navnet på kartet til å kunne være kompatibel med enhver applikasjon. Standard navnet er browser.map siden denne applikasjonen var lagd for bruk med aprs.no og vi derfor fulgte navngivingen som gitt i denne applikasjonen. Om applikasjonen bruker standard “map” som navn så må denne linjen fjernes eller kommenteres ut. 
-Linjen som må endres kan sees under.
-
+Linjen som må endres kan sees under.<br/>
 var map = browser.map
 
 drawConfig.js lar deg også endre fargene som brukes til å tegne på kartet. Disse fargene er de som vises i seksjonen som vises under. 
