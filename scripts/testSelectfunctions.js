@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
+ * See LICENSE for more detail.  
+ * */ 
+
 const Feature = ol.Feature
 const PointGeom = ol.geom.Point
 
