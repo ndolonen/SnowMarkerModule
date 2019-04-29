@@ -33,9 +33,9 @@ Fargene kan endres ved å gi nye hexadesimale koder til fargene. Disse kan gener
 Linjene som konfigurerer fargene ser slik ut:
 
 //default color: black, default hex: #1f1f1f
-var color1 = "#1f1f1f"
+var color1 = "#1f1f1f"<br/>
 //default color: red, default hex: #e60000
-var color2 = "#e60000"
+var color2 = "#e60000"<br/>
 //default color: orange, default hex: #ff9a28
 var color3 = "#ff9a28"
 //default color: yellow, default hex: #ffff00
