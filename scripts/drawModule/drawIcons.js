@@ -1,8 +1,12 @@
 /**
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
+ * See LICENSE for more detail.  
+ * */ 
+
+/**
  * Icons downloaded from: https://mapicons.mapsmarker.com
- * Name of icon Collection: Maps Icons Collection
  * Icons licenced under Creative Commons 3.0
- * We do not own any of the icons in this directory
+ * for more information check _readme-license.txt in /images/iconpack/
  */
 
 let imageLoc = "images/iconpack/"

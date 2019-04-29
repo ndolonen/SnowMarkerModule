@@ -1,3 +1,7 @@
+/* 
+This file does not belong to us, its taken from https://github.com/PolaricServer/webapp2
+This file was a necessity as we were requested by our contractor to integrate their css style.
+*/
 
 div.POPUP img.popup_pin 
 { visibility: hidden; }
@@ -15,13 +19,15 @@ div.POPUP, div.POPUPMENU
   font-family: Helvetica, sans-serif; 
   font-size: 0.95em;  /* 95% */
   border: 1px solid #777777;
-  box-shadow: 3px 3px 5px #224422;
+  /* box-shadow: 3px 3px 5px #224422; */
+  box-shadow: 3px 3px 5px #222744; 
 }
 
 div.POPUP 
 {
   line-height: 1.2em;
-  background: #f0f5ec;
+  /* background: #f0f5ec; */
+  background: #f0f5fdd8;
   z-index: 1301 !important; 
   padding: 0.3em !important;
   min-width: 2em;
@@ -85,8 +91,10 @@ div.ITEM_selected
   font-family: arial, helvetica, sans-serif; 
   font-size: 1.2em; 
   margin-bottom: 0.5em; 
-  background: #cfd5cc;
+  /* background: #cfd5cc; */
+  background: #ccced5;
   padding: 0.6em  0.8em 0.3em 0.5em;
+  /* border-bottom: dotted 1px #777777; */
   border-bottom: dotted 1px #777777;
   margin: -4px;
   margin-bottom: 0.8em;
@@ -356,7 +364,7 @@ form.mapref hr
 
 button 
 {
- border:1px outset #bbbbbb;
+ /* border:1px outset #bbbbbb;
  padding:.18em;
  padding-left:.45em;
  padding-right:.45em;
@@ -364,17 +372,34 @@ button
  background:#ddeedd;
  border-radius:3px;
  outline: none;
- background: linear-gradient(#eeffee, #ddeedd, #ccddcc, #bbccbb);
+ background: linear-gradient(#eeffee, #ddeedd, #ccddcc, #bbccbb); */
+
+ background-image: linear-gradient( #eeeeee,#f0f0f0 );
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 15px;
+ font-weight: lighter;
+ cursor: pointer;
+ color: #00295e;
+ opacity: 0.95;
+ border: 1px solid #00000066;
+ box-shadow: #00295e;
+ text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.13);
+ border-radius: 2px;
 }
 
 button:hover 
-{ background: linear-gradient(#ffffff, #eeffee, #ddeedd, #ccddcc); }
+{ 
+  /* background: linear-gradient(#ffffff, #eeffee, #ddeedd, #ccddcc);  */
+  background-image: linear-gradient(to bottom, #e2e2e2, #dcf7ff);
+  opacity: 1.0;
+  background-color: transparent;
+}
 
-button:active 
+/* button:active 
 {
   border: 1px inset #999999; 
   background: #eeffee;
-}
+} */
 
 button::-moz-focus-inner 
 { border: none; }
