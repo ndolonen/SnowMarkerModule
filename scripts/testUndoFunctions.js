@@ -1,34 +1,32 @@
 /**
- * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
- * See LICENSE for more detail.  
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim. 
+ * All rights reserved. See LICENSE for more detail.  
  * */ 
 
-//import { stringify } from "querystring";
-
+//initiates the array with all existing features
 let undoArr = [drawSource.getFeatures()]
 let count = 0
+//sets the maximum ammount of changes kept
 let maxCount = 20
 let maxArr = maxCount -1
 
-//TODO: Convert to geojson so that colors and modify are doable.
+//Adds a new change so its possible to revert
 function addNewChange( feature )
 {
     if ( undoArr.length >= maxCount )
     {
         undoArr.shift()
     }
-    //undoArr.push(f)
     let features = drawSource.getFeatures()
     if ( feature )
     {
-        //console.log(features.concat(feature))
         features = features.concat(feature)
     }
-    //strFeatures = JSON.stringify(features)
     undoArr.push(features)
     count = undoArr.length -1
 }
 
+//undo's a change
 function undoChange()
 {
     if ( count > 0 )
@@ -42,32 +40,24 @@ function undoChange()
     }
     drawSource.clear()
     drawSource.addFeatures(undoArr[count])
-    //return undoArr[count--] 
 }
 
+//redo's a change
 function redoChange()
 {
     if ( count <= maxArr && count+1 < undoArr.length)
     { 
         count++
-        //console.log(count)
     }
     if( count < undoArr.length )
     {
         drawSource.clear()
         drawSource.addFeatures(undoArr[count])
     }
-
-    //return undoArr[++count] 
 }
 
-$('#redoChange').click( () =>
-{ redoChange() })
+function redoChange_click()
+{ redoChange() }
 
-$('#undoChange').click( () =>
-{ undoChange() })
-
-// modify.on("modifyend", function (e) 
-// {
-//     addNewChange(e.feature)
-// })
+function undoChange_click()
+{ undoChange() }

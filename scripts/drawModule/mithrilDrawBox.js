@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
- * See LICENSE for more detail.  
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim. 
+ * All rights reserved. See LICENSE for more detail.  
  * */ 
 
 //Defines the main div of drawModule.
@@ -218,8 +218,8 @@ const drawTools =
             // ]),
             // m("div",
             // [
-            //     //m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
-            //     //m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
+            m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
+            m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
             //     m("button", {"id":"undoChange", "class":"drawButton"}, "Undo"),
             //     m("button", {"id":"redoChange", "class":"drawButton"}, "Redo"),
             //     m("button", {"id":"logGPX",     "class":"drawButton"}, "log gpx"),

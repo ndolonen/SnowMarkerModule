@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
- * See LICENSE for more detail.  
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim. 
+ * All rights reserved. See LICENSE for more detail.  
  * */ 
 
 /**

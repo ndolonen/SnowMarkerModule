@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
- * See LICENSE for more detail.  
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim. 
+ * All rights reserved. See LICENSE for more detail.  
  * */ 
 
 //Import and create predefined calls for functions.
@@ -20,6 +20,9 @@ const FromLonLat = ol.proj.fromLonLat
 const Sphere = ol.sphere 
 const PolygonGeom = ol.geom.Polygon 
 const Point = ol.geom.Point
+const Feature = ol.Feature
+const jsonFormat = ol.format.GeoJSON
+const gpxFormat = ol.format.GPX
 
 //Global variables
 let draw, snap, drawSelect, feature, modify

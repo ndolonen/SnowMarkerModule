@@ -1,6 +1,6 @@
 
-# Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
-# See LICENSE for more detail.   
+# Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
+# All rights reserved. See LICENSE for more detail.
 
 import glob
 import errno
@@ -21,8 +21,8 @@ lineCounter = 0
 #writes the header
 
 nameList += '/**' + '\n'
-nameList += ' * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.' + '\n'
-nameList += ' * See LICENSE for more detail.'   + '\n'
+nameList += ' * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.' + '\n'
+nameList += ' * All rights reserved. See LICENSE for more detail.' + '\n'
 nameList += ' * */' + '\n\n'
 
 nameList += '/**' + '\n'
