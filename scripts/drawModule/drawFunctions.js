@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
+ * See LICENSE for more detail.  
+ * */ 
 
 //function to add drawing functionality to map
 function addDraw()

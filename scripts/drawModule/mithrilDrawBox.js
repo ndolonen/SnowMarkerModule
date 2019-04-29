@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim All rights reserved.
+ * See LICENSE for more detail.  
+ * */ 
+
 $('#map').after('<div class="drawbox" id="drawbox"></div>')
 $('<div id="drawTab"></div>').appendTo('#drawbox')
 $('<div id="iconTab"></div>').appendTo('#drawbox')
