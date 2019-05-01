@@ -19,8 +19,8 @@ const drawTools =
         [   
             m("div", {"id":"divide", "class":""}, 
             [
-                m("button", {"id":"abtn", "class":""}, "screams internally"),
-                m("button", {"id":"bbtn", "class":""}, "loudly"),
+                m("button", {"id":"abtn", "class":""}, ""),
+                m("button", {"id":"bbtn", "class":""}, ""),
             ]),
             m("img", {"src":"images/drawIcons/questionmark_48px.png", "id":"tooltip", "title":"Tooltip Helper, click and mouseover other functions"}),
             m("div",
