@@ -17,11 +17,13 @@ const drawPopup =
                 {
                     "id":"drawTab", 
                     "class":"selectedTab", 
+                    "title":"Tab for showing marking functions",
                     onclick:showDrawbox_click
                 }, "Draw"),
                 m("p", 
                 {
                     "id":"iconTab", 
+                    "title":"Tab for placing icons on the map",
                     onclick:showIconbox_click
                 }, "Icon")
             ]),
@@ -218,8 +220,8 @@ const drawTools =
             // ]),
             // m("div",
             // [
-            m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
-            m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
+            // m("button", {"id":"writeJSON", "class" : "drawButton"}, "Write JSON"),
+            // m("button", {"id":"readJSON", "class" : "drawButton"}, "Read JSON"),
             //     m("button", {"id":"undoChange", "class":"drawButton"}, "Undo"),
             //     m("button", {"id":"redoChange", "class":"drawButton"}, "Redo"),
             //     m("button", {"id":"logGPX",     "class":"drawButton"}, "log gpx"),

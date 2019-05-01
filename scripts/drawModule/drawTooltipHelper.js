@@ -14,7 +14,7 @@ function tooltip_click()
     if ( toggleTooltip )
     { 
         $('#tooltip').removeClass('selectedFunction') 
-        
+
         //drawStyle
         $('#straight').removeAttr("title")
         $('#freehand').removeAttr("title")
@@ -26,17 +26,19 @@ function tooltip_click()
         $('#optCircle').removeAttr("title")
 
         //colors
-        $('.colorOption').removeAttr("title")
+        $('#selectBlack').removeAttr("title")
+        $('#selectRed').removeAttr("title")
+        $('#selectOrange').removeAttr("title")
+        $('#selectYellow').removeAttr("title")
+        $('#selectGreen').removeAttr("title")
+        $('#selectBlue').removeAttr("title")
+        $('#selectPurple').removeAttr("title")
         
         //functions
         $('#drawToggle').removeAttr("title")
         $('#deleteLayer').removeAttr("title")
         $('#modifyToggle').removeAttr("title")
         $('#snapToggle').removeAttr("title")
-        
-        //metrics
-        $('#printMetric').removeAttr("title")
-        $('#showMetrics').removeAttr("title")
     }
     else
     { 
@@ -53,17 +55,20 @@ function tooltip_click()
         $('#optCircle').attr("title", "Draws a circle on map, useful for encapsulating an area")
 
         //colors
-        $('.colorOption').attr("title", "Select a color")
+        // $('.colorOption').attr("title", "Select a color")
+        $('#selectBlack').attr("title", "Sets the marking color as Black and changes color of selected areas.")
+        $('#selectRed').attr("title", "Sets the marking color as Red and changes color of selected areas.")
+        $('#selectOrange').attr("title", "Sets the marking color as Orange and changes color of selected areas.")
+        $('#selectYellow').attr("title", "Sets the marking color as Yellow and changes color of selected areas.")
+        $('#selectGreen').attr("title", "Sets the marking color as Green and changes color of selected areas.")
+        $('#selectBlue').attr("title", "Sets the marking color as Blue and changes color of selected areas.")
+        $('#selectPurple').attr("title", "Sets the marking color as Purpleg and changes color of selected areas.")
         
         //functions
         $('#drawToggle').attr("title", "Enables drawing")
         $('#deleteLayer').attr("title", "Deletes the selected feature from the map")
         $('#modifyToggle').attr("title", "Toggles modify on/off for drawn areas")
         $('#snapToggle').attr("title", "Toggles snap on/off while drawing")
-        
-        //metrics
-        $('#printMetric').attr("title", "Shows metrics data for selected area")
-        $('#showMetrics').attr("title", "Shows metrics data for selected area")
     }
     toggleTooltip = !toggleTooltip
 }//End of tooltip_click

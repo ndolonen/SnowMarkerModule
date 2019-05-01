@@ -185,7 +185,7 @@ function getAreal(f)
         if( type == "1" )
         {
             if ( metric > 10000 ) 
-            { output = (Math.round(metric / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>'} 
+            { output = (Math.round(metric / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>' } 
             else 
             { output = (Math.round(metric * 100) / 100) + ' ' + 'm<sup>2</sup>' }
             return output
@@ -194,9 +194,9 @@ function getAreal(f)
         else if( type == "2" ) 
         {
             if ( metric > 100 ) 
-            { output = (Math.round(metric / 1000 * 100) / 100) + ' ' + 'km'} 
+            { output = (Math.round(metric / 1000 * 100) / 100) + ' ' + 'km' } 
             else 
-            { output = (Math.round(metric * 100) / 100) + ' ' + 'm'}
+            { output = (Math.round(metric * 100) / 100) + ' ' + 'm' }
             return output
         }
     } //End getMetrics()

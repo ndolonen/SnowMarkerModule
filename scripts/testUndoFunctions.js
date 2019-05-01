@@ -45,7 +45,7 @@ function undoChange()
 //redo's a change
 function redoChange()
 {
-    if ( count <= maxArr && count+1 < undoArr.length)
+    if ( count <= maxArr && count+1 < undoArr.length )
     { 
         count++
     }
