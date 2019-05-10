@@ -73,7 +73,7 @@ const drawTools =
                     m("img", 
                     {
                         "src":"images/drawIcons/wigglyline_50px.png", 
-                        "id":"freehand", "class":"drawIcon selectedFunction", 
+                        "id":"freehand", "class":"drawIcon", 
                         onclick: freehand_click
                     }),
                 ]),

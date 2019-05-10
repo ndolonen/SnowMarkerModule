@@ -44,6 +44,17 @@ function loadDrawOnMount()
     {
         $( ".ui-draggable").draggable()
     })
+
+    if ( toggleFreehand )
+    { 
+        $('#straight').removeClass('selectedFunction')
+        $('#freehand').addClass('selectedFunction')
+    }
+    else
+    {
+        $('#freehand').removeClass('selectedFunction')
+        $('#straight').addClass('selectedFunction')
+    }
 }
 
 function unmountDraw()
