@@ -26,7 +26,7 @@ const gpxFormat = ol.format.GPX
 
 //Global variables
 let draw, snap, drawSelect, feature, modify
-let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = true, 
+let toggleDraw = false, toggleModify = false, toggleSnap = false, toggleFreehand = false, 
     toggleTooltip = false, droppingIcon = false, toggleAreal = false, dropdownShown = false
 //Decides if icons has to be toggled on/off or is disabled after drop.
 let continuousIconDropping = false
@@ -96,3 +96,10 @@ let drawLayer = new VectorLayer(
 { source: drawSource })
 map.addLayer(drawLayer)
 
+//handle different upper/lowercase variations
+activateFreedraw.toUpperCase
+//check for answer, always false if not a YES variation
+if ( activateFreedraw == "Y" || activateFreedraw == "YES" || activateFreedraw == "JA")
+{ toggleFreehand = true }
+else 
+{ toggleFreehand = false }

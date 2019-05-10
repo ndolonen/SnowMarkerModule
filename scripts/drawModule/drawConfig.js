@@ -18,3 +18,6 @@ var color5 = "#01b301"
 var color6 = "#33ccff"
 //default color: purple, default hex: #a300a3
 var color7 = "#a300a3"
+
+//Activate Freehand drawing? Y/N
+var activateFreedraw = "N"
