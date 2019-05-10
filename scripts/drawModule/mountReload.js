@@ -46,15 +46,9 @@ function loadDrawOnMount()
     })
 
     if ( toggleFreehand )
-    { 
-        $('#straight').removeClass('selectedFunction')
-        $('#freehand').addClass('selectedFunction')
-    }
+    { $('#freehand').addClass('selectedFunction') }
     else
-    {
-        $('#freehand').removeClass('selectedFunction')
-        $('#straight').addClass('selectedFunction')
-    }
+    { $('#straight').addClass('selectedFunction') }
 }
 
 function unmountDraw()
