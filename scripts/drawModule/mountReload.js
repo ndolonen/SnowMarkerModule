@@ -2,19 +2,25 @@
  * Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
  * All rights reserved. See LICENSE for more detail.   
  * */ 
-
 drawModule_on = false;
 function tb_draw_click()
 {
     if( !drawModule_on )
     {
         $("#tb_draw").text("Hide Marking Window")
-        loadDrawOnMount()
+
+        if( typeof window.orientation !== "undefined" )
+        { loadDrawOnMobileMount() }
+        else
+        { loadDrawOnMount() }
     }
     else
     {
         $("#tb_draw").text("Show Marking Window")
-        unmountDraw()
+        if( typeof window.orientation !== "undefined" )
+        { unmountMobileDraw() }
+        else
+        { unmountDraw() }
     }
     drawModule_on = !drawModule_on
 }
@@ -22,6 +28,7 @@ function tb_draw_click()
 let drawRoot = ""
 let iconRoot = ""
 let drawModuleRoot = ""
+
 //Necesarry resources to be loaded when creating the drawbox.
 function loadDrawOnMount()
 {
@@ -41,9 +48,31 @@ function loadDrawOnMount()
     deleteHighlightHandler() 
 
     $( function() 
-    {
-        $( ".ui-draggable").draggable()
-    })
+    { $( ".ui-draggable").draggable() })
+    
+    if ( toggleFreehand )
+    { $('#freehand').addClass('selectedFunction') }
+    else
+    { $('#straight').addClass('selectedFunction') }
+}
+
+function loadDrawOnMobileMount()
+{
+    $('<div id="markerModule" class="mobileDraw">'
+    +'</div>').appendTo('#map')
+
+    drawModuleRoot = document.getElementById('markerModule')
+
+    // m.mount(drawModuleRoot, drawPopup)
+    // drawRoot = document.getElementById("drawBox")
+    m.mount(drawModuleRoot, drawTools)
+    // iconRoot = document.getElementById("iconBox")
+    // m.mount(drawRoot, drawTools)
+    // m.mount(iconRoot, iconTools)
+    // $('#iconBox').hide()
+
+    cssColors()
+    deleteHighlightHandler() 
 
     if ( toggleFreehand )
     { $('#freehand').addClass('selectedFunction') }
@@ -62,6 +91,15 @@ function unmountDraw()
     m.mount(drawModuleRoot, null)
     drawModuleRoot = ""
     // $('#map').remove('#markerModule')
+    $('#markerModule').remove()
+}
+
+function unmountMobileDraw()
+{
+    disableAllDrawFunctions()
+    selectedToolbox = false
+    m.mount(drawModuleRoot, null)
+    drawModuleRoot = ""
     $('#markerModule').remove()
 }
 

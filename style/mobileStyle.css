@@ -1,11 +1,11 @@
 /* Copyright (c) 2019, Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
  * All rights reserved. See LICENSE for more detail. 
  */
-
+ 
 @media (max-device-width: 719px) and (orientation: portrait),
 (max-device-height: 719px) and (orientation: landscape)
 {
-    #modifyToggle, #snapToggle, #tb_draw, #divide, #tooltip, .non-interactive, .drawButton, .drawSelect
+    #modifyToggle, #snapToggle, #divide, #tooltip, .non-interactive, .drawButton, .drawSelect
     {
         display: none !important;
     }
@@ -14,6 +14,19 @@
     {
         background: none;
         border: none;
+    }
+
+    div.mobileDraw
+    {
+        background: none;
+        position: fixed;
+        top: 5px;
+        right: 5px;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        box-shadow: none;
+        width: 50px;
     }
 }
 
@@ -66,7 +79,6 @@
     
     .drawButton, .drawSelect, #tb_draw/* , .drawIcon */
     {
-        
         background-image: linear-gradient( #eeeeee,#dcf7ff );
         font-family: Arial, Helvetica, sans-serif;
         font-size: 8px;
