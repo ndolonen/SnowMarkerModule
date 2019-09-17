@@ -4,7 +4,7 @@ It's made by Njaal Dolonen, Nicolay Skjelbred, Jan-Magnus Solheim.
 
 The project was to make a marking module that could be used in Search And Rescue operations to better mark areas on the map for information.
 
-This project was made to be as modular as possible, its therefor dependent on having A map present. if you have a map present go into drawConfig.js and edit the "var map = browser.map" line. Replace "browser.map" with the name of the name of your map.
+This project was made to be as modular as possible, its therefor dependent on having a map present. if you have a map present go into drawConfig.js and edit the "var map = browser.map" line. Replace "browser.map" with the name of the name of your map.
 
 There is also other settings in drawconfig like color settings and such which lets the user change the color of the drawTool to their needs.
 
